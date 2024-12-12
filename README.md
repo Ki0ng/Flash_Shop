@@ -6,4 +6,9 @@ index -> bridge (sử lý các hành động rồi mới đưa lên sever vd: ki
 app sử lý 3 cái (tạo 3 biến)
 CAP 
 
-bao nhiêu trang thì bấy nhiêu folder trong controllers 
+
+# Options - Indexes không cho truy cập index
+
+# Controller (gọi model và view) - màng hình, bao nhiêu trang thì bấy nhiêu folder trong controllers 
+# Model lấy dữ liệu (inset database)
+# View hiển thị dữ liệu 
