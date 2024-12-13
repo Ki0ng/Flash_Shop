@@ -4,8 +4,7 @@ class App {
     protected $action = "SayHi"; 
     protected $params = [];
     function __construct() {
-        $arr = $this->UrlProcess();
-        
+        $arr = $this->UrlProcess();  
         if( file_exists("./mvc/controllers/".$arr[0].".php") ){
             $this->controller = $arr[0];
             unset($arr[0]);

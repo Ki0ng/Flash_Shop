@@ -1,5 +1,5 @@
 <?php
-include_once '../controllers/ProductController.php'; // Chú ý đường dẫn
+include_once '../../controllers/HomeController.php';
 
 // Khởi tạo Controller
 $productController = new ProductController();
