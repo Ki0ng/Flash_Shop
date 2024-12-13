@@ -3,7 +3,6 @@ class App {
     protected $controller = "Home";
     protected $action = "SayHi"; 
     protected $params = [];
-
     function __construct() {
         $arr = $this->UrlProcess();
         
@@ -25,7 +24,6 @@ class App {
         // lấy tên lớp, hàm chạy và param
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
-
     function UrlProcess () {
         if (isset($_GET["url"])) {
             return explode ("/",filter_var(trim($_GET["url"], "/")));
