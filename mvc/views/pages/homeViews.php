@@ -1,44 +1,237 @@
-<?php
-include_once '../../controllers/HomeController.php';
-
-// Khởi tạo Controller
-$productController = new ProductController();
-$products = $productController->getProducts();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flash Shop</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .product-list { display: flex; flex-wrap: wrap; gap: 20px; }
-        .product-card { border: 1px solid #ccc; padding: 10px; width: 200px; text-align: center; }
-        .product-card img { max-width: 100%; height: auto; }
-        .product-card h3 { font-size: 18px; margin: 5px 0; }
-    </style>
+    <title>Document</title>
 </head>
+<style>
+    .cards_Outstanding{
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+    }
+    .card-content{
+        display: flex;
+        gap:15px;
+    }
+    .card-contents{
+        margin-left: 10px;
+    }
+    
+</style>
 <body>
-    <h1>Flash Shop - Product List</h1>
-    <div class="product-list">
-        <?php
-        if ($products->num_rows > 0) {
-            while ($product = $products->fetch_assoc()) {
-                echo "
-                <div class='product-card'>
-                    <img src='{$product['image_url']}' alt='{$product['name']}'>
-                    <h3>{$product['name']}</h3>
-                    <p>Price: \${$product['price']}</p>
+    <section class="card_Outstanding">
+        <div class="cards_Outstanding">
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 50 (1).png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
                 </div>
-                ";
-            }
-        } else {
-            echo "<p>No products found.</p>";
-        }
-        ?>
-    </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 11.png" alt="">
+                <div  class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 12.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 13.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 58.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="card_necessary">
+        <div class="cards_Outstanding">
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 50 (1).png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 11.png" alt="">
+                <div  class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 12.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 13.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 58.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cards_Outstanding">
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 50 (1).png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 11.png" alt="">
+                <div  class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 12.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 13.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 58.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cards_Outstanding">
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 50 (1).png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 11.png" alt="">
+                <div  class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 12.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 13.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
+                <img style="width: 150px;" src="../imges/image 58.png" alt="">
+                <div class="card-contents">
+                    <span>Hoa dao phoi phoi</span>
+                    <div class="card-content">
+                        <span style="color: #FF0000;">$230</span>
+                        <span style="text-decoration:line-through">$330</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section >
 </body>
 </html>
-
