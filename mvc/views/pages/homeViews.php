@@ -24,7 +24,7 @@
     <section class="card_Outstanding">
         <div class="cards_Outstanding">
             <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
-                <img style="width: 150px;" src="../imges/image 50 (1).png" alt="">
+                <img src="./public/image/Ao_am/" style="width: 150px;" >
                 <div class="card-contents">
                     <span>Hoa dao phoi phoi</span>
                     <div class="card-content">
