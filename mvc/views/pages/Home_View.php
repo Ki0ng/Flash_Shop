@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wellcome To My Shop</title>
 </head>
 <body>
     <!-- Băng truyền -->
@@ -20,5 +20,9 @@
             </div>
         </div>
     </div>
+
+    <?php 
+    echo $data["home_data"];
+    ?>
 </body>
 </html>
