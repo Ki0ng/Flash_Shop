@@ -15,7 +15,7 @@
                     $this->controller = $arr[0];
                     unset($arr[0]);
                 } else {
-                    $this->controller = "Error_controller";
+                    $this->controller = "Error";
                 }
             }
 
