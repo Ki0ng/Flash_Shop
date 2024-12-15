@@ -1,9 +1,13 @@
 <?php
 class Home_Controller extends Controller {
-    function __construct() {
+    public function show () {
         $home_model = $this -> model("Home");
-        $home_data = ["home_data" => $home_model -> get_home_data()];
-        $home_view = $this -> view("Home", $home_data);    
+        $home_data = ["data" => $home_model -> get_home_data()];
+
+        $this->view("master", [
+            'Page' => 'Home',  "home_data" => $home_data
+        ]);
     }
+    
 }
 ?>

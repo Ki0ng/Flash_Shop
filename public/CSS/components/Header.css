@@ -1,4 +1,4 @@
-.container-lg {
+.nav-home {
     background: #EFBF5F
 }
 
@@ -16,17 +16,25 @@
     margin-right: 1em;
 }
 
-.nav-item {
+.nav-home-item {
     margin: 0.7rem;
     list-style: none;
 }
 
-.nav-item>a {
+.nav-home-item>a {
     color: black;
+}
+
+.nav-home-item>a:hover {
+    text-decoration: underline;
 }
 
 #navbarSupportedContent {
     font-size: 1.4rem;
+}
+
+.search-input:hover {
+    border: 3px solid gray;
 }
 
 #icon-search {
