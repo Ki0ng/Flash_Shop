@@ -4,8 +4,5 @@ class DB{
     public $severname = "localhost";
     public $password = "";
     public $dbname = "";
-
-    
 }
-
 ?>
