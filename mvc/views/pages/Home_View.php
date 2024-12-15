@@ -51,8 +51,8 @@
     }
 
     .product-item-ness {
-        background-color: #fff;
-        border: 1px solid #ddd;
+        background-color:#d9d9d9;
+        border: 1px solid #d9d9d9;
         border-radius: 10px;
         overflow: hidden;
         text-align: center;
