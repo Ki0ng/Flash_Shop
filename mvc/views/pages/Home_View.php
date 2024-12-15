@@ -273,12 +273,12 @@
             </div>
         </div>
     </div>          
+    
     <!-- Card Carousel -->
     <div class="container text-center my-3">
         <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                 <div class="carousel-inner" role="listbox">
-                    <!-- Slide 1 -->
                     <div class="carousel-item active">
                         <div class="row">
                             <div class="col-md-3">
@@ -311,7 +311,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
                     <div class="carousel-item">
                         <div class="row">
                             <div class="col-md-3">
@@ -324,28 +323,27 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="./public/image/ao_thun/aothun1.jpg" class="img-fluid">
+                                        <img src="./public/image/jearn/jearn1.jpg" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="./public/image/ao_thun/aothun2.jpg" class="img-fluid">
+                                        <img src="./public/image/polo/polo2.jpg" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="./public/image/ao_thun/aothun3.jpg" class="img-fluid">
+                                        <img src="./public/image/jearn/jearn3.jpg" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Carousel Controls -->
                 <a class="carousel-control-prev bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
@@ -356,17 +354,7 @@
         </div>
     </div>
 
-    <script>
-        var demoCarousel = new bootstrap.Carousel('#demo', {
-            interval: 3000,
-            ride: 'carousel'
-        });
-        
-        var recipeCarousel = new bootstrap.Carousel('#recipeCarousel', {
-            interval: 2000, 
-            ride: 'carousel'
-        });
-    </script>
+
 
     <?php 
     echo $data["home_data"];
