@@ -25,7 +25,6 @@
             display: flex;
         }
 
-        /* medium and up screens */
         @media (min-width: 768px) {
 
             .carousel-inner .carousel-item-end.active,
@@ -45,7 +44,7 @@
         }
     </style>
 </head>
-<body>
+<body>    
     <section class="card_Outstanding">
         <div class="cards_Outstanding">
             <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
@@ -354,10 +353,9 @@
         </div>
     </div>
 
-
-
-    <?php 
-    echo $data["home_data"];
+    <?php
+        echo $data["home_data"]["data"];
     ?>
+
 </body>
 </html>
