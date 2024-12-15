@@ -1,35 +1,50 @@
 <?php
-class App {
-    protected $controller = "Home";
-    protected $action = "SayHi"; 
-    protected $params = [];
+    class App { 
+        protected $controller = "Home";
+        protected $action = "Error";
+        protected $params = [];
 
-    function __construct() {
-        $arr = $this->UrlProcess();
-        
-        if( file_exists("./mvc/controllers/".$arr[0].".php") ){
-            $this->controller = $arr[0];
-            unset($arr[0]);
-        }
-        require_once "./mvc/controllers/". $this->controller .".php";
-        $this->controller = new $this->controller;
-
-        if (isset($arr[1])) {
-            if (method_exists($this->controller, $arr[1])) {
-                $this->action = $arr[1];
+        // request controller
+        public function __construct() {
+            if (isset($_GET["url"])) {
+                $arr = $this->UrlProccess();
+                
+                //process Controller (C - A - P)
+                if(file_exists("./mvc/controllers/". $arr[0] ."_Controller.php")) {
+                    echo "Have file";
+                    $this->controller = $arr[0];
+                    unset($arr[0]);
+                } else {
+                    $this->controller = "Error";
+                }
             }
-            unset($arr[1]);
-        }
 
-        $this->params = $arr?array_values($arr):[];
-        // lấy tên lớp, hàm chạy và param
-        call_user_func_array([$this->controller, $this->action], $this->params);
-    }
+            require_once "./mvc/controllers/".$this->controller."_Controller.php";
 
-    function UrlProcess () {
-        if (isset($_GET["url"])) {
-            return explode ("/",filter_var(trim($_GET["url"], "/")));
+            //process A === ? && process P?
+            if(isset( $arr[1])) {
+                if(method_exists($this->controller."_Controller", $arr[1])) {
+                    $this->action = $arr[1];
+                    unset($arr[1]);
+                } else {
+                    $this->controller = "Error";
+                    require_once "./mvc/controllers/".$this->controller."_Controller.php";
+                }
+                $this->params = $arr?$arr:[];
+            } else {
+                $this->action = get_class_methods($this->controller."_Controller")[0];
+            }
+
+            $this->controller = new ($this->controller."_Controller");
+
+            call_user_func_array([$this->controller, $this->action], $this->params);
+        }
+        
+        //process URL from .htaccess
+        function UrlProccess () {
+            if (isset($_GET["url"])) {
+                return explode("/", filter_var(trim($_GET["url"], "/")));
+            }
         }
     }
-}
 ?>
