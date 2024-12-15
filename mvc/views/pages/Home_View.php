@@ -45,6 +45,21 @@
     </style>
 </head>
 <body>    
+    <!--Banner-->
+    <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./public/image/image_slide/image_slide1.jpg" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="./public/image/image_slide/image_slide2.jpg" class="d-block" style="width:100%"> 
+            </div>
+            <div class="carousel-item">
+                <img src="./public/image/image_slide/image_slide3.jpg" class="d-block" style="width:100%">
+            </div>
+        </div>
+    </div>
+
     <section class="card_Outstanding">
         <div class="cards_Outstanding">
             <div class="card-item1" style="background-color: #D9D9D9;width: 150px;">
@@ -258,20 +273,7 @@
         </div>
     </section >
 
-    <!--Banner-->
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./public/image/image_slide/image_slide1.jpg" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-                <img src="./public/image/image_slide/image_slide2.jpg" class="d-block" style="width:100%"> 
-            </div>
-            <div class="carousel-item">
-                <img src="./public/image/image_slide/image_slide3.jpg" class="d-block" style="width:100%">
-            </div>
-        </div>
-    </div>          
+
     
     <!-- Card Carousel -->
     <div class="container text-center my-3">
