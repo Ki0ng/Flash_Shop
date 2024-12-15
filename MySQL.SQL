@@ -32,8 +32,8 @@ INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Pric
 	(4, "SHI", "Shirt Style 4", 450000, 300000, 20, "./public/image/ao_thun/aothun4.jpg", "High Quality"),
     (5, "SHI", "Shirt Style 5", 230000, 190000, 14, "./public/image/ao_thun/aothun5.jpg", "High Quality"),
     
-	(6, "JEA", "Jean Style 1 ", 240000, 210000, 17, "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh4dd8j1n3ua17_tn", "High Quality"),
-	(7, "JEA", "Jean Style 2 ", 340000, 320000, 38, "https://file.hstatic.net/200000325151/article/pvl_z_cac-mau-jean-nam-8_b1088de046f7443e9c36923283e2d9d3_1024x1024.jpg", "High Quality"),
-	(8, "JEA", "Jean Style 3 ", 150000, 130000, 50, "https://product.hstatic.net/1000378223/product/xanh_sang_truoc_ab921248a3de425fa7db3a41940c8ac6_1024x1024.jpg", "High Quality"),
+	(6, "JEA", "Polo Style 1 ", 240000, 210000, 17, "./public/image/polo/polo1.jpg", "High Quality"),
+	(7, "JEA", "Polo Style 2 ", 340000, 320000, 38, "./public/image/polo/polo2.jpg", "High Quality"),
+	(8, "JEA", "Polo Style 3 ", 150000, 130000, 50, "./public/image/polo/polo3.jpg", "High Quality"),
 	(9, "JEA", "Jean Style 4 ", 210000, 170000, 3,  "./public/image/jearn/jearn1.jpg", "High Quality"),
 	(10,"JEA", "Jean Style 5 ", 699000, 599000 , 1, "./public/image/jearn/jearn3.jpg", "High Quality");
