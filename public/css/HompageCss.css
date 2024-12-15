@@ -15,3 +15,15 @@ body {
     max-width: 100%;
     height: auto;
 }
+.cards_Outstanding{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.card-content{
+    display: flex;
+    gap:15px;
+}
+.card-contents{
+    margin-left: 10px;
+}
