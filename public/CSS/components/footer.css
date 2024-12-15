@@ -2,7 +2,7 @@
         background: #EFBF5F
     }
     
-    .card-footer h3 {
+    .card-footer>div>h3 {
         margin-top: 3rem;
         margin-bottom: 3rem;
     }

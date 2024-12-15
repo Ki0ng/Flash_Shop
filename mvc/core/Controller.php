@@ -9,7 +9,7 @@
 
         //call file view php to show data from model
         public function view ($view, $data=[]) {
-            require_once "./mvc/views/pages/".$view."_View.php";
+            require_once "./mvc/views/".$view.".php";
         }
 }
 ?>

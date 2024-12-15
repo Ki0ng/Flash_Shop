@@ -1,7 +1,7 @@
 <?php
     class App { 
         protected $controller = "Home";
-        protected $action = "Error";
+        protected $action = "show";
         protected $params = [];
 
         // request controller
@@ -11,7 +11,6 @@
                 
                 //process Controller (C - A - P)
                 if(file_exists("./mvc/controllers/". $arr[0] ."_Controller.php")) {
-                    echo "Have file";
                     $this->controller = $arr[0];
                     unset($arr[0]);
                 } else {
@@ -31,8 +30,6 @@
                     require_once "./mvc/controllers/".$this->controller."_Controller.php";
                 }
                 $this->params = $arr?$arr:[];
-            } else {
-                $this->action = get_class_methods($this->controller."_Controller")[0];
             }
 
             $this->controller = new ($this->controller."_Controller");
