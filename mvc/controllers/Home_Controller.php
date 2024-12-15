@@ -5,5 +5,10 @@ class Home_Controller extends Controller {
         $home_data = ["home_data" => $home_model -> get_home_data()];
         $home_view = $this -> view("Home", $home_data);    
     }
+    function card(){
+        $card_model = $this -> model("Home");
+        $card_data =["card_data" => $card_model -> get_card_data()];
+        $card_view = $this -> view("Home",$card_data);
+    }
 }
 ?>
