@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product</title>
 </head>
 
 <body>
-    <h2>Produc Details</h2>
+    <div>
+        <h2>Hello Product</h2>
+        
+    </div>
 </body>
 
 </html>
