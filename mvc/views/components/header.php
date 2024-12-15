@@ -42,12 +42,12 @@
                     </li>
 
                     <li class="nav-home-item" style="color: black">
-                        <a class="nav-link cart" href="#">
+                        <a class="nav-link cart" href="Cart">
                             <i class="fa fa-cart-arrow-down fa-2x"></i>
                         </a>
                     </li>
                     <li class="nav-home-item">
-                        <a class="nav-link account" href="#">
+                        <a class="nav-link account" href="Account">
                             <i class="fa fa-user-circle-o fa-2x" style="margin: 0px;" ></i>
                         </a>
                     </li>
