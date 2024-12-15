@@ -4,8 +4,12 @@ class Product_Controller extends Controller
     public function show()
     {
 
+        $product_model = $this->model("Product");
+        $product_data = $product_model->get_product_data();
+
         $this->view("Master", [
-            "Page" => "Product"
+            "Page" => "Product",
+            "product_data" => $product_data
         ]);
     }
 
