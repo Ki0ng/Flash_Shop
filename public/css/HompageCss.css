@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.product-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+}
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+.cards_Outstanding{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.card-content{
+    display: flex;
+    gap:15px;
+}
+.card-contents{
+    margin-left: 10px;
+}
