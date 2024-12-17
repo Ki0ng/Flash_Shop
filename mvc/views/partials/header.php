@@ -11,7 +11,7 @@
             </a>
 
             <a class="navbar-title" href="">
-                <h2 id="title" ><strong>Flash Shop</strong></h2>
+                <h2 id="title"><strong>Flash Shop</strong></h2>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,17 +23,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Home</a>
                     </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link about-us" href="#">About Us</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link about-us" href="#">About Us</a>
+                    </li>
                 </ul>
 
                 <li class="nav-item">
                     <form class="d-flex" action="#">
-                        <input class="form-control me-2" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area" > <i class="fa fa-search" id="icon-search"></i>
+                        <input class="form-control me-2" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area"> <i class="fa fa-search" id="icon-search"></i>
                     </form>
                 </li>
 
@@ -44,12 +44,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link account" href="#">
-                        <i class="fa fa-user fa-2x" style="margin: 0px;" ></i>
+                        <i class="fa fa-user fa-2x" style="margin: 0px;"></i>
                     </a>
                 </li>
             </div>
         </div>
     </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
