@@ -2,20 +2,21 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "flash_shop";
+    private $db_name = "Flash_Shop";
     private $username = "root";
     private $password = "Thuy@2005";
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
-
         try {
             $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db_name);
+            return $this->conn;
         } catch (Exception $e) {
-            echo "Connection error: " . $e->getMessage();
+            return false;
         }
-        return $this->conn;
+
     }
 }
 ?>
