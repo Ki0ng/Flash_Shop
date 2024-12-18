@@ -19,7 +19,7 @@ class Product_Controller extends Controller
 
         $proDetail_data = $product_model->get_proDetail_data();
 
-        $this->view("Master", [
+        $this->view("master", [
             "Page" => "ProductDetail",
             "proDetail_data" => $proDetail_data
         ]);
