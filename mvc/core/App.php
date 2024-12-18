@@ -36,8 +36,6 @@ class App
 
         $this->controller = new ($this->controller . "_Controller");
 
-        print_r("action: " . $this->action);
-
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
 

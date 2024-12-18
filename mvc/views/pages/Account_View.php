@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <base href="Flash_Shop/">
 </head>
 <body>
     <h1><a href="./Home">LNK GO TO ?????</a></h1>
     <?php
-        $account = $data["account_data"];
+        $account = $data["account"];
         
         print_r($account);
 

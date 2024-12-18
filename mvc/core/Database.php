@@ -5,7 +5,7 @@ class Database {
     private $db_name = "Flash_Shop";
     private $username = "root";
     private $password = "";
-    public $conn;
+    protected $conn;
 
     public function getConnection()
     {

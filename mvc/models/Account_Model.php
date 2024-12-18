@@ -1,20 +1,47 @@
 <?php
     class Account_Model extends Database  {
 
-        private $conn = new Database();
-        private $database = $this->conn->getConnection();
+        function login ($email, $password) {
 
-        function login ($id) {
-                $sql = "select *  from webUser where id = $id";
-                $data_raw = $this->database->query($sql);
+                $database = $this->connect();
+                
+                $sql = "SELECT
+                Email,
+                Password
+                from users 
+                where Email = '$email' AND  Password = '$password'";
+
+                $sql = "Select * from users";
+
+                $data_raw = $database->query($sql);
                 $data = $data_raw->fetch_assoc();
-            }
+
+                return $data;
+        }
 
         function register ($name, $email, $phone, $password) {
-            $sql = "INSERT INTO users (Name, Email, Phone, Password ) VALUE ($name, $email, $phone, $password)";
-            $this->database->query($sql);
+            $database = $this->connect();
+
+            $sql = "INSERT INTO users (Name, Email, Phone, Password ) VALUE ('$name', '$email', '$phone', '$password')";
+            $database->query($sql);
+            return true;
         }
+
+        function get_account ($email) {
+            
+            $database = $this->connect();
+                
+            $sql = "SELECT * from users where Email = '$email'";
+
+            $data_raw = $database->query($sql);
+            $data = $data_raw->fetch_assoc();
+
+            return $data;
+        }
+
         function update_account ($User_id, $name, $email, $password, $addresss)  {
+            $database = $this->connect();
+            
             $columns_values = "User_id = $User_id";
             if ($name != "" ) {
                 $columns_values .= ", Name = $name";
@@ -31,9 +58,12 @@
 
             $sql = "ALTER TABLE users SET $columns_values WHER User_id = $User_id";
 
-            $this->database->query($sql);
+            $database->query($sql);
         }
 
-
+        function connect () {
+            $conn = new Database();
+            return $conn->getConnection();
+        }
     }
 ?>  
