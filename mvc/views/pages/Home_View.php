@@ -161,8 +161,6 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
 ?>
         </div>
     </section>
-
-
     <!-- Card Carousel -->
     <div class="container text-center my-3">
         <div class="row mx-auto my-auto justify-content-center">
@@ -294,9 +292,5 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
             </div>
         </div>
     </section>
-
-
-
 </body>
-
 </html>

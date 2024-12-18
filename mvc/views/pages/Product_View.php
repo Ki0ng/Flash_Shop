@@ -32,7 +32,7 @@ $products = $data["product_data"];
                                 <span style="color: #FF0000;"><?php echo number_format($product_new_price, 0, ',', '.'); ?> VNĐ</span>
                                 <span style="text-decoration: line-through;"><?php echo number_format($product_old_price, 0, ',', '.'); ?> VNĐ</span>
                             </p>
-                            <a href="product_detail.php?id=<?php echo $product_id; ?>" class="btn btn-primary">View Details</a>
+                            <a href="ProductDetail.php?id=<?php echo $product_id; ?>" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>

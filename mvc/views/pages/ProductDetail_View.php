@@ -6,8 +6,7 @@
     <title>Shirt Product Page</title>
     <link rel="stylesheet" href="../../../public/css/productDetail.css">
 </head>
-<style>
-  
+<style> 
 .container_proDetail {
     width: 100%;
     display: flex;
