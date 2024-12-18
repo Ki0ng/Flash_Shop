@@ -13,11 +13,11 @@ class Product_Controller extends Controller
         ]);
     }
 
-    public function ProductDetail()
+    public function ProductDetail($id)
     {
         $product_model = $this->model("Product");
 
-        $proDetail_data = $product_model->get_proDetail_data();
+        $proDetail_data = $product_model->get_proDetail_data($id);
 
         $this->view("master", [
             "Page" => "ProductDetail",

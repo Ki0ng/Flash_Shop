@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/productDetail.css">
     <title>Product Detail</title>
-    <link rel="stylesheet" href="../../../public/css/productDetail.css">
 </head>
+
+<?php
+    // print_r($data["proDetail_data"] );
+    $product = $data["proDetail_data"];
+?>
 <style> 
 .container_proDetail {
     width: 100%;
@@ -32,7 +37,7 @@
 }
 .product_image img{
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     display: block;
     border-radius: 10px;
 }
@@ -130,20 +135,16 @@
 <body>
     <div class="container_proDetail">
         <div class="product_image">
-            <img src="https://contents.mediadecathlon.com/p2606947/k$1c9e0ffdefc3e67bdeabc82be7893e93/dry-men-s-running-breathable-t-shirt-red-decathlon-8771124.jpg" alt="">
+            <img src="<?php echo $product["Image_URL"]?>" alt="">
         </div>
         <div class="product_details">
-            <h2>Shirts Fashion</h2>
+            <h2><?php echo $product["Product_Name"]?></h2>
             <p>
-                Is a product of Lacoste S.A.<br>
-                company originating in<br>
-                France, using anti-static<br>
-                fabric. With long-sleeved<br>
-                design...
+                <?php echo $product["Decription"]?>
             </p>
             <div class="proDetail_price">
-                <span class="new_price">$230</span>
-                <span class="old_price">$330</span>
+                <span class="new_price"><?php echo $product["New_Price"] ?> </span>
+                <span class="old_price"><?php echo $product["Old_price"] ?></span>
                 <div class="size_selection">
                     <label for="sizeSelect"></label>
                     <select id="sizeSelect" class="size_btnDetail">
@@ -164,6 +165,9 @@
         </div>
     </div>
 
+    <?php 
+        require_once "./mvc/views/components/Rating.php"
+    ?>
     <script>
         // Get elements
         const decreaseBtn = document.getElementById('decreaseBtn');

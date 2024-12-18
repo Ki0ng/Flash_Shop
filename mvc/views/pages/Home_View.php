@@ -124,13 +124,13 @@
     <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
+                <img src="./public/image/image_slide/image_slide.jpg" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide1.jpg" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide2.jpg" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-                <img src="./public/image/image_slide/image_slide3.jpg" class="d-block" style="width:100%">
             </div>
         </div>
     </div>
@@ -241,9 +241,21 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
         </div>
     </div>
     <section class="card_necessary">
+        <?php 
+        for ($i = 0; $i < count($data["home_data"]); $i+=2) {
+
+            $product = $data["home_data"][$i];
+        
+            $id = $product[0];
+            $name = $product[2];
+            $old_price =  $product[3];
+            $new_price =  $product[4];
+            $img_url = $product[6];
+        
+        echo '
         <div class="product-grid-ness">
             <div class="product-item-ness">
-                <img src="https://down-vn.img.susercontent.com/file/2a01836c6473f4480792a29371959e4f" alt="Long sleeve">
+                <img src= $img_url alt="Long sleeve">
                 <h3>Long sleeve</h3>
                 <span style="color: #FF0000;" class="price">$353</span>
                 <span style="text-decoration:line-through">$300</span>
@@ -291,6 +303,9 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
                 <span style="text-decoration:line-through">$730</span>
             </div>
         </div>
+        ';
+        }
+        ?>
     </section>
 </body>
 </html>
