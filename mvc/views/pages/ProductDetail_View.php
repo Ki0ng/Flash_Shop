@@ -129,11 +129,9 @@
 </style>
 <body>
     <div class="container_proDetail">
-       
         <div class="product_image">
             <img src="https://contents.mediadecathlon.com/p2606947/k$1c9e0ffdefc3e67bdeabc82be7893e93/dry-men-s-running-breathable-t-shirt-red-decathlon-8771124.jpg" alt="">
         </div>
-      
         <div class="product_details">
             <h2>Shirts Fashion</h2>
             <p>
