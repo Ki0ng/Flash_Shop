@@ -125,13 +125,13 @@
     <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
+                <img src="./public/image/image_slide/image_slide.jpg" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide1.jpg" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide2.jpg" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-                <img src="./public/image/image_slide/image_slide3.jpg" class="d-block" style="width:100%">
             </div>
         </div>
     </div>
