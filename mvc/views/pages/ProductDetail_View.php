@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shirt Product Page</title>
+    <title>Product Detail</title>
     <link rel="stylesheet" href="../../../public/css/productDetail.css">
 </head>
 <style> 
@@ -144,15 +144,46 @@
             <div class="proDetail_price">
                 <span class="new_price">$230</span>
                 <span class="old_price">$330</span>
-                <button class="size_btnDetail">M</button>
+                <div class="size_selection">
+                    <label for="sizeSelect"></label>
+                    <select id="sizeSelect" class="size_btnDetail">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="SX">SX</option>
+                    </select>
+                </div>
             </div>
             <div class="proDetail_quantity">
-                <button class="qty_btnDetail">−</button>
-                <span>1</span>
-                <button class="qty_btnDetail">+</button>
+                <button class="qty_btnDetail" id="decreaseBtn">−</button>
+                <span id="quantity">1</span>
+                <button class="qty_btnDetail" id="increaseBtn">+</button>
             </div>
             <button class="add_productDetail">Add Product</button>
         </div>
     </div>
+
+    <script>
+        // Get elements
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const quantitySpan = document.getElementById('quantity');
+
+        let quantity = 1; // Initial quantity
+
+        // Decrease button event
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--; 
+                quantitySpan.textContent = quantity; 
+            }
+        });
+        // nút giảm số lượng
+        increaseBtn.addEventListener('click', () => {
+            quantity++; 
+            quantitySpan.textContent = quantity; 
+        });
+    </script>
 </body>
 </html>
