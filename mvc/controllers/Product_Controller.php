@@ -7,23 +7,21 @@ class Product_Controller extends Controller
         $product_model = $this->model("Product");
         $product_data = $product_model->get_product_data();
 
-        $this->view("Master", [
+        $this->view("master", [
             "Page" => "Product",
             "product_data" => $product_data
         ]);
     }
 
-    public function ProductDetail()
+    public function ProductDetail($id)
     {
         $product_model = $this->model("Product");
 
-        $proDetail_data = $product_model->get_proDetail_data();
+        $proDetail_data = $product_model->get_proDetail_data($id);
 
-        $this->view("Master", [
+        $this->view("master", [
             "Page" => "ProductDetail",
             "proDetail_data" => $proDetail_data
         ]);
     }
-    // hàm lọc sản phẩm
-    
 }

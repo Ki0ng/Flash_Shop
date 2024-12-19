@@ -44,6 +44,14 @@
             transform: translateX(0);
         }
 
+        /* body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    } */
 
         .product-grid {
             display: flex;
@@ -116,13 +124,13 @@
     <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
+                <img src="./public/image/image_slide/image_slide.jpg" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide1.jpg" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide2.jpg" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-                <img src="./public/image/image_slide/image_slide3.jpg" class="d-block" style="width:100%">
             </div>
         </div>
     </div>
@@ -130,26 +138,27 @@
     <section class="card_Outstanding container-lg">
         <div class="product-grid container-lg row">
         <?php
-            for ($i = 0; $i < count($data["home_data"]); $i+=1) {
 
-                $product = $data["home_data"][$i];
+for ($i = 0; $i < count($data["home_data"]); $i+=2) {
 
-                $id = $product[0];
-                $name = $product[2];
-                $old_price =  $product[3];
-                $new_price =  $product[4];
-                $img_url = $product[6]; 
+    $product = $data["home_data"][$i];
 
-                echo "
-                    <a class='col-12 product-item' href  = 'Product/ProductDetail/" .$id. "'style='text-decoration: none; color: black'>
-                    <img style='width: 200px; margin-left: -1.3rem; padding: 0px' src= $img_url alt=''  '>
-                    <p>$name</p>
-                    <span style='color: #FF0000;'>$new_price</span>
-                    <span style='text-decoration:line-through'>$old_price</span>
-                    </a>
-                ";
-            }
-        ?>
+    $id = $product[0];
+    $name = $product[2];
+    $old_price =  $product[3];
+    $new_price =  $product[4];
+    $img_url = $product[6];
+
+    echo "
+        <a class='col-12 product-item' href  = 'Product/ProductDetail/" .$id. "'style='text-decoration: none; color: black'>
+        <img style='width: 200px; margin-left: -1.3rem; padding: 0px' src= $img_url alt=''  '>
+        <p>$name</p>
+        <span style='color: #FF0000;'>$new_price</span>
+        <span style='text-decoration:line-through'>$old_price</span>
+        </a>
+    ";
+}
+?>
         </div>
     </section>
     <!-- Card Carousel -->
@@ -232,9 +241,21 @@
         </div>
     </div>
     <section class="card_necessary">
+        <?php 
+        for ($i = 0; $i < count($data["home_data"]); $i+=2) {
+
+            $product = $data["home_data"][$i];
+        
+            $id = $product[0];
+            $name = $product[2];
+            $old_price =  $product[3];
+            $new_price =  $product[4];
+            $img_url = $product[6];
+        
+        echo '
         <div class="product-grid-ness">
             <div class="product-item-ness">
-                <img src="https://down-vn.img.susercontent.com/file/2a01836c6473f4480792a29371959e4f" alt="Long sleeve">
+                <img src= $img_url alt="Long sleeve">
                 <h3>Long sleeve</h3>
                 <span style="color: #FF0000;" class="price">$353</span>
                 <span style="text-decoration:line-through">$300</span>
@@ -282,6 +303,9 @@
                 <span style="text-decoration:line-through">$730</span>
             </div>
         </div>
+        ';
+        }
+        ?>
     </section>
 </body>
 </html>
