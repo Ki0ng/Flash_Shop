@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
+<base href="/Flash_Shop/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
-<link rel="stylesheet" href="./public/CSS/components/header.css">
+<link rel="stylesheet" href="public/CSS/components/header.css">
 </head>
 
 <body>
