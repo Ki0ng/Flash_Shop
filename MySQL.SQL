@@ -38,6 +38,7 @@ INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Pric
 	(9, "JEA", "Jean Style 4 ", 210000, 170000, 3,  "./public/image/jearn/jearn1.jpg", "High Quality"),
 	(10,"JEA", "Jean Style 5 ", 699000, 599000 , 1, "./public/image/jearn/jearn3.jpg", "High Quality");
 
+    -- Bảng User
 CREATE TABLE Users (
     User_Id INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(100) NOT NULL,
@@ -47,6 +48,8 @@ CREATE TABLE Users (
     Role TINYINT NOT NULL
 );
 INSERT INTO Users (User_Id, Name, Email, Phone, Password, Role) VALUES 
-    (1, "Binh", "binhdo@gmail.com", "0234578254", SHA2("binh123@", 256), 1),
-    (2, "Toan", "toanle@gmail.com", "043728391", SHA2("toan456@", 256), 1),
-    (3, "Thuy", "thuy@gmail.com", "0362376246", SHA2("thuy789@", 256), 1);
+    (1, "Binh", "binhdo@gmail.com", "0234578254", "binh123@", 1),
+    (2, "Toan", "toanle@gmail.com", "043728391", "toan456@", 1),
+    (3, "Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1),
+    (4, "Sen", "sen@gmail.com", "0325784392", "sen987@", 1),
+    (5, "Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1);
