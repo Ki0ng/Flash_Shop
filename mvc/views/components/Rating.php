@@ -13,7 +13,6 @@
 <center>
 
     <form action="Rating" id="rating" class="row container-lg form-ctn" >
-
             <textarea name="comment" class="rating-comment container-md"  id="comment" placeholder="How do you feel our product?" required> </textarea>
                     <input name="star" class="d-none rating-star" required>
             <div class="col-7 rating-star-ctn container-md">
@@ -26,11 +25,8 @@
                 </div>
                 <button class="btn btn-lg btn-submit-rating col-4" type="submit">Send</button>
             </div>
-        
-
     </form>
     </center>
-
     <script src="./public/JS/components/Rating.js">
     </script>
 </body>
