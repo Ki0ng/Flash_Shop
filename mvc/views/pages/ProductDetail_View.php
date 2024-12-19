@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/productDetail.css">
     <title>Document</title>
 </head>
 <?php
@@ -156,9 +157,9 @@
                 <button class="qty_btnDetail" id="increaseBtn">+</button>
             </div>
             <button class="add_productDetail">Add Product</button>
+
         </div>
     </div>
-
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>

@@ -43,16 +43,6 @@
         .carousel-inner .carousel-item-start {
             transform: translateX(0);
         }
-
-        /* body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    } */
-
         .product-grid {
             display: flex;
             gap: 20px;
@@ -118,7 +108,6 @@
             font-weight: bold;
         }
     </style>
-
 <body>
     <!--Banner-->
     <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
@@ -241,71 +230,56 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
         </div>
     </div>
     <section class="card_necessary">
-        <?php 
-        for ($i = 0; $i < count($data["home_data"]); $i+=2) {
-
-            $product = $data["home_data"][$i];
-        
-            $id = $product[0];
-            $name = $product[2];
-            $old_price =  $product[3];
-            $new_price =  $product[4];
-            $img_url = $product[6];
-        
-        echo '
         <div class="product-grid-ness">
             <div class="product-item-ness">
-                <img src= $img_url alt="Long sleeve">
+                <img src="https://product.hstatic.net/200000321981/product/ban_sao_cua_nta110_l07u6d90-1-mycb-hinh_mat_truoc-0_43845f0f784f469f8ab471dfdf4a4418_grande.jpg" alt="Long sleeve">
                 <h3>Long sleeve</h3>
-                <span style="color: #FF0000;" class="price">$353</span>
-                <span style="text-decoration:line-through">$300</span>
+                <span style="color: #FF0000;" class="price">500000.00</span>
+                <span style="text-decoration:line-through">600000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://cdn.vuahanghieu.com/unsafe/0x900/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2023/09/ao-bomber-nam-lacoste-men-s-insulated-padded-bomber-jacket-bh0549-02s-mau-be-size-46-65012752c03f9-13092023100658.jpg" alt="Long sleeve jacket">
                 <h3>Long sleeve jacket</h3>
-                <span style="color: #FF0000;">$130</span>
-                <span style="text-decoration:line-through">$330</span>
+                <span style="color: #FF0000;">130000.00</span>
+                <span style="text-decoration:line-through">330000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://img.ws.mms.shopee.vn/vn-11134201-7r98o-loouxm1ftxsgca" alt="Warm coat">
                 <h3>Warm coat</h3>
-                <span style="color: #FF0000;">$99</span>
-                <span style="text-decoration:line-through">$130</span>
+                <span style="color: #FF0000;">390000.00</span>
+                <span style="text-decoration:line-through">600000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://m.media-amazon.com/images/I/61B5kZ7LrQL._AC_SX385_.jpg" alt="Cardigan">
                 <h3>Warm coat</h3>
-                <span style="color: #FF0000;">$230</span>
-                <span style="text-decoration:line-through">$330</span>
+                <span style="color: #FF0000;">230000.00</span>
+                <span style="text-decoration:line-through">400000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://360.com.vn/wp-content/uploads/2023/11/ANHTK407-APTTK403-QGNTK407-2-Custom.jpg" alt="Long sleeve jacket">
                 <h3>Long sleeve </h3>
-                <span style="color: #FF0000;">$100</span>
-                <span style="text-decoration:line-through">$230</span>
+                <span style="color: #FF0000;">100000.00</span>
+                <span style="text-decoration:line-through">230000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://product.hstatic.net/1000146544/product/hinh_anh_15-05-2024_luc_15.53_2_0af6bbb6512f4b798befed42d33c4d69_master.jpg" alt="Warm coat">
                 <h3>Polo</h3>
-                <span style="color: #FF0000;">$530</span>
-                <span style="text-decoration:line-through">$680</span>
+                <span style="color: #FF0000;">300000.00</span>
+                <span style="text-decoration:line-through">600000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://assets.ajio.com/medias/sys_master/root/20220315/Vhr5/6230b2efaeb26921afda125a/-473Wx593H-469084722-white-MODEL2.jpg" alt="T-shirt">
                 <h3>T-shirt</h3>
-                <span style="color: #FF0000;">$200</span>
-                <span style="text-decoration:line-through">$230</span>
+                <span style="color: #FF0000;">200000.00</span>
+                <span style="text-decoration:line-through">300000.00</span>
             </div>
             <div class="product-item-ness">
                 <img src="https://product.hstatic.net/1000284478/product/b5a_umy940001_1_8e79fd54d2234f2084bb7604508ed13b_large.jpg" alt="Cardigan 2">
                 <h3>Cardigan</h3>
-                <span style="color: #FF0000;">$330</span>
-                <span style="text-decoration:line-through">$730</span>
+                <span style="color: #FF0000;">330000.00</span>
+                <span style="text-decoration:line-through">730000.00</span>
             </div>
         </div>
-        ';
-        }
-        ?>
     </section>
 </body>
 </html>

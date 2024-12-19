@@ -24,4 +24,23 @@ class Product_Controller extends Controller
             "proDetail_data" => $proDetail_data
         ]);
     }
-}
+    //loc san pham 
+    public function getFilteredProducts ($data) {
+        $name = $data['Product_Name'];
+        $price = $data['filter-price'];
+        $categories = $data['filter-categories'];
+        if ($name &&  $price && $categories) {
+             return $this->Product_Model->getFilteredProducts($name, $price, $categories);
+        } elseif ($name && $categories && !$price) {
+             return $this->Product_Model->getProductsByCategories($name, $categories);
+        } elseif ($name && $price) {
+             return $this->Product_Model->getProductsByPrice($name, $price);
+        } elseif ($price && $categories) {
+             return $this->Product_Model->getProductsByPriceCategories ($price, $categories);
+        } elseif ($name) {
+             return $this->Product_Model->getProductsByName ($name);
+        }else {
+             return $this->Product_Model->getProducts();
+        }
+     }
+    }
