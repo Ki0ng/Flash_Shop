@@ -11,8 +11,9 @@ CREATE TABLE categories(
 
 INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
     ("SHI", "Shirt", "The Shirt with high quality will meke you feel comfortable in the hot summer"),
-   	("JEA", "Jean", "Whit the Jean you can express your personal style in everwhere");
-;
+   	("JEA", "Jean", "Whit the Jean you can express your personal style in everwhere"),
+    ("Trouse", "trousers", "Trousers offer comfort, durability, and flexibility in styling. Their adaptability makes them an integral part of wardrobes"),
+   	("Slee", "sleeve", "New Autumn Men's Harajuku Thin Breathable Quick-Drying Crew Neck Long Sleeve T-Shirt");
 
 CREATE TABLE products(
     Product_Id INT PRIMARY KEY,

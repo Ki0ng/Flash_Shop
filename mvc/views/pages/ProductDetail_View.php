@@ -107,7 +107,6 @@
     gap: 10px;
 }
 
-
 .qty_btnDetail {
     background-color: #000;
     color: #fff;

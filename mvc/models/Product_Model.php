@@ -48,7 +48,7 @@ class Product_Model extends Database
             return false;
         }
     }
-    
+
     // loc san pham
     protected $table = "products";  
     public function getFilteredProducts ($name, $price, $categories) {
@@ -61,14 +61,14 @@ class Product_Model extends Database
                 ($price = 500 AND price <= 1000) OR
                 ($price = 1000 AND price > 1000)
             )
-            AND category = '$categories'
+            AND categories = '$categories'
             ORDER BY price DESC";
         return $this->queryManyRows($sql);
     }
     public function getProductsByCategories ($name, $categories) {
         $sql = "SELECT * FROM $this->table
             WHERE Product_Name LIKE '%$name%'
-            AND category = '$categories'";
+            AND categories = '$categories'";
         return $this->queryManyRows($sql);
     }
     public function getProductsByPrice ($name, $price) {
@@ -96,7 +96,7 @@ class Product_Model extends Database
                     ($price = 500 AND price <= 1000) OR
                     ($price = 1000 AND price > 1000)
             )
-            AND category = '$categories'
+            AND categories = '$categories'
             ORDER BY price DESC";
         return $this->queryManyRows($sql);
     }
