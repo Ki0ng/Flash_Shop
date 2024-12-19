@@ -48,6 +48,7 @@ class Product_Model extends Database
             return false;
         }
     }
+    
     // loc san pham
     protected $table = "products";  
     public function getFilteredProducts ($name, $price, $categories) {
