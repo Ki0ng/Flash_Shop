@@ -39,8 +39,7 @@
 $products = $data["product_data"]; 
 ?>
 <body>
-
-    <form action="index.php" method="POST">
+    <form action="Product_View.php" method="POST">
         <div class="product_filter"> 
             <!-- Price Section -->
             <div>
