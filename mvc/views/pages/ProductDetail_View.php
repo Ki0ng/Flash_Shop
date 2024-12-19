@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/productDetail.css">
-    <title>Product Detail</title>
+    <title>Document</title>
 </head>
 <?php
     // print_r($data["proDetail_data"] );
@@ -164,5 +163,6 @@
         require_once "./mvc/views/components/Rating.php"
     ?>
     <script src="./public/JS/productDetail.js"></script>
+
 </body>
 </html>
