@@ -62,8 +62,6 @@
     line-height: 1.5;
     margin: 0;
 }
-
-
 .proDetail_price {
     display: flex;
     align-items: center;
@@ -81,8 +79,6 @@
     color: #888;
     font-size: 16px;
 }
-
-
 .size_btnDetail {
     background-color: #000;
     color: #fff;
@@ -167,26 +163,6 @@
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
-    <script>
-        // Get elements
-        const decreaseBtn = document.getElementById('decreaseBtn');
-        const increaseBtn = document.getElementById('increaseBtn');
-        const quantitySpan = document.getElementById('quantity');
-
-        let quantity = 1; // Initial quantity
-
-        // Decrease button event
-        decreaseBtn.addEventListener('click', () => {
-            if (quantity > 1) {
-                quantity--; 
-                quantitySpan.textContent = quantity; 
-            }
-        });
-        // nút giảm số lượng
-        increaseBtn.addEventListener('click', () => {
-            quantity++; 
-            quantitySpan.textContent = quantity; 
-        });
-    </script>
+    <script src="./public/JS/productDetail.js"></script>
 </body>
 </html>
