@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="public/css/productDetail.css">
     <title>Product Detail</title>
 </head>
-
 <?php
     // print_r($data["proDetail_data"] );
     $product = $data["proDetail_data"];

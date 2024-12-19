@@ -19,7 +19,7 @@ class Product_Model extends Database
             return false;
         }
     }
-
+//productDetail
     public function get_proDetail_data($id)
     {
         $conn = new Database();
