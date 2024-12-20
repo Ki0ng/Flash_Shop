@@ -27,11 +27,11 @@
             return true;
         }
 
-        function get_account ($email) {
+        function get_account ($email, $password) {
             
             $database = $this->connect();
                 
-            $sql = "SELECT * from users where Email = '$email'";
+            $sql = "SELECT * from users where Email = '$email' and Password = '$password'";
 
             $data_raw = $database->query($sql);
             $data = $data_raw->fetch_assoc();
