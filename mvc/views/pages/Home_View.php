@@ -8,117 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./public/CSS/Home_Slide.css">
     <title>Wellcome To My Shop</title>
-    <style>
-        @media (max-width: 767px) {
-            .carousel-inner .carousel-item>div {
-                display: none;
-            }
-
-            .carousel-inner .carousel-item>div:first-child {
-                display: block;
-            }
-        }
-
-        .carousel-inner .carousel-item.active,
-        .carousel-inner .carousel-item-next,
-        .carousel-inner .carousel-item-prev {
-            display: flex;
-        }
-
-        @media (min-width: 768px) {
-
-            .carousel-inner .carousel-item-end.active,
-            .carousel-inner .carousel-item-next {
-                transform: translateX(25%);
-            }
-
-            .carousel-inner .carousel-item-start.active,
-            .carousel-inner .carousel-item-prev {
-                transform: translateX(-25%);
-            }
-        }
-
-        .carousel-inner .carousel-item-end,
-        .carousel-inner .carousel-item-start {
-            transform: translateX(0);
-        }
-
-        /* body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    } */
-
-        .product-grid {
-            display: flex;
-            gap: 20px;
-        }
-
-        .product-item {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            padding: 20px;
-            width: 200px;
-        }
-
-        .product-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .product-item p {
-            margin: 10px 0;
-        }
-
-        .price {
-            color: red;
-            font-weight: bold;
-        }
-
-        .product-grid-ness {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            justify-content: center;
-        }
-
-        .product-item-ness {
-            background-color: #d9d9d9;
-            border: 1px solid #d9d9d9;
-            border-radius: 10px;
-            overflow: hidden;
-            text-align: center;
-            width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-item-ness img {
-            width: 100%;
-            height: auto;
-        }
-
-        .product-item-ness h3 {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .product-item-ness p {
-            margin: 0;
-            font-size: 16px;
-            color: #ff0000;
-            font-weight: bold;
-        }
-    </style>
-
 <body>
     <!--Banner-->
     <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
@@ -137,28 +28,28 @@
 
     <section class="card_Outstanding container-lg">
         <div class="product-grid container-lg row">
-        <?php
+            <?php
 
-for ($i = 0; $i < count($data["home_data"]); $i+=2) {
+            for ($i = 0; $i < count($data["home_data"]); $i += 2) {
 
-    $product = $data["home_data"][$i];
+                $product = $data["home_data"][$i];
 
-    $id = $product[0];
-    $name = $product[2];
-    $old_price =  $product[3];
-    $new_price =  $product[4];
-    $img_url = $product[6];
+                $id = $product[0];
+                $name = $product[2];
+                $old_price =  $product[3];
+                $new_price =  $product[4];
+                $img_url = $product[6];
 
-    echo "
-        <a class='col-12 product-item' href  = 'Product/ProductDetail/" .$id. "'style='text-decoration: none; color: black'>
+                echo "
+        <a class='col-12 product-item' href  = 'Product/ProductDetail/" . $id . "'style='text-decoration: none; color: black'>
         <img style='width: 200px; margin-left: -1.3rem; padding: 0px' src= $img_url alt=''  '>
         <p>$name</p>
         <span style='color: #FF0000;'>$new_price</span>
         <span style='text-decoration:line-through'>$old_price</span>
         </a>
     ";
-}
-?>
+            }
+            ?>
         </div>
     </section>
     <!-- Card Carousel -->
@@ -241,18 +132,18 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
         </div>
     </div>
     <section class="card_necessary">
-        <?php 
-        for ($i = 0; $i < count($data["home_data"]); $i+=2) {
+        <?php
+        for ($i = 0; $i < count($data["home_data"]); $i += 2) {
 
             $product = $data["home_data"][$i];
-        
+
             $id = $product[0];
             $name = $product[2];
             $old_price =  $product[3];
             $new_price =  $product[4];
             $img_url = $product[6];
-        
-        echo '
+
+            echo '
         <div class="product-grid-ness">
             <div class="product-item-ness">
                 <img src= $img_url alt="Long sleeve">
@@ -308,4 +199,5 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
         ?>
     </section>
 </body>
+
 </html>
