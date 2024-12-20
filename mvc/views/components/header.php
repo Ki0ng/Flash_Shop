@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header</title>
-<link rel="stylesheet" href="./public/CSS/components/header.css">
-=======
 <base href="/Flash_Shop/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 <link rel="stylesheet" href="public/CSS/components/header.css">
->>>>>>> ec998130aa486a9dae6651dffd5f54466f32eae0
 </head>
 
 <body>
