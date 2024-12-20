@@ -1,3 +1,24 @@
+
+<?php
+    $account = $data["account"];
+
+    $email = $account['Email'];
+    $name = $account['Name'];
+    $phone = $account['Phone'];
+    $address = $account["Address"];
+    $password = $account["Password"];
+
+
+    
+    echo  "
+        <input name = 'email'    disable  style='display:none;'  value = '$email'    id = 'origin'     >
+        <input name = 'name'     disable  style='display:none;'  value = '$name'     class = 'origin'    >
+        <input name = 'password' disable  style='display:none;'  value = '$password' class = 'origin'        >
+        <input name = 'phone'    disable  style='display:none;'  value = '$phone'    class = 'origin'     >
+        <input name = 'address'  disable  style='display:none;'  value = '$address'  class = 'origin'       >
+        "
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,25 +34,27 @@
         <div class="small-div">
             <center>
                 <h3 style="margin-top: 1.5rem; margin-bottom: 3rem"> MY ACCOUNT</h3>
+
             <button id="edit-info" style="display: flex;" >
                 <i class="fa fa-pencil fa-3x"></i>
                 <strong style = "margin-left: 1rem; font-size: 1.5rem">Edit</strong>
-            </button>
-
-            <button id="save-info">
-                <i class="fa fa-save fa-3x"></i>
-                <strong style = "margin-left: 1rem; font-size: 1.5rem">Save</strong>
             </button>
 
             <button id="cancel">
                 <i class="fa fa-close fa-3x"></i>
                 <strong style = "margin-left: 1rem; font-size: 1.5rem">Cancel</strong>
             </button>
-            
 
-            <button id="success-change">
-                <i class="fa fa-check-square-o fa-3x"></i>
+            
+            <form action="/Flash_Shop/Account/Update_Account" method="post">
+
+            <button id="save-info" disabled>
+                <i class="fa fa-save fa-3x"></i>
+                <strong style = "margin-left: 1rem; font-size: 1.5rem">Save</strong>
             </button>
+
+
+
         </center>
 
         </div>
@@ -50,22 +73,17 @@
                 <div class="value-input" id="form">
 
                     <?php
-                        $account = $data["account"];
-                        $account_email = $account['Email'];
-                        $account_name = $account['Name'];
-                        $account_id = $account['User_Id'];
-                        $account_phone = $account['Phone'];
-                        $account_address = $account["Address"];
-                        $account_password = $account["Password"];
-
-                        echo "
-                            <input type='text' value=' $account_email ' disabled id='account-email' >   <br>  
-                            <input type='text' value=' $account_name 'readonly class='component' id='account-name'>    
-                            <input type='text' value=' $account_password ' readonly class='component' id='account-password'>
-                            <input type='text' value=' $account_phone ' readonly class='component' id='account-phone'>   
-                            <input type='text' value=' $account_address 'readonly class='component' id='account-address'>
+                         echo "
+                            <input type='text' value='$email'     name='email'   readonly   id = 'show-change-' >   <br>  
+                            <input type='text' value='$name'      name='name'    readonly   class = 'show-change' >    
+                            <input type='text' value='$password'  name='password'    readonly   class = 'show-change'>
+                            <input type='text' value='$phone'     name='phone'    readonly   class = 'show-change'  >   
+                            <input type='text' value='$address'   name='address'    readonly   class = 'show-change'>
                             "
-                            ?>
+                    ?>
+
+            </form>
+
                 </div>
             </div>
          </div>

@@ -2,8 +2,6 @@
     class Account_Controller extends Controller {
         public function show () {
 
-            // if (isset($_SESSION["email"]) && isset($_SESSION["password"])) {
-
                 $_SESSION["email"] = "binhdo@gmail.com";
                 $_SESSION["password"] = "binh123@";
             
@@ -12,21 +10,35 @@
 
                 $database = $this->model("Account");
 
+                
                 $data = $database->get_account($email, $password);
+
                 $this->view("Master", [
                     "Page" => "Account",
                     "account" => $data
                 ]);
-            // }
-
-            // else {
-            //     $this->view("Master", [
-            //         "Page" => "Login"
-            //     ]);
-            // }
-
-
         }
+
+        public function update_account () {
+        $database = $this->model("Account");
+
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name =     $_POST [ "name"] ;
+            $phone =    $_POST [ "phone"];
+            $email =     $_POST [ "email"];
+            $address =  $_POST [ "address"];
+            $password = $_POST ["password"];
+
+
+            $_SESSION["email"] = $email;
+            $_SESSION["password"] = $password;
+
+
+        $database->update_account($name, $phone, $email, $password, $address);
+        $this->show();
+    }
+    }
+
     }
 
 ?>

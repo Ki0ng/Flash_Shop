@@ -1,69 +1,45 @@
 <?php
     class Account_Model extends Database  {
 
-        function login ($email, $password) {
-
-                $database = $this->connect();
-                
-                $sql = "SELECT
-                Email,
-                Password
-                from users 
-                where Email = '$email' AND  Password = '$password'";
-
-                $sql = "Select * from users";
-
-                $data_raw = $database->query($sql);
-                $data = $data_raw->fetch_assoc();
-
-                return $data;
-        }
-
-        function register ($name, $email, $phone, $password) {
-            $database = $this->connect();
-
-            $sql = "INSERT INTO users (Name, Email, Phone, Password ) VALUE ('$name', '$email', '$phone', '$password')";
-            $database->query($sql);
-            return true;
-        }
 
         function get_account ($email, $password) {
             
-            $database = $this->connect();
-                
+            $this->getConnection();
+
             $sql = "SELECT * from users where Email = '$email' and Password = '$password'";
 
-            $data_raw = $database->query($sql);
-            $data = $data_raw->fetch_assoc();
+            $data_raw = $this->conn->query($sql);
+            $account = $data_raw->fetch_assoc();
 
-            return $data;
+            return $account;
         }
 
-        function update_account ($User_id, $name, $email, $password, $addresss)  {
-            $database = $this->connect();
+        function update_account ($name, $phone, $email, $password, $address)  {
             
-            $columns_values = "User_id = $User_id";
-            if ($name != "" ) {
-                $columns_values .= ", Name = $name";
-            }
-            if ($email != "") {
-                $columns_values .= ", Email = $email";
-            }
-            if ($password != "") {
-                $columns_values .= ", Password = $password";
-            }
-            if ($addresss != "") {
-                $columns_values .= ", Address = $addresss";
+            $this->getConnection();
+
+            $sql = "UPDATE Users SET Email = '$email' ";
+            
+            if ($name !== "null") {
+                $sql = "$sql, Name = '$name'";
             }
 
-            $sql = "ALTER TABLE users SET $columns_values WHER User_id = $User_id";
+            if ($password !== "null") {
+                $sql = "$sql, Password = '$password'";
+            }
 
-            $database->query($sql);
+            if ($phone !== "null") {
+                $sql = "$sql, Phone = '$phone'";
+            }
+
+            if ($address !== "null") {
+                $sql = "$sql, Address = '$address'";
+            }
+
+            $sql = "$sql where Email = '$email'";
+
+            $this->conn->query($sql);
         }
 
-        function connect () {
-            $conn = new Database();
-            return $conn->getConnection();
-        }
     }
 ?>  
