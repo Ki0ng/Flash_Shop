@@ -47,12 +47,11 @@
                     </a>
                 </li>
                 <li class="nav-home-item">
-                    <a class="nav-link account" href="Account">
+                    <a class="nav-link account"  href = "account">
                         <i class="fa fa-user-circle-o fa-2x" style="margin: 0px;"></i>
                     </a>
                 </li>
             </div>
         </div>
     </nav>
-
 </body>
