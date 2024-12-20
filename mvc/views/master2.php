@@ -14,13 +14,11 @@
 
 <body>
     <?php
-    require './mvc/views/components/header.php';
-    require './mvc/views/pages/' . $data['Page'] . '_View.php';
-    require './mvc/views/components/footer.php';
+        require './mvc/views/pages/' . $data['Page'] . '_View.php';
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 
-</html>z
+</html>

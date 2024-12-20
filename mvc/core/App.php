@@ -9,6 +9,8 @@ class App
     public function __construct()
     {
         if (isset($_GET["url"])) {
+
+
             $arr = $this->UrlProccess();
 
             //process Controller (C - A - P)
