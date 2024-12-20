@@ -1,3 +1,4 @@
+
 <?php
 class Product_Controller extends Controller
 {
@@ -8,21 +9,17 @@ class Product_Controller extends Controller
         $product_model = $this->model("Product");
         $product_data = $product_model->get_product_data();
 
-
         $this->view("master", [
             "Page" => "Product",
             "product_data" => $product_data
         ]);
     }
-
-
+    // product detail
     public function ProductDetail($id)
     {
         $product_model = $this->model("Product");
 
-
         $proDetail_data = $product_model->get_proDetail_data($id);
-
 
         $this->view("master", [
             "Page" => "ProductDetail",
@@ -30,22 +27,30 @@ class Product_Controller extends Controller
         ]);
     }
     //loc san pham
-    public function getFilteredProducts ($data) {
-        $name = $data['Product_Name'];
-        $price = $data['filter-price'];
-        $categories = $data['filter-categories'];
-        if ($name &&  $price && $categories) {
-             return $this->Product_Model->getFilteredProducts($name, $price, $categories);
-        } elseif ($name && $categories && !$price) {
-             return $this->Product_Model->getProductsByCategories($name, $categories);
-        } elseif ($name && $price) {
-             return $this->Product_Model->getProductsByPrice($name, $price);
-        } elseif ($price && $categories) {
-             return $this->Product_Model->getProductsByPriceCategories ($price, $categories);
-        } elseif ($name) {
-             return $this->Product_Model->getProductsByName ($name);
-        }else {
-             return $this->Product_Model->getProducts();
-        }
+    public function getFilteredProducts() {
+
+    //  $name = isset($_GET["name"]) ?  $_GET["name"] : null;                
+     $price = isset($_GET["New_Price"]) ? $_GET["New_Price"] : null;                
+     $category = isset($_GET["Category_Id"]) ? $_GET["Category_Id"] : null;                
+
+     if($price || $category) {
+          $product_model = $this->model("Product");
+
+          $filter = $product_model->getFilteredProducts( $price, $category);
+     
+          $this->view("master", [
+               "Page" => "ProductFilter",
+               "filter"=>$filter
+          ]);
+     } else {
+          $this->view("master", [
+               "Page" => "ProductFilter",
+               "filter"=>[ $price, $category]
+          ]);
+          // $this->show();
      }
+    
+
+     
+ }
     }

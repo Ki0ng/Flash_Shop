@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="./public/css/productFilter.css">
     <title>Products</title>
 </head>
 <style>
@@ -20,6 +19,7 @@
         color: aliceblue;
         border-radius: 4em;
         padding: 1rem;
+        margin-left: 3rem;
     }
 
 
@@ -40,8 +40,6 @@
         cursor: pointer;
         border: none;
     }
-
-
     .button_filter:hover {
         background-color: rgb(66, 120, 86);
     }
@@ -54,41 +52,34 @@
 $products = $data["product_data"];
 ?>
 <body>
-<section class="product_section">
-    <form id="form_filter_product" action="" method="get">
-        <div class="product_filter">
-            <div class="size_selection">
-                <label for="priceSelect">Price</label>
-                <select id="priceSelect" class="size_btnDetail">
-                    <?php
-                        if(isset($_GET['filter_price'])){
-                            echo $_GET['filter_price'];
-                        }
-                        echo 'price'
-                    ?>
-                    <option value="0">0 - 100 VND</option>
-                    <option value="100">100 - 300 VND</option>
-                    <option value="300">300 - 500 VND</option>
-                    <option value="500">500 - 1000 VND</option>
-                    <option value="1000">1000 VND ></option>
-                </select>
+    <section class="product_section">
+        <form id="form_filter_product" action="/Flash_Shop/Product/getFilteredProducts" method="get">
+            <div class="product_filter">
+                <div class="size_selection">
+                    <label for="priceSelect">Price</label>
+                    <select id="priceSelect" name="price" class="size_btnDetail">
+                        <option value="0" <?php (isset($_GET['New_Price']) == "0") ? 'selected' : '' ?>>0 - 100 VND</option>
+                        <option value="100" <?php (isset($_GET['New_Price'])  == "100.000.000") ? 'selected' : '' ?>>100.000.000 VND</option>
+                        <option value="300" <?php (isset($_GET['New_Price']) == "300.000.000") ? 'selected' : '' ?>>300.000.000 VND</option>
+                        <option value="500" <?php (isset($_GET['New_Price'])  == "500.000.000") ? 'selected' : '' ?>>500.000.000 VND</option>
+                        <option value="1000" <?php (isset($_GET['New_Price'])  == "1.000.0000.000") ? 'selected' : '' ?>>1.000.000.000 VND ></option>
+                    </select>
+                </div>
+                
+                <div class="type_selection">
+                    <label for="typeSelect">Type</label>
+                    <select id="typeSelect" name="category" class="size_btnDetail">
+                        <option value="" <?php (!isset($_GET['Category_Id']) || $_GET['Category_Id'] == "") ? 'selected' : '' ?>>Select Type</option>
+                        <option value="trousers" <?php (isset($_GET['Category_Id']) == "trousers") ? 'selected' : '' ?>>Trousers</option>
+                        <option value="shirts" <?php (isset($_GET['Category_Id']) == "shirts") ? 'selected' : '' ?>>Shirts</option>
+                        <option value="JEA" <?php (isset($_GET['Category_Id'])  == "JEA") ? 'selected' : '' ?>>Jeans</option>
+                        <option value="Sleeve" <?php (isset($_GET['Category_Id'])  == "Sleeve") ? 'selected' : '' ?>>Sleeve</option>
+                    </select>
+                </div>
+                <button type="submit" class="button_filter">FILTER</button>
             </div>
-            <div class="type_selection">
-                <label for="typeSelect">Type</label>
-                <select id="typeSelect" class="size_btnDetail">
-                    <?php
-                        if(isset($_GET['filter_categories'])){
-                            echo $_GET['filter_categories'];
-                        }echo 'categories'
-                    ?>
-                    <option value="trousers">Trousers</option>
-                    <option value="shirts">Shirts</option>
-                </select>
-            </div>
-            <button class="button_filter" onclick="location.href='product_View.php';">FILTER</button>
-        </div>
-    </form>
-</section>
+        </form>
+    </section>
     <div class="container">
         <div class="row">
             <?php foreach ($products as $product): ?>

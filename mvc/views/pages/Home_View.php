@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
-
     <title>Wellcome To My Shop</title>
     <style>
         @media (max-width: 767px) {
@@ -125,13 +124,13 @@
     <div id="demo" class="carousel slide container-lg" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
+                <img src="./public/image/image_slide/image_slide.jpg" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide1.jpg" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
                 <img src="./public/image/image_slide/image_slide2.jpg" class="d-block" style="width:100%">
-            </div>
-            <div class="carousel-item">
-                <img src="./public/image/image_slide/image_slide3.jpg" class="d-block" style="width:100%">
             </div>
         </div>
     </div>
@@ -162,8 +161,6 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
 ?>
         </div>
     </section>
-
-
     <!-- Card Carousel -->
     <div class="container text-center my-3">
         <div class="row mx-auto my-auto justify-content-center">
@@ -243,11 +240,10 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
             </div>
         </div>
     </div>
-
     <section class="card_necessary">
         <div class="product-grid-ness">
             <div class="product-item-ness">
-                <img src="https://down-vn.img.susercontent.com/file/2a01836c6473f4480792a29371959e4f" alt="Long sleeve">
+                <img src="https://www.patagonia.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw33544b62/images/hi-res/37779_BLK.jpg?sw=768&sh=768&sfrm=png&q=95&bgcolor=f5f5f5"alt="Long sleeve">
                 <h3>Long sleeve</h3>
                 <span style="color: #FF0000;" class="price">$353</span>
                 <span style="text-decoration:line-through">$300</span>
@@ -296,9 +292,5 @@ for ($i = 0; $i < count($data["home_data"]); $i+=2) {
             </div>
         </div>
     </section>
-
-
-
 </body>
-
 </html>

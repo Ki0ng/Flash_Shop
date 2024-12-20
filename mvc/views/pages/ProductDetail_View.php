@@ -10,26 +10,22 @@
     // print_r($data["proDetail_data"] );
     $product = $data["proDetail_data"];
 ?>
-<style>
+<style> 
 .container_proDetail {
     width: 100%;
     display: flex;
     align-items: center;
-    background-color:D9D9D9;
+    background-color:D9D9D9; 
     padding: 50px;
     justify-content: center;
     gap:30px
 }
 
 
-
-
 .product_details, .product_image img {
-    background-color: #fff;
+    background-color: #fff; 
     border-radius: 10px;
 }
-
-
 
 
 .product_image {
@@ -53,15 +49,11 @@
 }
 
 
-
-
 .product_details h2 {
     font-size: 22px;
     font-weight: bold;
     margin: 0;
 }
-
-
 
 
 .product_details p {
@@ -76,13 +68,11 @@
     gap: 10px;
 }
 
-
 .new_price {
     color: red;
     font-size: 18px;
     font-weight: bold;
 }
-
 
 .old_price {
     text-decoration: line-through;
@@ -97,8 +87,6 @@
     border-radius: 5px;
     font-size: 12px;
 }
-
-
 
 
 .proDetail_quantity {
@@ -117,12 +105,10 @@
     cursor: pointer;
 }
 
-
 .proDetail_quantity span {
     font-size: 14px;
     font-weight: bold;
 }
-
 
 .add_productDetail {
     background-color: #000;
@@ -173,9 +159,11 @@
             <button class="add_productDetail">Add Product</button>
         </div>
     </div>
-    <?php
+
+    <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
     <script src="./public/JS/productDetail.js"></script>
+
 </body>
 </html>
