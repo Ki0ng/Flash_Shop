@@ -88,7 +88,7 @@
             </div>
          </div>
     </div>
-    <script src="public/JS/Profile.js">
+    <script src="public/JS/User/Profile.js">
     </script>
 </body>
 </html>
