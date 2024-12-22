@@ -6,7 +6,7 @@
     <base href="/Flash_Shop/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footer</title>
-    <link rel="stylesheet" href="public/CSS/components/footer.css">
+    <link rel="stylesheet" href="public/CSS/Components/Footer.css">
 </head>
 
 <body>
