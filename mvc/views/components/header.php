@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-
 <base href="/Flash_Shop/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
-<link rel="stylesheet" href="public/CSS/components/header.css">
+<link rel="stylesheet" href="public/CSS/Components/Header.css">
 </head>
 
 <body>
@@ -32,12 +31,12 @@
                         <a class="nav-link" href="Product">Products</a>
                     </li>
                     <li class="nav-home-item">
-                        <a class="nav-link about-us" href="AboutUs">About Us</a>
+                        <a class="nav-link about-us" href="User/AboutUs">About Us</a>
                     </li>
                 </ul>
 
                 <li class="nav-home-item">
-                    <form class="d-flex" action="produc/search">
+                    <form class="d-flex" action="products/search">
                         <input class="form-control me-2 search-input" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area"> <i class="fa fa-search" id="icon-search"></i>
                     </form>
                 </li>
@@ -48,12 +47,11 @@
                     </a>
                 </li>
                 <li class="nav-home-item">
-                    <a class="nav-link account" href="Account">
+                    <a class="nav-link account"  href = "User">
                         <i class="fa fa-user-circle-o fa-2x" style="margin: 0px;"></i>
                     </a>
                 </li>
             </div>
         </div>
     </nav>
-
 </body>

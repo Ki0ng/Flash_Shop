@@ -1,0 +1,60 @@
+    .menu-account {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .small-div {
+        height: 48rem;
+        background: pink;
+    }
+    
+    .big-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: lightgrey;
+    }
+    
+    .information {
+        height: 25rem;
+        width: 80%;
+        border: 3px solid #000;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        background: white;
+    }
+    
+    .title>h5 {
+        margin-top: 2.5rem;
+    }
+    
+    .value-input>input {
+        margin-top: 2.1rem;
+        width: 70%;
+        height: 2rem;
+    }
+    
+    button {
+        width: 80%;
+        margin: 0px;
+        display: none;
+        align-items: center;
+        font-size: 1rem;
+        /* margin-left: 60%; */
+        margin-top: 7.9rem;
+    }
+    
+    @media screen AND (max-width: 900px) {
+        .menu-account {
+            display: block;
+        }
+        .big-div {
+            margin-top: -30rem;
+        }
+        button {
+            margin-top: none;
+            ;
+        }
+    }
