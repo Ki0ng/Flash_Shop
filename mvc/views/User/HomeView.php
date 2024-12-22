@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="./public/CSS/User/Home.css">
     <title>Wellcome To My Shop</title>
 <body>
@@ -38,7 +37,7 @@
                 $img_url = $product[6];
 
                 echo "
-        <a class='col-12 product-item' href  = 'Product/ProductDetail/" . $id . "'style='text-decoration: none; color: black'>
+        <a class='col-12 product-item' href  = 'Product/Detail/" . $id . "'style='text-decoration: none; color: black'>
         <img style='width: 200px; margin-left: -1.3rem; padding: 0px' src= $img_url alt=''  '>
         <p>$name</p>
         <span style='color: #FF0000;'>$new_price</span>

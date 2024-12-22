@@ -13,15 +13,23 @@ class ProductController extends Controller
         ]);
     }
 
-    public function Detail($id)
-    {
-        $database = $this->model("Product");
+    public function Detail($id) {
+        if (preg_match("/^[0-9]$/", $id)) {
+            $database = $this->model("Product");
 
-        $data = $database->product($id);
+            $data = $database->product($id);
 
-        $this->view("User", [
-            "Page" => "Product/Detail",
-            "proDetail_data" => $data
-        ]);
+            $this->view("User", [
+                "Page" => "Product/Detail",
+                "proDetail_data" => $data
+            ]);
+
+        } else {
+            $this->view("User", [
+                "Page" => "User/Error",
+                "data" => "THE PARAMS NOT MATCH"
+            ]);
+        }
     }
+
 }

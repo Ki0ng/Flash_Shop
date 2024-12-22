@@ -26,7 +26,7 @@
                 $database = $this->model("User");
                 $account = $database->Profile($email, $password);
                 $this->view("User", [
-                    "Page" => "Profile",
+                    "Page" => "User/Profile",
                     "account" => $account
                 ]);
             } else {

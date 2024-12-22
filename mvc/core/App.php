@@ -3,17 +3,19 @@ class App
 {
     protected $controller = "Home";
     protected $action = "Default";
-    protected $params = [];
+    protected $params = ["null"];
     // request controller
     public function __construct() {
         if (isset($_GET["url"])) {
+
+
             $arr = $this->UrlProccess();
             //Process Controller
-            if (file_exists("./mvc/controllers/" . $arr[0] . "Controller.php")) {
+            if (file_exists("./mvc/controllers/$arr[0]Controller.php")) {
                 $this->controller = $arr[0];
                 unset($arr[0]);
             } else {
-                $this->ERROR();
+                $this->ERROR("Controller = ???", $arr);
             }
         }
 
@@ -26,14 +28,14 @@ class App
                 unset($arr[1]);
             } else {
       
-                $this->ERROR();
+                $this->ERROR("Action = ???", $arr);
                 require_once "./mvc/controllers/" . $this->controller . "Controller.php";
             }
-            $this->params = $arr ? $arr : [];
+            $this->params = $arr ? $arr : ["null"];
         }
 
         $this->controller = new ($this->controller . "Controller");
-
+        
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
 
@@ -46,9 +48,13 @@ class App
         }
     }
 
-    function ERROR () {
+    function ERROR ($type, $arr) {
+        print_r("./mvc/controllers/$arr[0]Controller.php");
         $this->controller = "Home";
         $this->action = "Error";
-        $this->params = ["NOT FOUND PAGE"];
+        $this->params = ["NOT FOUND PAGE -> $type"];
     }
+
+
 }
+
