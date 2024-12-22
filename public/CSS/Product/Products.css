@@ -1,0 +1,30 @@
+.filter-container {
+    background-color: #d7b1a7;
+    /* Màu nền của khung */
+    padding: 15px;
+    border-radius: 5px;
+    width: 10px;
+    margin-left: 4rem;
+}
+
+.filter-section h3 {
+    margin: 0 0 10px 0;
+    /* Khoảng cách dưới tiêu đề */
+    font-size: 1em;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.filter-section label {
+    font-size: 0.9em;
+    display: block;
+    /* Mỗi checkbox xuống dòng */
+    margin: 5px 0;
+}
+
+.product_filter {
+    width: 200px;
+    height: 320px;
+    background-color: #d7b1a7;
+    margin-left: 4rem;
+}

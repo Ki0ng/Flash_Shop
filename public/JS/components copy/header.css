@@ -1,0 +1,44 @@
+.nav-home {
+  background: #efbf5f;
+}
+
+.navbar-logo > #logo {
+  width: 7rem;
+  height: 7rem;
+  border: 0.25rem solid white;
+  border-radius: 100%;
+  margin: 1rem;
+}
+
+.navbar-title {
+  text-decoration: none;
+  color: black;
+  margin-right: 1em;
+}
+
+.nav-home-item {
+  margin: 0.7rem;
+  list-style: none;
+}
+
+.nav-home-item > a {
+  color: black;
+}
+
+.nav-home-item > a:hover {
+  text-decoration: underline;
+}
+
+#navbarSupportedContent {
+  font-size: 1.4rem;
+}
+
+.search-input:hover {
+  border: 3px solid gray;
+}
+
+#icon-search {
+  position: relative;
+  left: -2.3rem;
+  bottom: -0.48rem;
+}
