@@ -47,7 +47,7 @@ class Product_Model extends Database
         }
     }
     // loc san pham
-    protected $table = "products"; 
+    // protected $table = "products"; 
     public function getFilteredProducts ($name, $price, $category) {
 
         if ($name || $price || $category) {
