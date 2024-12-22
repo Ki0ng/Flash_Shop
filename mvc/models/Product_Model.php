@@ -90,3 +90,4 @@ class Product_Model extends Database
         return $this->queryManyRows($sql);
     }
 }
+
