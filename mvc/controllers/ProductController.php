@@ -32,4 +32,29 @@ class ProductController extends Controller
         }
     }
 
+        //loc san pham
+    public function getFilteredProducts() {
+
+        //  $name = isset($_GET["name"]) ?  $_GET["name"] : null;                
+            $price = isset($_GET["New_Price"]) ? $_GET["New_Price"] : null;                
+            $category = isset($_GET["Category_Id"]) ? $_GET["Category_Id"] : null;                
+    
+            if($price || $category) {
+                $product_model = $this->model("Product");
+    
+                $filter = $product_model->getFilteredProducts( $price, $category);
+            
+                $this->view("master", [
+                    "Page" => "ProductFilter",
+                    "filter"=>$filter
+                ]);
+            } else {
+                $this->view("master", [
+                    "Page" => "ProductFilter",
+                    "filter"=>[ $price, $category]
+                ]);
+              
+            }
+            
+        }
 }

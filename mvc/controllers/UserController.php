@@ -68,7 +68,6 @@
             ]);
         }
 
-
         // public function register()
         // {
         //     // lấy data khách hàng nhập

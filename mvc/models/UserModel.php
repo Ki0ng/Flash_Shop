@@ -56,4 +56,14 @@ class UserModel extends Database {
             return false;
         }
     }
+
+    //update password 
+    public function getUser($id){
+        
+    }
+    public function updatePassword($id, $new_password){
+        try{
+            $this->getConnection();
+        }
+    }
 }

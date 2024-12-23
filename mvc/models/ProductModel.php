@@ -30,4 +30,36 @@ class ProductModel extends Database {
             return false;
         }
     }
+
+    protected $table = "products"; 
+    public function getFilteredProducts ($name, $price, $category) {
+
+        if ($name || $price || $category) {
+            $sql = "SELECT * FROM products WHERE";
+            if($name) {
+                $sql .= "Product_Name LIKE '%$name%'";
+            }
+            if ($price) {
+                if($name) {
+                    $sql .= " AND ";
+                }
+                $sql .= "(
+                        ($price = 0 AND New_Price <= 100000.00) OR
+                        ($price = 100000.00 AND New_Price > 100000.00 AND New_Price <= 300000.00) OR
+                        ($price = 300000.00 AND New_Price > 300000.00 AND New_Price <= 500000.00) OR
+                        ($price = 500000.00 AND New_Price > 500000.00 AND New_Price <= 1000000.00) OR
+                        ($price = 1000000.00 AND New_Price > 1000000.00)
+                    )
+                ";
+            }
+            if ($category) {
+                if ($name || $price) {
+                    $sql .= " AND ";
+                }
+                $sql .= "Category_Id = '$category'";
+            }
+
+            return $this->conn->query($sql);
+        }
+    }
 }

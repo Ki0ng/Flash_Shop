@@ -21,7 +21,7 @@
                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
             </div>
             <p>
-                <a href="User/FogotPassword">Forgot password</a>
+                <a href="User/ForgotPassword">Forgot password</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </p>
             <p>

@@ -10,7 +10,6 @@
     // print_r($data["proDetail_data"] );
     $product = $data["proDetail_data"];
 ?>
-
 <body>
     <div class="container_proDetail">
         <div class="product_image">
@@ -43,11 +42,9 @@
             <button class="add_productDetail">Add Product</button>
         </div>
     </div>
-
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
-    <script src="./public/JS/productDetail.js"></script>
-
+    <script src="./public/JS/Product/Detail.js"></script>
 </body>
 </html>

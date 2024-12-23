@@ -2,17 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header</title>
-<link rel="stylesheet" href="./public/CSS/components/header.css">
-<base href="/Flash_Shop/">
-=======
 <base href="/Flash_Shop/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 <link rel="stylesheet" href="public/CSS/Components/Header.css">
->>>>>>> 26e63643ee9bd6df670b8dfb5e83ac39d0f9b4a3
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
