@@ -1,60 +1,81 @@
+.menu-account {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #efbf5f;
+}
+
+.small-div {
+    height: 46rem;
+    background: pink;
+}
+
+button {
+    width: 80%;
+    margin: 0px;
+    display: none;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 4.3rem;
+    border-radius: 10px;
+}
+
+button:hover {
+    background: #efbf5f;
+}
+
+.big-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lightgrey;
+}
+
+.icon-user {
+    position: absolute;
+    top: 12rem;
+    background: lightgray
+}
+
+.information {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 30rem;
+    width: 80%;
+    border: 5px solid #000;
+    background: white;
+    border-radius: 20px;
+}
+
+.title>h5 {
+    margin-top: 2.8rem;
+    height: 2.2rem;
+}
+
+.value-input>input {
+    margin-top: 2.8rem;
+    width: 70%;
+    height: 2.2rem;
+}
+
+@media screen AND (max-width: 900px) {
     .menu-account {
-        display: grid;
-        grid-template-columns: 30% 70%;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        display: block;
     }
-    
+    .big-div {
+        margin-top: -30rem;
+    }
+    button {
+        margin-top: none;
+        ;
+    }
     .small-div {
-        height: 48rem;
+        height: 60rem;
         background: pink;
     }
-    
-    .big-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: lightgrey;
-    }
-    
-    .information {
-        height: 25rem;
-        width: 80%;
-        border: 3px solid #000;
-        display: grid;
-        grid-template-columns: 40% 60%;
-        background: white;
-    }
-    
-    .title>h5 {
-        margin-top: 2.5rem;
-    }
-    
-    .value-input>input {
-        margin-top: 2.1rem;
-        width: 70%;
-        height: 2rem;
-    }
-    
-    button {
-        width: 80%;
-        margin: 0px;
-        display: none;
-        align-items: center;
-        font-size: 1rem;
-        /* margin-left: 60%; */
-        margin-top: 7.9rem;
-    }
-    
-    @media screen AND (max-width: 900px) {
-        .menu-account {
-            display: block;
-        }
-        .big-div {
-            margin-top: -30rem;
-        }
-        button {
-            margin-top: none;
-            ;
-        }
-    }
+}
+
+#notification {
+    border: 1px solid #000;
+}
