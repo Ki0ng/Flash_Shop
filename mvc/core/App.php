@@ -2,48 +2,59 @@
 class App
 {
     protected $controller = "Home";
-    protected $action = "show";
-    protected $params = [];
-
+    protected $action = "Default";
+    protected $params = ["null"];
     // request controller
-    public function __construct()
-    {
+    public function __construct() {
         if (isset($_GET["url"])) {
-            $arr = $this->UrlProccess();
 
-            //process Controller (C - A - P)
-            if (file_exists("./mvc/controllers/" . $arr[0] . "_Controller.php")) {
+
+            $arr = $this->UrlProccess();
+            //Process Controller
+            if (file_exists("./mvc/controllers/$arr[0]Controller.php")) {
                 $this->controller = $arr[0];
                 unset($arr[0]);
             } else {
-                $this->controller = "Error";
+                $this->ERROR("Controller = ???", $arr);
             }
         }
 
-        require_once "./mvc/controllers/" . $this->controller . "_Controller.php";
+        require_once "./mvc/controllers/" . $this->controller . "Controller.php";
 
-        //process A === ? && process P?
+        //Process Action
         if (isset($arr[1])) {
-            if (method_exists($this->controller . "_Controller", $arr[1])) {
+            if (method_exists($this->controller . "Controller", $arr[1])) {
                 $this->action = $arr[1];
                 unset($arr[1]);
             } else {
-                $this->controller = "Error";
-                require_once "./mvc/controllers/" . $this->controller . "_Controller.php";
+      
+                $this->ERROR("Action = ???", $arr);
+                require_once "./mvc/controllers/" . $this->controller . "Controller.php";
             }
-            $this->params = $arr ? $arr : [];
+            $this->params = $arr ? $arr : ["null"];
         }
 
-        $this->controller = new ($this->controller . "_Controller");
-
+        $this->controller = new ($this->controller . "Controller");
+        
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
 
     //process URL from .htaccess
-    function UrlProccess()
-    {
+    function UrlProccess(){
         if (isset($_GET["url"])) {
             return explode("/", filter_var(trim($_GET["url"], "/")));
+        } else {
+            return false;
         }
     }
+
+    function ERROR ($type, $arr) {
+        print_r("./mvc/controllers/$arr[0]Controller.php");
+        $this->controller = "Home";
+        $this->action = "Error";
+        $this->params = ["NOT FOUND PAGE -> $type"];
+    }
+
+
 }
+
