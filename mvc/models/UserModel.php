@@ -56,4 +56,18 @@ class UserModel extends Database {
             return false;
         }
     }
+    // viết câu lệnh truy vấn
+    public function Cart($cart_id , $user_id){
+        $this->getConnection();
+        $sql = "SELECT * form cart WHERE Cart_Id = '$cart_id' AND User_Id = '$user_id'";
+        $data = $this->conn->query($sql);
+        $cart = $data->fetch_assoc();
+        return $cart;
+    }
+
+    public function Cart_Item($cart_id , $user_id){
+        $this->getConnection();
+        // select all column from products + all all column of cart_item!
+        $sql = "";
+    }
 }

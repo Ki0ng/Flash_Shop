@@ -20,7 +20,7 @@ CREATE TABLE products(
     Product_Name VARCHAR(100) NOT NULL,
     Old_price NUMERIC(12, 2) NOT NULL,
     New_Price NUMERIC(12, 2) NOT NULL,
-    stock INT NOT NULL,
+    Stock INT NOT NULL,
     Image_URL VARCHAR(100),
     Decription TEXT
 );
@@ -55,13 +55,23 @@ INSERT INTO Users (Name, Email, Phone, Password, Role) VALUES
     ("Sen", "sen@gmail.com", "0325784392", "sen987@", 1, "unknow"),
     ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1);
 -- Bảng cart 
+
 CREATE TABLE cart (
-    cartId INT PRIMARY KEY,
+    Cart_Id INT PRIMARY KEY,
+    User_Id INT,
+    FOREIGN KEY (User_Id) REFERENCES Users(User_Id),
+    sId VARCHAR(255),
+    Price VARCHAR(200),
+    Quantity INT,
+    Status VARCHAR (10)
+);
+
+
+CREATE TABLE cart_item (
+    Cart_Id INT PRIMARY KEY,
+    User_Id INT,
     Product_Id INT NOT NULL,
     FOREIGN KEY (Product_Id) REFERENCES products(Product_Id),
-    Product_Name VARCHAR(100) NOT NULL,
-    sId VARCHAR(255),
-    price VARCHAR(200),
-    quantity INT,
-    images VARCHAR(200)
+    Total_Price VARCHAR(200),
+    Quantity INT,
 );

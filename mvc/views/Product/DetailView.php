@@ -40,10 +40,9 @@
                 <span id="quantity">1</span>
                 <button class="qty_btnDetail" id="increaseBtn">+</button>
             </div>
-            <button class="add_productDetail">Add Product</button>
+            <a href="mvc/views/cart.php" class="add_productDetail">Add Product</a>
         </div>
     </div>
-
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
