@@ -18,8 +18,8 @@
         Product_Id INT PRIMARY KEY,
         Category_Id VARCHAR(10) NOT NULL REFERENCES categories(Category_Id),
         Product_Name VARCHAR(100) NOT NULL,
-        Old_price NUMERIC(12, 2) NOT NULL,
-        New_Price NUMERIC(12, 2) NOT NULL,
+        Old_price int NOT NULL,
+        New_Price int NOT NULL,
         stock INT NOT NULL,
         Image_URL VARCHAR(100),
         Decription TEXT
@@ -48,9 +48,9 @@
         Role TINYINT NOT NULL,
         Address VARCHAR (100)
     );
-    INSERT INTO Users (Name, Email, Phone, Password, Role) VALUES 
+    INSERT INTO Users (Name, Email, Phone, Password, Role, Address) VALUES 
         ("Binh", "binhdo@gmail.com", "0234578254", "binh123@", 1, "KONTUM"),
-        ("Toan", "toanle@gmail.com", "043728391", "toan456@", 1),
-        ("Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1),
+        ("Toan", "toanle@gmail.com", "043728391", "toan456@", 1, ''),
+        ("Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1 , ''),
         ("Sen", "sen@gmail.com", "0325784392", "sen987@", 1, "unknow"),
-        ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1);
+        ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1,'');

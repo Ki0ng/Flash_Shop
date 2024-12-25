@@ -30,4 +30,15 @@ class ProductModel extends Database {
             return false;
         }
     }
+
+    public function getCategory () {
+        try {
+            $this->getConnection();
+            $sql = "SELECT Category_Id,Category_Name FROM categories";
+            $data = $this->conn->query($sql);
+            return $data->fetch_all();
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

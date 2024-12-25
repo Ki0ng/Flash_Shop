@@ -28,3 +28,19 @@
     background-color: #d7b1a7;
     margin-left: 4rem;
 }
+
+label {
+    margin: 2rem;
+    /* height: 100px; */
+}
+
+select {
+    width: 12rem;
+}
+
+.menu-show {
+    border: 1px solid #000;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 120%
+}
