@@ -13,9 +13,5 @@
     // }
     
     ?>
-    <div>
-        <form action="mvc/view/cart.php"></form>
-    </div>
-    
 </body>
 </html>

@@ -40,6 +40,12 @@
                 <span id="quantity">1</span>
                 <button class="qty_btnDetail" id="increaseBtn">+</button>
             </div>
+            <div>
+                <form action="" name="" method="POST">
+                    <input type="number" class="buyFiled" name="" value="1" min="1">
+                    <input type="submit" class="buy_submit" name="submit" value="Buy now">
+                </form>
+            </div>
             <a href="mvc/views/cart.php" class="add_productDetail">Add Product</a>
         </div>
     </div>

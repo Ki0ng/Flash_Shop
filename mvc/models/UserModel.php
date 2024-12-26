@@ -65,9 +65,24 @@ class UserModel extends Database {
         return $cart;
     }
 
-    public function Cart_Item($cart_id , $user_id){
-        $this->getConnection();
-        // select all column from products + all all column of cart_item!
-        $sql = "";
+    public function Cart_Item($cart_id, $user_id) {
+        $this->getConnection(); 
+        // viết câu lệnh truy vấn tất cả các product có trong cart-Item 
+        $sql = "SELECT cart.Cart_Id, cart.User_Id, cart.Product_Id, 
+                   p.Product_Name, p.Category_Id, p.Old_price, 
+                   p.New_Price, p.Stock, p.Image_URL, p.Description, 
+                   cart.Total_Price, cart.Quantity
+            FROM cart_item cart
+            JOIN products p ON cart.Product_Id = p.Product_Id
+            WHERE cart.Cart_Id = ? AND cart.User_Id = ?";
+            
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii", $cart_id, $user_id); // Gán biến vào câu lệnh SQL
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cart_items = $result->fetch_all(MYSQLI_ASSOC);
+        return $cart_items;
     }
+    public function add_to_cart($id,$quantity){}
+
 }
