@@ -1,36 +1,41 @@
-const ORIGIN = document.querySelectorAll(".origin");
-const SHOW_CHANGE = document.querySelectorAll(".show-change");
+const FORM_POST = document.querySelectorAll(".form_post");
+const FORM_SHOW = document.querySelectorAll(".form_show");
 
 const EDIT = document.getElementById("edit-info");
 const SAVE = document.getElementById("save-info");
 const SUCCESS = document.getElementById("success-change");
 const CANCEL = document.getElementById("cancel");
 
+const ORIGIN = [
+    FORM_POST[0].value,
+    FORM_POST[1].value,
+    FORM_POST[2].value,
+    FORM_POST[3].value,
+]
+
 EDIT.addEventListener("click", () => {
-    for (let i = 0; i < SHOW_CHANGE.length; i++) {
-        SHOW_CHANGE[i].readOnly = false;
-    }
     EDIT.style.display = "none";
     SAVE.style.display = "flex"
     CANCEL.style.display = "flex"
+    for (let i = 0; i < FORM_SHOW.length; i++) {
+        FORM_SHOW[i].readOnly = false;
+    }
 })
 
 CANCEL.addEventListener("click", () => {
-    for (let i = 0; i < SHOW_CHANGE.length; i++) {
-        SHOW_CHANGE[i].readOnly = false;
-    }
     SAVE.style.display = "none"
     CANCEL.style.display = "none"
     EDIT.style.display = "flex";
-
+    for (let i = 0; i < FORM_SHOW.length; i++) {
+        FORM_SHOW[i].readOnly = true;
+    }
 })
 
-// window.addEventListener('mousemove', () => {
-for (let i = 0; i < 5; i++) {
-    SHOW_CHANGE[i].addEventListener("input", () => {
-
-        for (let j = 0; j < 5; j++) {
-            if (SHOW_CHANGE[j].value !== ORIGIN[j].value && SHOW_CHANGE[j].value != "") {
+for (let i = 0; i < FORM_SHOW.length; i++) {
+    FORM_SHOW[i].addEventListener("input", () => {
+        for (let j = 0; j < FORM_POST.length; j++) {
+            if (FORM_SHOW[j].value !== ORIGIN[j] && FORM_SHOW[j] != "") {
+                FORM_POST[j].value = FORM_SHOW[j].value
                 SAVE.disabled = false;
                 break;
             } else {
@@ -40,12 +45,7 @@ for (let i = 0; i < 5; i++) {
     })
 }
 
-disableEnterKey: function disableEnterKey(e) {
-    var key;
-    if (window.KeyboardEvent)
-        key = window.event.keyCode; //IE
-    else
-        key = e.which; //firefox      
-
-    return (key != 13);
-}
+document.getElementById('logout').addEventListener("click", () => {
+    window.location = "/Flash_Shop/User/Logout"
+    window.location = "/Flash_Shop"
+});

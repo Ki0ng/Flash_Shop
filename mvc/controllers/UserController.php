@@ -68,6 +68,9 @@
             ]);
         }
 
+        public function Logout () {
+            session_destroy();
+        }
 
         // public function register()
         // {
