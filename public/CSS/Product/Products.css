@@ -1,5 +1,5 @@
 .filter-container {
-    background-color: #d7b1a7;
+    /* background-color: #d7b1a7; */
     /* Màu nền của khung */
     padding: 15px;
     border-radius: 5px;
@@ -27,4 +27,23 @@
     height: 320px;
     background-color: #d7b1a7;
     margin-left: 4rem;
+}
+
+label {
+    margin: 2rem;
+    /* height: 100px; */
+}
+
+select {
+    width: 12rem;
+}
+
+.menu-show {
+    border: 1px solid cadetblue;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 120%;
+    border-radius: 2px;
+    background-color: cadetblue;
+    color: aliceblue;
 }

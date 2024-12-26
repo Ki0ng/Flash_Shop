@@ -6,10 +6,12 @@ class ProductController extends Controller
 
         $database = $this->model("Product");
         $data = $database->products();
+        $categories = $database->getCategory();
 
         $this->view("User", [
             "Page" => "Product/Products",
-            "data" => $data
+            "data" => $data,
+            "categories" => $categories
         ]);
     }
 
@@ -31,4 +33,5 @@ class ProductController extends Controller
             ]);
         }
     }
+
 }
