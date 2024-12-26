@@ -49,7 +49,6 @@ class App
     }
 
     function ERROR ($type, $arr) {
-        print_r("./mvc/controllers/$arr[0]Controller.php");
         $this->controller = "Home";
         $this->action = "Error";
         $this->params = ["NOT FOUND PAGE -> $type"];

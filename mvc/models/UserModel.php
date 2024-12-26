@@ -15,7 +15,7 @@ class UserModel extends Database {
             $this->getConnection();
             $sql = "UPDATE Users SET Email = '$email' ";
             
-            if ($name !== "null") {
+            if ($name !== "null") { 
                 $sql = "$sql, Name = '$name'";
             }
             if ($password !== "null") {
@@ -83,6 +83,19 @@ class UserModel extends Database {
         $cart_items = $result->fetch_all(MYSQLI_ASSOC);
         return $cart_items;
     }
-    public function add_to_cart($id,$quantity){}
-
+    public function add_to_cart($id, $quantity){
+        try{
+            $this->getConnection();
+            // format quantity
+            $quantity = mysqli_real_escape_string($this->conn, $quantity);
+            $id = mysqli_real_escape_string($this->conn,$id);
+            $sql = "SELECT * FROM products WHERE Product_Id = '$id'";
+            $data = $this->conn->query($sql);
+            $add_cart = $data->fetch_assoc();
+            return $add_cart;
+        }
+        catch(Exception $e) {
+            return false;
+        }
+    }
 }

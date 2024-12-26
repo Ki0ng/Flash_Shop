@@ -66,7 +66,6 @@ CREATE TABLE cart (
     Status VARCHAR (10)
 );
 
-
 CREATE TABLE cart_item (
     Cart_Id INT PRIMARY KEY,
     User_Id INT,

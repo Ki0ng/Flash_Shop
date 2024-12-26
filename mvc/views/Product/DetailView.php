@@ -9,8 +9,14 @@
 <?php
     // print_r($data["proDetail_data"] );
     $product = $data["proDetail_data"];
+    $product_id = $product["Product_Id"];
 ?>
-
+<?php 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $quantity= $_POST['quantity'];
+        $Add_toCart = $model->add_to_cart($id, $quantity);
+    }
+?>
 <body>
     <div class="container_proDetail">
         <div class="product_image">
@@ -42,17 +48,16 @@
             </div>
             <div>
                 <form action="" name="" method="POST">
-                    <input type="number" class="buyFiled" name="" value="1" min="1">
+                    <input type="number" class="buyFiled" name="quantity" value="1" min="1">
                     <input type="submit" class="buy_submit" name="submit" value="Buy now">
                 </form>
             </div>
-            <a href="mvc/views/cart.php" class="add_productDetail">Add Product</a>
+            <?php echo "<a href='cart/add/$product_id' class='add_productDetail'>Add Product</a>"?>
         </div>
     </div>
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
-    <script src="./public/JS/productDetail.js"></script>
-
+    <script src="./public/JS/Product/Detail.js"></script>
 </body>
 </html>
