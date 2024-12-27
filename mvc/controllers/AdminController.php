@@ -1,32 +1,36 @@
 <?php
-class AdminController extends Controller{
+class AdminController extends Controller
+{
 
-    public function Default() {
-        $database = $this->model("Admin");
-        $data = $database->getAllProducts();
+    public function Default()
+    {
+        $database = $this->model("Product");
+        $products = $database->products();
 
         $this->view("Admin", [
-            "Page" => "ProductManagement"
+            "Page" => "ProductManagement",
+            "products" => $products,
         ]);
     }
 
-    public function UserManagement() {
-        $database = $this->model("Admin");
-        $data = $database->getAllUsers();
+    public function UserManagement()
+    {
+        // $database = $this->model("Admin");
+        // $data = $database->getAllUsers();
 
         $this->view("Admin", [
             "Page" => "UserManagement",
-            "data" => $data
+            // "data" => $data
         ]);
     }
 
-    public function ProductManagement() {
+    public function ProductManagement()
+    {
         $productModel = $this->model('ProductModel');
-        $products = $productModel->products();  
-        
+        $products = $productModel->products();
+
         $this->view('Admin/ProductManagementView', [
-            'products' => $products  
+            'products' => $products
         ]);
     }
 }
-?>

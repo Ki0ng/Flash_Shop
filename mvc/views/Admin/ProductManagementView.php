@@ -1,8 +1,5 @@
 <?php
-require_once './mvc/models/ProductModel.php';
-
-$productModel = new ProductModel();
-$products = $productModel->products();
+$products = $data["products"];
 ?>
 
 <!DOCTYPE html>
@@ -101,12 +98,12 @@ $products = $productModel->products();
             <?php if ($products): ?>
                 <?php foreach ($products as $product): ?>
                     <tr>
-                        <td><?= $product[0] ?></td> <!-- ID sản phẩm -->
-                        <td><img src="<?= $product[6] ?>" alt="Product Image"></td> <!-- Hình ảnh sản phẩm -->
-                        <td><?= $product[2] ?></td> <!-- Tên sản phẩm -->
-                        <td><?= $product[1] ?></td> <!-- Mã danh mục -->
-                        <td><?= number_format($product[4]) ?> VND</td> <!-- Giá mới -->
-                        <td><?= $product[5] ?></td> <!-- Số lượng trong kho -->
+                        <td><?= $product[0] ?></td> 
+                        <td><img src="<?= $product[6] ?>" alt="Product Image"></td> 
+                        <td><?= $product[2] ?></td> 
+                        <td><?= $product[1] ?></td>
+                        <td><?= number_format($product[4]) ?> VND</td> 
+                        <td><?= $product[5] ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
