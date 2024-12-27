@@ -7,8 +7,7 @@ class App
     // request controller
     public function __construct() {
         if (isset($_GET["url"])) {
-
-
+            
             $arr = $this->UrlProccess();
             //Process Controller
             if (file_exists("./mvc/controllers/$arr[0]Controller.php")) {
