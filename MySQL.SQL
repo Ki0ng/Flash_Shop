@@ -60,7 +60,6 @@ CREATE TABLE cart (
     Cart_Id INT PRIMARY KEY,
     User_Id INT,
     FOREIGN KEY (User_Id) REFERENCES Users(User_Id),
-    sId VARCHAR(255),
     Price VARCHAR(200),
     Quantity INT,
     Status VARCHAR (10)
@@ -68,7 +67,6 @@ CREATE TABLE cart (
 
 CREATE TABLE cart_item (
     Cart_Id INT PRIMARY KEY,
-    User_Id INT,
     Product_Id INT NOT NULL,
     FOREIGN KEY (Product_Id) REFERENCES products(Product_Id),
     Total_Price VARCHAR(200),

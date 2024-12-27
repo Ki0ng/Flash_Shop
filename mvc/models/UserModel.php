@@ -84,18 +84,13 @@ class UserModel extends Database {
         return $cart_items;
     }
     public function add_to_cart($id, $quantity){
-        try{
-            $this->getConnection();
-            // format quantity
-            $quantity = mysqli_real_escape_string($this->conn, $quantity);
-            $id = mysqli_real_escape_string($this->conn,$id);
-            $sql = "SELECT * FROM products WHERE Product_Id = '$id'";
-            $data = $this->conn->query($sql);
-            $add_cart = $data->fetch_assoc();
-            return $add_cart;
-        }
-        catch(Exception $e) {
-            return false;
-        }
+        $this->getConnection();
+        // format quantity
+        $quantity = mysqli_real_escape_string($this->conn, $quantity);
+        $id = mysqli_real_escape_string($this->conn,$id);
+        // $sId = session_id();
+        $data  = "SELECT * FROM products WHERE Product_Id = '$id'";
+        $sql = $this->conn->query($data);
+        $sql = "INSERT INTO cart (Cart_Id, User_Id, sId, Price, Quantity, Status) VALUES  ('$id',)";
     }
 }

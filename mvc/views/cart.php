@@ -55,8 +55,6 @@
             </td>
             <td>
               <form style="margin-left: 3rem;" action="" method="POST">
-                <!-- <input type="number" name="" value="1"/>
-                <input type="submit" name="submit" value="Update"/> -->
                   <button class="qty_btnAdd" id="decreaseBtn">−</button>
                   <span id="quantity">1</span>
                   <button class="qty_btnAdd" id="increaseBtn">+</button>
