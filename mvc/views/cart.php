@@ -15,7 +15,7 @@
     margin-top: 40px;
     margin-left: 60px;
     width: 60%;
-    border: 1px solid rebeccapurple;
+    border: 6px solid rebeccapurple;
   }
    .body_shopping{
     display: block;
@@ -73,6 +73,5 @@
       </tr>
     </table>
   </div>
-  
 </body>
 </html>
