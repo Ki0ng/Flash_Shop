@@ -33,8 +33,8 @@
           <th width= "15%"> Quantity </th>
           <th width= "15%" > Price </th>
           <th width="15%"> </th>
-          <!-- <th width="15%"> Total Price </th> -->
-        </tr>
+          <th width="15%"> Total Price </th>
+      </tr>
       </thead>
       <tbody >
         <tr >
@@ -74,4 +74,5 @@
     </table>
   </div>
 </body>
-</html>
+</html> 
+

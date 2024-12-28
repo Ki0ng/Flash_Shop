@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-3">
         <h2>Sign up</h2>
-        <form action="/Flash_Shop/Register/register" method="post">
+        <form action="/Flash_Shop/User/Register" method="post">
             <div class="mb3 mt-3">
                 <label for="name">Name</label>
                 <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" required>

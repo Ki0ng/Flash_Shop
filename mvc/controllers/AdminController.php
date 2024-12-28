@@ -24,13 +24,13 @@ class AdminController extends Controller
         ]);
     }
 
-    public function ProductManagement()
-    {
-        $productModel = $this->model('ProductModel');
-        $products = $productModel->products();
+    // public function ProductManagement()
+    // {
+    //     $productModel = $this->model('ProductModel');
+    //     $products = $productModel->products();
 
-        $this->view('Admin/ProductManagementView', [
-            'products' => $products
-        ]);
-    }
+    //     $this->view('Admin/ProductManagementView', [
+    //         'products' => $products
+    //     ]);
+    // }
 }

@@ -9,9 +9,9 @@ CREATE TABLE categories(
     Decription TEXT NOT NULL
 ); 
 
-INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
-    ("SHI", "Shirt", "The Shirt with high quality will meke you feel comfortable in the hot summer"),
-    ("JEA", "Jean", "Whit the Jean you can express your personal style in everwhere");
+INSERT INTO categories (Category_Id, Category_Name, Description) VALUES
+    ("SHI", "Shirt", "The Shirt with high quality will make you feel comfortable in the hot summer"),
+    ("JEA", "Jean", "Whit the Jean you can express your personal style in everywhere");
 ;
 
 CREATE TABLE products(
@@ -22,7 +22,7 @@ CREATE TABLE products(
     New_Price NUMERIC(12, 2) NOT NULL,
     Stock INT NOT NULL,
     Image_URL VARCHAR(100),
-    Decription TEXT
+    Description TEXT
 );
 
 INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Decription) VALUES
@@ -54,21 +54,43 @@ INSERT INTO Users (Name, Email, Phone, Password, Role) VALUES
     ("Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1),
     ("Sen", "sen@gmail.com", "0325784392", "sen987@", 1, "unknow"),
     ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1);
--- Bảng cart 
 
-CREATE TABLE cart (
-    Cart_Id INT PRIMARY KEY,
-    User_Id INT,
-    FOREIGN KEY (User_Id) REFERENCES Users(User_Id),
-    Price VARCHAR(200),
-    Quantity INT,
-    Status VARCHAR (10)
-);
+-- Bảng order
 
-CREATE TABLE cart_item (
-    Cart_Id INT PRIMARY KEY,
-    Product_Id INT NOT NULL,
-    FOREIGN KEY (Product_Id) REFERENCES products(Product_Id),
-    Total_Price VARCHAR(200),
-    Quantity INT,
+CREATE TABLE Orders (
+    Order_id int NOT NULL PRIMARY KEY,
+    Order_date timestamp NOT NULL DEFAULT current_timestamp(),
+    Status enum('pending','completed','shipped','cancelled') NOT NULL DEFAULT 'pending',
+    User_id int NOT NULL
 );
+INSERT INTO Orders (Order_id, Order_date, Status, User_id) 
+VALUES 
+(1, '2024-12-18 18:39:55', 'pending', 1),
+(2, '2024-12-18 18:39:55', 'completed', 2),
+(3, '2024-12-18 18:39:55', 'completed', 4),
+(4, '2024-12-18 18:39:55', 'cancelled', 3),
+(5, '2024-12-18 18:39:55', 'pending', 5),
+(6, '2024-09-17 13:44:23', 'pending', 1),
+(7, '2024-12-13 15:22:52', 'completed', 2),
+(8, '2024-02-12 17:20:31', 'completed', 4),
+(9, '2024-11-15 18:49:23', 'cancelled', 3),
+(10, '2024-09-17 13:44:23', 'completed', 1),
+(11, '2024-12-13 15:22:52', 'pending', 2),
+(12, '2024-02-12 17:20:31', 'shipped', 4),
+(13, '2024-11-15 18:49:23', 'cancelled', 3),
+(14, '2024-11-13 18:49:23', 'cancelled', 5);
+
+CREATE TABLE Order_Detail (
+  Order_Detail_id INT NOT NULL,
+  Quantity INT NOT NULL,
+  Price INT NOT NULL,
+  Order_id INT NOT NULL,
+  Product_id INT NOT NULL
+);
+INSERT INTO Order_Detail (Order_Detail_id, Quantity, Price, Order_id, Product_id)
+VALUES 
+(1, 2, 500, 101, 1001),
+(2, 5, 1200, 102, 1002),
+(3, 1, 300, 103, 1003),
+(4, 3, 800, 104, 1004),
+(5, 4, 1000, 105, 1005);

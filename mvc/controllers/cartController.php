@@ -31,10 +31,10 @@
             'Page' => 'views/cart'
         ]);
     }
-    public function insert(){
-        $this->view("cart",[
-            'Page' => 'views/cart'
-        ]);
-    }
+    // public function insert(){
+    //     $this->view("cart",[
+    //         'Page' => 'views/cart'
+    //     ]);
+    // }
  }
 ?>
