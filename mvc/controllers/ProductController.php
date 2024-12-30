@@ -41,10 +41,12 @@ class ProductController extends Controller
         $character = $get["search"];
         $database = $this->model(("Product"));
         $data = $database->search($character);      
+        $categories = $database->getCategory();
 
         $this->view("User", [
             "Page" => "Product/Products",
-            "data"=> $data
+            "data" => $data,
+            "categories" => $categories
         ]);
     }
 }
