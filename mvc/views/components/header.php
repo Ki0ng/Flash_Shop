@@ -36,8 +36,8 @@
                 </ul>
 
                 <li class="nav-home-item">
-                    <form class="d-flex" action="products/search">
-                        <input class="form-control me-2 search-input" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area"> <i class="fa fa-search" id="icon-search"></i>
+                    <form class="d-flex" action="product/search" method= "get">
+                        <input class="form-control me-2 search-input" name="search" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area"> <i class="fa fa-search" id="icon-search"></i>
                     </form>
                 </li>
 

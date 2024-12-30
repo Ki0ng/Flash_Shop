@@ -8,70 +8,7 @@ $products = $data["products"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Product Management</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            display: flex;
-            height: 100vh;
-            background-color: #f5f5f5;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #f4c5c5;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            padding: 10px;
-            margin: 10px 0;
-            background-color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .sidebar ul li:hover {
-            background-color: #e0b3b3;
-        }
-
-        .content {
-            flex: 1;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-        }
-
-        th, td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        img {
-            width: 50px;
-            height: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="./public/CSS/Admin/Admin.css">
 </head>
 <body>
     <div class="sidebar">

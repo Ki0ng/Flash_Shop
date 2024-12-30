@@ -34,8 +34,19 @@ class ProductController extends Controller
         }
     }
 
-    public function Search () {
-        
-    }
+    public function search () {
 
+        $get = $this->methodGet();
+
+        $character = $get["search"];
+        $database = $this->model(("Product"));
+        $data = $database->search($character);      
+        $categories = $database->getCategory();
+
+        $this->view("User", [
+            "Page" => "Product/Products",
+            "data" => $data,
+            "categories" => $categories
+        ]);
+    }
 }
