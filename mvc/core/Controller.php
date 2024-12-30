@@ -15,5 +15,22 @@
         public function view ($view, $data=[]) {
             require_once "./mvc/views/".$view.".php";
         }
-}
+
+        public function methodGet () {
+
+            $url = $_SERVER["REQUEST_URI"];
+            $process = explode(	"?", $url);
+            $get = "";
+            for( $i = 0; $i < count($process); $i++ ) {
+                if ($i > 0) {
+                    $get .= $process[$i];
+                }
+            }
+
+    
+            parse_str($get, $result);
+    
+            return $result;	
+        }
+    }
 ?>
