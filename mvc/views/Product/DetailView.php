@@ -52,7 +52,7 @@
                     <input type="submit" class="buy_submit" name="submit" value="Buy now">
                 </form>
             </div>
-            <?php echo "<a href='cart/add/$product_id' class='add_productDetail'>Add Product</a>"?>
+            <?php echo "<a href='cart/viewCart/$product_id' class='add_productDetail'>Add Product</a>"?>
         </div>
     </div>
     <?php 
