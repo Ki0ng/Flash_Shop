@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="public/CSS/Product/Products.css">
 </head>
 <?php
+
     $categories = $data["categories"];
     $products = $data["data"];
     foreach($products as $product) {

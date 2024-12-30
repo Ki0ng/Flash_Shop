@@ -41,4 +41,18 @@ class ProductModel extends Database {
             return false;
         }
     }
+    
+    public function search ($character) {
+        try {
+
+            $this->getConnection();
+            $sql = "SELECT * FROM products WHERE Product_Name LIKE '%$character%'";
+            $data = $this->conn->query($sql);
+
+            return $data->fetch_all();
+
+        } catch (Exception $e) {
+            return "ERROR";
+        }
+    }
 }
