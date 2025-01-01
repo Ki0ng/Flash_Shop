@@ -42,34 +42,20 @@
                     </select>
                 </div>
             </div>
-            <div class="proDetail_quantity">
-                <button class="qty_btnDetail" id="decreaseBtn">−</button>
-                <span id="quantity" name="data_post[quantity]">1</span>    
-                <button class="qty_btnDetail" id="increaseBtn">+</button>
-            </div>
             <div class="button_productDetail">
-                <button <?php echo "<a href='cart/viewCart/$product_id' class='add_to_cart'>Add To Cart</a>"?></button>
-                <button name-product = <?= $product['Product_Id']?> class="add_to_cart">Buy Now</button> 
+                <?php echo "
+                    <form action = 'cart/addToCart' method = 'get'>
+                        <input name = 'id' value = '$product_id' class = 'd-none'>
+                        <button type='submit'>Add To CartCart</button>
+                    Add To Cart
+                    </a>
+                    </form>"?>
+                <!-- <button name-product = ?= $product['Product_Id']?> class="add_to_cart">Buy Now</button>  -->
             </div>
         </div>
     </div>
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
-    <script src="./public/JS/Product/Detail.js"></script>
-    <script>
-        document.querySelector('.add_to_cart').addEventListener('click',(e)=>{
-        const qty = document.querySelector("input[name ='data_post[quantity]']").value;
-        const slug = e.target.getAttribute('name-product');
-        // console.log(qty,slug);
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'Cart/addToCart');
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onload =function(e){
-
-        }
-        xhr.send('Quantity=${qty}&Product_Id=${slug}')
-        });
-    </script>
 </body>
 </html>

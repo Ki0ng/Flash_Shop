@@ -90,11 +90,10 @@
     font-size: 18px;
     font-weight: bold;
   }
-
 </style>
 <body>
-  <div class="cart-container">
     <table class="cart-table">
+      <h1 style="color: green"> Your Shopping Cart </h1>
       <thead>
         <tr>
           <th>Name</th>
@@ -105,10 +104,15 @@
         </tr>
       </thead>
       <tbody>
+        
+      <?php 
+      $data = $data["home_data"];
+      if (!empty($data)): ?>
+        <?php foreach ($data as $product): ?>
         <tr>
           <td>
-            <img src="hoodie.jpg" alt="Hoodie">
-            <span>Hoodie</span>
+          <?php echo "<img src='".$product["Image_URL"]. "' alt='Product Image'" ?>
+            <span><?php echo $product["Product_Name"]?></span>
           </td>
           <td>
             <select class="size-select">
@@ -120,73 +124,100 @@
             </select>
           </td>
           <td>
-            <button class="quantity-btn">-</button>
-            <span>2</span>
-            <button class="quantity-btn">+</button>
+            <button class="quantity-btn minus">-</button>
+            <span class="quantity">2</span>
+            <button class="quantity-btn plus">+</button>
           </td>
-          <td>120.000 đ</td>
+          <td><span class="product-price"><?php echo $product["New_Price"] ?></span></td>
           <td><button class="delete-btn">Delete</button></td>
         </tr>
+        <?php endforeach; ?>
+        <?php else: ?>
+          <tr>
+              <td colspan="3" style="text-align: center;">Giỏ hàng của bạn trống.</td>
+          </tr>
+        <?php endif; ?>
       </tbody>
     </table>
     <div class="total-price">
-      Total price: <span>1.133.000 đ</span>
+      Total price: <span id="total-price">300000</span>
     </div>
   </div>
+  </div>
   <script>
-  // Lấy tất cả các dòng sản phẩm và phần hiển thị tổng giá
-  const rows = document.querySelectorAll(".cart-table tbody tr");
-  const totalPriceElement = document.querySelector(".total-price span");
+    // Lắng nghe sự kiện khi trang tải xong
+    window.addEventListener('DOMContentLoaded', (event) => {
+    // Lấy tất cả các nút cộng và trừ
+    const minusButtons = document.querySelectorAll('.quantity-btn.minus');
+    const plusButtons = document.querySelectorAll('.quantity-btn.plus');
+    const totalPriceElement = document.getElementById('total-price');
 
-  // Hàm tính tổng giá
-  function calculateTotalPrice() {
-    let total = 0;
-    rows.forEach(row => {
-      const quantity = parseInt(row.querySelector(".quantity").innerText);
-      const pricePerItem = parseInt(row.querySelector(".price").innerText);
-      total += quantity * pricePerItem;
-    });
-    totalPriceElement.innerText = total.toLocaleString("vi-VN") + " đ";
-  }
+    // Hàm tính toán và cập nhật tổng giá
+    function updateTotalPrice() {
+      let totalPrice = 0;
 
-  // Lặp qua từng dòng sản phẩm và thêm sự kiện cho các nút
-  rows.forEach(row => {
-    const minusButton = row.querySelector(".quantity-btn.minus");
-    const plusButton = row.querySelector(".quantity-btn.plus");
-    const deleteButton = row.querySelector(".delete-btn");
-    const quantityElement = row.querySelector(".quantity");
-    
-    // Sự kiện nút tăng
-    plusButton.addEventListener("click", () => {
-      let quantity = parseInt(quantityElement.innerText);
-      quantity += 1;
-      quantityElement.innerText = quantity;
+      // Duyệt qua tất cả các sản phẩm trong giỏ hàng
+      document.querySelectorAll('tr').forEach((row) => {
+        const priceElement = row.querySelector('.product-price');
+        const quantityElement = row.querySelector('.quantity');
+        
+        if (priceElement && quantityElement) {
+          const price = parseFloat(priceElement.dataset.price); // Giá gốc của sản phẩm
+          const quantity = parseInt(quantityElement.innerText);
+          const updatedPrice = price * quantity;
+          
+          // Cập nhật giá sản phẩm trong bảng
+          priceElement.innerText = updatedPrice.toLocaleString('vi-VN');
+          
+          // Cộng dồn vào tổng giá
+          totalPrice += updatedPrice;
+        }
+      });
 
-      calculateTotalPrice(); // Cập nhật tổng giá
-    });
+      // Cập nhật giá tổng lên giao diện
+      totalPriceElement.innerText = totalPrice.toLocaleString('vi-VN');
+    }
 
-    // Sự kiện nút giảm
-    minusButton.addEventListener("click", () => {
-      let quantity = parseInt(quantityElement.innerText);
-      if (quantity > 1) { // Ngăn giảm số lượng xuống dưới 1
-        quantity -= 1;
+    // Xử lý khi nhấn dấu cộng
+    plusButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const quantityElement = button.previousElementSibling; // Lấy phần tử span chứa số lượng
+        let quantity = parseInt(quantityElement.innerText);
+        quantity++;
         quantityElement.innerText = quantity;
-        calculateTotalPrice(); // Cập nhật tổng giá
-      }
+
+        // Cập nhật tổng giá
+        updateTotalPrice();
+      });
     });
 
-    // Sự kiện nút xóa
-    deleteButton.addEventListener("click", () => {
-      row.remove();//xóa sản phẩm 
+    // Xử lý khi nhấn dấu trừ
+    minusButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const quantityElement = button.nextElementSibling; // Lấy phần tử span chứa số lượng
+        let quantity = parseInt(quantityElement.innerText);
 
-      // Cập nhật lại danh sách dòng sản phẩm và tính lại tổng giá
-      rows = document.querySelectorAll(".cart-table tbody tr");
-      calculateTotalPrice(); // Cập nhật tổng giá sau khi xóa sản phẩm
+        if (quantity > 1) {
+          quantity--;
+          quantityElement.innerText = quantity;
+
+          // Cập nhật tổng giá
+          updateTotalPrice();
+        }
+      });
     });
-  });
 
-  // Khởi tạo tổng giá lần đầu
-  calculateTotalPrice();
-</script>
+    // Cập nhật giá trị ban đầu của mỗi sản phẩm (thêm thuộc tính data-price)
+    document.querySelectorAll('.product-price').forEach((priceElement) => {
+      const price = parseFloat(priceElement.innerText); // Giá ban đầu
+      priceElement.dataset.price = price; // Lưu giá vào data-price
+    });
+
+    // Cập nhật tổng giá khi trang được tải
+    updateTotalPrice();
+
+    });
+
+  </script>
 </body>
 </html>

@@ -41,13 +41,18 @@ class ProductModel extends Database {
             return false;
         }
     }
-    public function getProductPrice($product_id) {
-        $sql = "SELECT New_Price FROM products WHERE Product_Id = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $product_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc()['New_Price'] ?? 0.00;
-    }
     
+    public function search ($character) {
+        try {
+
+            $this->getConnection();
+            $sql = "SELECT * FROM products WHERE Product_Name LIKE '%$character%'";
+            $data = $this->conn->query($sql);
+
+            return $data->fetch_all();
+
+        } catch (Exception $e) {
+            return "ERROR";
+        }
+    }
 }

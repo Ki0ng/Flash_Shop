@@ -94,3 +94,64 @@ VALUES
 (3, 1, 300, 103, 1003),
 (4, 3, 800, 104, 1004),
 (5, 4, 1000, 105, 1005);
+
+
+CREATE TABLE Cart (
+    Cart_Id INT PRIMARY KEY AUTO_INCREMENT,
+    User_Id INT NOT NULL,
+    Total_Quantity INT NOT NULL,
+    Total_Price int,
+    Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (User_Id) REFERENCES Users(User_Id),
+    Status enum('pending','completed') NOT NULL DEFAULT 'pending'
+);
+INSERT INTO Cart (User_Id, Total_Quantity, Total_Price, Status)
+VALUES 
+    (1, 3, 600000, 'pending'),  -- Giỏ hàng của Binh
+    (2, 5, 1500000, 'pending'),  -- Giỏ hàng của Toan
+    (3, 2, 800000, 'completed'), -- Giỏ hàng của Thuy
+    (4, 4, 1100000, 'pending'),  -- Giỏ hàng của Sen
+    (5, 6, 2000000, 'completed'); -- Giỏ hàng của Thanh
+
+
+CREATE TABLE CartItem (
+    CartItem_Id INT PRIMARY KEY AUTO_INCREMENT,
+    Cart_Id INT NOT NULL,
+    Product_Id INT NOT NULL,
+    Quantity INT NOT NULL,
+    Price NUMERIC(12, 2) NOT NULL,  -- Giá sản phẩm khi thêm vào giỏ
+    FOREIGN KEY (Cart_Id) REFERENCES Cart(Cart_Id),
+    FOREIGN KEY (Product_Id) REFERENCES products(Product_Id),
+    Total_Price int
+);
+
+INSERT INTO CartItem (Cart_Id, Product_Id, Quantity, Price, Total_Price)
+VALUES 
+    -- Cart_Id = 1 (Giỏ hàng của Binh)
+    (1, 1, 1, 180000, 180000),  -- 1 sản phẩm Shirt Style 1
+    (1, 2, 1, 320000, 320000),  -- 1 sản phẩm Shirt Style 2
+    (1, 3, 1, 100000, 100000),  -- 1 sản phẩm Shirt Style 3
+    
+    -- Cart_Id = 2 (Giỏ hàng của Toan)
+    (2, 4, 2, 300000, 600000),  -- 2 sản phẩm Shirt Style 4
+    (2, 5, 1, 190000, 190000),  -- 1 sản phẩm Shirt Style 5
+    (2, 6, 1, 210000, 210000),  -- 1 sản phẩm Polo Style 1
+    (2, 7, 1, 320000, 320000),  -- 1 sản phẩm Polo Style 2
+    (2, 8, 1, 130000, 130000),  -- 1 sản phẩm Polo Style 3
+    
+    -- Cart_Id = 3 (Giỏ hàng của Thuy)
+    (3, 9, 1, 170000, 170000),  -- 1 sản phẩm Jean Style 4
+    (3, 10, 1, 599000, 599000), -- 1 sản phẩm Jean Style 5
+    
+    -- Cart_Id = 4 (Giỏ hàng của Sen)
+    (4, 1, 2, 180000, 360000),  -- 2 sản phẩm Shirt Style 1
+    (4, 2, 2, 320000, 640000),  -- 2 sản phẩm Shirt Style 2
+    (4, 6, 1, 210000, 210000),  -- 1 sản phẩm Polo Style 1
+    
+    -- Cart_Id = 5 (Giỏ hàng của Thanh)
+    (5, 3, 3, 100000, 300000),  -- 3 sản phẩm Shirt Style 3
+    (5, 5, 2, 190000, 380000),  -- 2 sản phẩm Shirt Style 5
+    (5, 7, 1, 320000, 320000),  -- 1 sản phẩm Polo Style 2
+    (5, 9, 1, 170000, 170000),  -- 1 sản phẩm Jean Style 4
+    (5, 10, 1, 599000, 599000); -- 1 sản phẩm Jean Style 5
