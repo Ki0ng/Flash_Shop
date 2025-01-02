@@ -93,7 +93,6 @@
         public function removeFromCart($cartItemId) {
             $this->cartModel->removeProductFromCart($cartItemId);
             header("location: /Flash_shop/Cart");
-
         }
     }
 ?>

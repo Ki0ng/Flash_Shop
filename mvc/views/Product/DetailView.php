@@ -46,11 +46,9 @@
                 <?php echo "
                     <form action = 'cart/addToCart' method = 'get'>
                         <input name = 'id' value = '$product_id' class = 'd-none'>
-                        <button type='submit'>Add To CartCart</button>
-                    Add To Cart
+                        <button type='submit'>Add To Cart</button>
                     </a>
                     </form>"?>
-                <!-- <button name-product = ?= $product['Product_Id']?> class="add_to_cart">Buy Now</button>  -->
             </div>
         </div>
     </div>
