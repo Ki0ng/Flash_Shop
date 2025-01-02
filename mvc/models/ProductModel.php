@@ -1,6 +1,8 @@
 <?php
-class ProductModel extends Database {
-    public function products(){ /* Products */ 
+class ProductModel extends Database
+{
+    public function products()
+    { /* Products */
         try {
             $this->getConnection();
 
@@ -13,25 +15,57 @@ class ProductModel extends Database {
                            /* 6 */ Image_URL,          
                            /* 7 */ Decription          
                             FROM products";
-                            
+
             $data = $this->conn->query($sql);
-            return $data->fetch_all(); 
-        } catch (Exception $e) {
-            return false;
-        }
-    }
-    public function product ($productId) {
-        try {
-            $this->getConnection();
-            $sql = "select * from products where Product_id = '$productId'";
-            $data = $this->conn->query($sql);
-            return $data->fetch_assoc(); 
+            return $data->fetch_all();
         } catch (Exception $e) {
             return false;
         }
     }
 
-    public function getCategory () {
+
+    // public function getAllProducts()
+    // {
+    //     try {
+    //         $this->getConnection();
+    //         $sql = "SELECT 
+    //                     p.Product_Id, 
+    //                     p.Product_Name AS Name, 
+    //                     p.Image_URL AS Image, 
+    //                     p.Old_price, 
+    //                     p.New_Price, 
+    //                     p.stock, 
+    //                     c.Category_Name AS Category 
+    //                 FROM Products p 
+    //                 JOIN categories c ON p.Category_Id = c.Category_Id";
+    //         $result = $this->conn->query($sql);
+
+    //         $products = [];
+    //         if ($result->num_rows > 0) {
+    //             while ($row = $result->fetch_assoc()) {
+    //                 $products[] = $row;
+    //             }
+    //         }
+    //         return $products;
+    //     } catch (Exception $e) {
+    //         return [];
+    //     }
+    // }
+
+    public function product($productId)
+    {
+        try {
+            $this->getConnection();
+            $sql = "select * from products where Product_id = '$productId'";
+            $data = $this->conn->query($sql);
+            return $data->fetch_assoc();
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getCategory()
+    {
         try {
             $this->getConnection();
             $sql = "SELECT Category_Id,Category_Name FROM categories";
@@ -41,8 +75,9 @@ class ProductModel extends Database {
             return false;
         }
     }
-    
-    public function search ($character) {
+
+    public function search($character)
+    {
         try {
 
             $this->getConnection();
@@ -50,7 +85,6 @@ class ProductModel extends Database {
             $data = $this->conn->query($sql);
 
             return $data->fetch_all();
-
         } catch (Exception $e) {
             return "ERROR";
         }
