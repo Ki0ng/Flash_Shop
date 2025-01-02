@@ -5,14 +5,14 @@ const quantitySpan = document.getElementById('quantity');
 
 let quantity = 1; // Initial quantity
 
-// Decrease button event
+// nút giảm số lượng
 decreaseBtn.addEventListener('click', () => {
     if (quantity > 1) {
         quantity--; 
         quantitySpan.textContent = quantity; 
     }
 });
-// nút giảm số lượng
+// nút tăng số lượng
 increaseBtn.addEventListener('click', () => {
     quantity++; 
     quantitySpan.textContent = quantity; 

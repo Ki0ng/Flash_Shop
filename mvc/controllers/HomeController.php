@@ -8,7 +8,7 @@ class HomeController extends Controller {
                 $this->view("User", [
                     'Page' => 'User/Home',
                     "home_data" => $data
-                ]);
+                ]);     
             } else {
                 $data = "ERROR QUERY";
                 $this->Error($data);

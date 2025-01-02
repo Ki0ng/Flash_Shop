@@ -4,7 +4,7 @@ class Database {
     private $host = "localhost";
     private $db_name = "Flash_Shop";
     private $username = "root";
-    private $password = "";
+    private $password = "Thuy@2005";
     public $conn;
 
     public function getConnection()

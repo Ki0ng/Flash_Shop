@@ -49,4 +49,5 @@ class ProductController extends Controller
             "categories" => $categories
         ]);
     }
+    
 }
