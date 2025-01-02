@@ -9,7 +9,7 @@ CREATE TABLE categories(
     Decription TEXT NOT NULL
 ); 
 
-INSERT INTO categories (Category_Id, Category_Name, Description) VALUES
+INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
     ("SHI", "Shirt", "The Shirt with high quality will make you feel comfortable in the hot summer"),
     ("JEA", "Jean", "Whit the Jean you can express your personal style in everywhere");
 ;
@@ -22,7 +22,7 @@ CREATE TABLE products(
     New_Price NUMERIC(12, 2) NOT NULL,
     Stock INT NOT NULL,
     Image_URL VARCHAR(100),
-    Description TEXT
+    Decription TEXT
 );
 
 INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Decription) VALUES
@@ -48,12 +48,12 @@ CREATE TABLE Users (
     Role TINYINT NOT NULL,
     Address VARCHAR (100)
 );
-INSERT INTO Users (Name, Email, Phone, Password, Role) VALUES 
+INSERT INTO Users (Name, Email, Phone, Password, Role, Address) VALUES 
     ("Binh", "binhdo@gmail.com", "0234578254", "binh123@", 1, "KONTUM"),
-    ("Toan", "toanle@gmail.com", "043728391", "toan456@", 1),
-    ("Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1),
-    ("Sen", "sen@gmail.com", "0325784392", "sen987@", 1, "unknow"),
-    ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1);
+    ("Toan", "toanle@gmail.com", "043728391", "toan456@", 1,''),
+    ("Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1, ''),
+    ("Sen", "sen@gmail.com", "0325784392", "sen987@", 1, ''),
+    ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1, '');
 
 -- Bảng order
 
