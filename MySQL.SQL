@@ -23,7 +23,6 @@
         stock INT NOT NULL,
         Image_URL VARCHAR(100),
         Decription TEXT
-        FOREIGN KEY (Category_Id) REFERENCES categories(Category_Id)
     );
 
     INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Decription) VALUES
