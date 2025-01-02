@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <base href="/Flash_Shop/">
-    <link rel="stylesheet" href="public/CSS/Product/Products.css">
+    <link rel="stylesheet" href="./public/css/Product/Products.css">
 </head>
 <?php
-
     $categories = $data["categories"];
     $products = $data["data"];
     foreach($products as $product) {

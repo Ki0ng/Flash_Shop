@@ -6,11 +6,18 @@
     <title>Detail</title>
     <link rel="stylesheet" href="public/CSS/Product/Detail.css">
 </head>
+<!-- $ct = new Cart(); -->
 <?php
     // print_r($data["proDetail_data"] );
     $product = $data["proDetail_data"];
+    $product_id = $product["Product_Id"];
 ?>
-
+<?php 
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+        $quantity= $_POST['quantity'];
+        $Add_toCart = $model->add_to_cart($id, $quantity);
+    }
+?>
 <body>
     <div class="container_proDetail">
         <div class="product_image">
@@ -35,19 +42,20 @@
                     </select>
                 </div>
             </div>
-            <div class="proDetail_quantity">
-                <button class="qty_btnDetail" id="decreaseBtn">−</button>
-                <span id="quantity">1</span>
-                <button class="qty_btnDetail" id="increaseBtn">+</button>
+            <div class="button_productDetail">
+                <?php echo "
+                    <form action = 'cart/addToCart' method = 'get'>
+                        <input name = 'id' value = '$product_id' class = 'd-none'>
+                        <button type='submit'>Add To CartCart</button>
+                    Add To Cart
+                    </a>
+                    </form>"?>
+                <!-- <button name-product = ?= $product['Product_Id']?> class="add_to_cart">Buy Now</button>  -->
             </div>
-            <button class="add_productDetail">Add Product</button>
         </div>
     </div>
-
     <?php 
         require_once "./mvc/views/components/Rating.php"
     ?>
-    <script src="./public/JS/productDetail.js"></script>
-
 </body>
 </html>

@@ -26,11 +26,33 @@
                     $get .= $process[$i];
                 }
             }
-
-    
             parse_str($get, $result);
     
             return $result;	
         }
+        
+        public function Cart($array){
+            $array = [];
+            if(isset($_SESSION['cart']))
+            {
+                if(array_key_exists($array['Product_Id'],$_SESSION['cart'])){
+                    $_SESSION['cart'][$array['Product_Id']]['Quantity'] +=1;
+                }
+                else
+                {
+                    $_SESSION['cart'][$array['Product_Id']] = $array;
+                    $_SESSION['cart'][$array['Product_Id']]['Quantity'] +=1;
+
+                }
+            }
+            else
+            {
+                $_SESSION['cart'][$array['Product_Id']] = $array;
+                $_SESSION['cart'][$array['Product_Id']]['Quantity'] +=1;
+            }
+            $array = $_SESSION['cart'];
+            return $array;
+        }
     }
+    
 ?>
