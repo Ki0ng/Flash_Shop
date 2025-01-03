@@ -1,6 +1,8 @@
 <?php
-class UserModel extends Database {
-    public function Register ($username, $password, $email, $phone){
+class UserModel extends Database
+{
+    public function Register($username, $password, $email, $phone)
+    {
         try {
             $this->getConnection();
             $sql = "INSERT INTO users (Name, Password, Email, Phone, Role) VALUE ('$username', '$password', '$email' , '$phone',1 )";
@@ -10,12 +12,13 @@ class UserModel extends Database {
             return false;
         }
     }
-    public function UpdateUser($name, $phone, $email, $password, $address)  {
+    public function UpdateUser($name, $phone, $email, $password, $address)
+    {
         try {
             $this->getConnection();
             $sql = "UPDATE Users SET Email = '$email' ";
-            
-            if ($name !== "null") { 
+
+            if ($name !== "null") {
                 $sql = "$sql, Name = '$name'";
             }
             if ($password !== "null") {
@@ -33,9 +36,9 @@ class UserModel extends Database {
         } catch (Exception $e) {
             return false;
         }
-
     }
-    public function Login ( $email, $password ) {
+    public function Login($email, $password)
+    {
         try {
             $this->getConnection();
             $sql = "SELECT Email, Password FROM Users WHERE Email = '$email' AND Password = '$password'";
@@ -45,7 +48,8 @@ class UserModel extends Database {
             return false;
         }
     }
-    public function Profile ( $email, $password ) {
+    public function Profile($email, $password)
+    {
         try {
             $this->getConnection();
             $sql = "SELECT * from users where Email = '$email' and Password = '$password'";

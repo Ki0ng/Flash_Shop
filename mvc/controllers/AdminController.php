@@ -14,7 +14,7 @@ class AdminController extends Controller
     }
 
     public function UserManagement()
-    {
+    {   
         // $database = $this->model("Admin");
         // $data = $database->getAllUsers();
 
