@@ -128,21 +128,9 @@
         </div>
     </div>
     <section class="card_necessary">
-        <?php
-        for ($i = 0; $i < count($data["home_data"]); $i += 2) {
-
-            $product = $data["home_data"][$i];
-
-            $id = $product[0];
-            $name = $product[2];
-            $old_price =  $product[3];
-            $new_price =  $product[4];
-            $img_url = $product[6];
-
-            echo '
         <div class="product-grid-ness">
             <div class="product-item-ness">
-                <img src= $img_url alt="Long sleeve">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq7O9av3A-P7KCttyduz_-h6R4RjgXjY8mVQ&s" alt="Long sleeve">
                 <h3>Long sleeve</h3>
                 <span style="color: #FF0000;" class="price">$353</span>
                 <span style="text-decoration:line-through">$300</span>
@@ -190,9 +178,6 @@
                 <span style="text-decoration:line-through">$730</span>
             </div>
         </div>
-        ';
-        }
-        ?>
     </section>
 </body>
 

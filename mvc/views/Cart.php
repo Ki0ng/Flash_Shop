@@ -1,3 +1,8 @@
+<!-- <?php
+  // print_r($data["home_data"]);
+?> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,10 +130,11 @@
           </td>
           <td>
             <button class="quantity-btn minus">-</button>
-            <span class="quantity">2</span>
+            <span class="quantity"><?php echo $product['Quantity'] ?></span>
+            <span class="Product_Id " style="display: none;"><?php echo $product['Product_Id'] ?></span>
             <button class="quantity-btn plus">+</button>
           </td>
-          <td><span class="product-price"><?php echo $product["New_Price"] ?></span></td>
+          <td><span class="product-price"><?php echo $product["Price"] ?></span></td>
           <td><button class="delete-btn">Delete</button></td>
         </tr>
         <?php endforeach; ?>
@@ -140,10 +146,13 @@
       </tbody>
     </table>
     <div class="total-price">
-      Total price: <span id="total-price">300000</span>
+      Total price: <span id="total-price"><?php echo $product["Total_Price"] ?></span>
     </div>
   </div>
   </div>
   <script src="public/JS/Cart.js"></script>
+        
+  <script>
+  </script>
 </body>
 </html>
