@@ -45,7 +45,9 @@
             <div class="button_productDetail">
                 <?php echo "
                     <form action = 'cart/addToCart' method = 'get'>
-                        <input name = 'id' value = '$product_id' class = 'd-none'>
+                        <input name = 'product_id' value = '$product_id' class = 'd-none'>
+                        <input name = 'price' value = '{$product['New_Price']}' class = 'd-none'>
+                        <input name = 'value' value = '1' class = 'd-none'>
                         <button type='submit'>Add To Cart</button>
                     </a>
                     </form>"?>
