@@ -88,12 +88,12 @@ $products = $data["products"];
             <div class="modal-content">
                 <span class="close" onclick="closeModal('addProductModal')">&times;</span>
                 <h2>Add New Product</h2>
-                <form action="add_product.php" method="POST" enctype="multipart/form-data">
+                <form action="/Flash_Shop/Admin/AddProduct" method="POST" enctype="multipart/form-data">
                     <label for="productName">Product Name:</label>
-                    <input type="text" id="productName" name="productName" required><br><br>
+                    <input type="text" id="productName" name="product_name" required><br><br>
 
                     <label for="category">Category:</label>
-                    <input type="text" id="category" name="category" required><br><br>
+                    <input type="text" id="category" name="category_id" required><br><br>
 
                     <label for="price">Price (VND):</label>
                     <input type="number" id="price" name="price" required><br><br>
@@ -102,7 +102,7 @@ $products = $data["products"];
                     <input type="number" id="stock" name="stock" required><br><br>
 
                     <label for="image">Product Image:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required><br><br>
+                    <input type="file" id="image" name="image_url" accept="image/*"  value="http://google.com"><br><br>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="button" class="btn btn-secondary" onclick="closeModal('addProductModal')">Cancel</button>
@@ -115,7 +115,7 @@ $products = $data["products"];
             <div class="modal-content">
                 <span class="close" onclick="closeModal('editProductModal')">&times;</span>
                 <h2>Edit Product</h2>
-                <form action="edit_product.php" method="POST" enctype="multipart/form-data">
+                <form action="/Flash_Shop/Admin/ProductManagementView" method="POST" enctype="multipart/form-data">
                     <input type="hidden" id="editProductId" name="editProductId">
                     <label for="editProductName">Product Name:</label>
                     <input type="text" id="editProductName" name="editProductName" required><br><br>
