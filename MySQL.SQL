@@ -15,7 +15,7 @@ INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
 ;
 
 CREATE TABLE products(
-    Product_Id INT PRIMARY KEY,
+    Product_Id INT PRIMARY KEY AUTO_INCREMENT,
     Category_Id VARCHAR(10) NOT NULL REFERENCES categories(Category_Id),
     Product_Name VARCHAR(100) NOT NULL,
     Old_price NUMERIC(12, 2) NOT NULL,

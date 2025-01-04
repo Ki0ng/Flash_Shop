@@ -14,7 +14,7 @@ class AdminController extends Controller
     }
 
     public function UserManagement()
-    {   
+    {
         // $database = $this->model("Admin");
         // $data = $database->getAllUsers();
 
@@ -24,6 +24,25 @@ class AdminController extends Controller
         ]);
     }
 
+    public function AddProduct()
+    {
+        if (isset($_POST)) {
+            $category_id = $_POST['category_id'];
+            $product_name = $_POST['product_name'];
+            $price = $_POST['price'];
+            $stock = $_POST['stock'];
+
+            // print_r($category_id);
+            // $image_url = $_POST['image_url'];
+
+            $database = $this->model("Admin");
+            $query = $database->AddProduct($category_id, $product_name, $price, $stock);
+
+            print_r($query);
+
+            // header("Location: /Flash_Shop/Admin/");
+        }
+    }
     // public function ProductManagement()
     // {
     //     $productModel = $this->model('ProductModel');
