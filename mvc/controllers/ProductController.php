@@ -37,7 +37,7 @@ class ProductController extends Controller
                     
                     $this->view("User", [
                         "Page" => "Product/Detail",
-                        "proDetail_data" => $this->data,
+                        "data" => $this->data,
                     ]);
         
                 } else {
