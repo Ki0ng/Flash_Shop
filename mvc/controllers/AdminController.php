@@ -33,4 +33,10 @@ class AdminController extends Controller
     //         'products' => $products
     //     ]);
     // }
+
+    public function dasboard () {
+        $this->view("Admin", [
+            "Page" => "Dasboard"
+        ]); 
+    }
 }
