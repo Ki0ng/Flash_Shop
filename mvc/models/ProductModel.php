@@ -1,92 +1,99 @@
 <?php
 class ProductModel extends Database
 {
+    public $product_id;
+    public $product_name;
+    public $category_id;
+    public $query;
+    public $connect_database;
+
+
+    public function __construct() {
+        parent::__construct();
+        $this->connect_database = isset($this->conn) ? true : false; 
+
+        $this->query = 
+            "SELECT DISTINCT
+            products.Product_Id AS   product_id,
+            products.Category_Id AS  category_id,
+            products.Product_Name AS product_name,       
+            products.Old_price AS    old_price,          
+            products.New_Price AS    new_price,          
+            products.Stock AS        stock,              
+            products.Image_URL AS    image_url,          
+            products.Description AS  description,
+
+            categories.Category_Name AS category_name 
+
+            FROM products
+
+            JOIN categories
+            ON products.Category_Id = categories.Category_Id
+            ";
+    }
     public function products()
-    { /* Products */
-        try {
-            $this->getConnection();
+    { 
+        if($this->conn) {
 
-            $sql = "SELECT /* 0 */ Product_Id,         
-                           /* 1 */ Category_Id,        
-                           /* 2 */ Product_Name,       
-                           /* 3 */ Old_price,          
-                           /* 4 */ New_Price,          
-                           /* 5 */ stock,              
-                           /* 6 */ Image_URL,          
-                           /* 7 */ Decription          
-                            FROM products";
+            $this->sql = $this->query;
 
-            $data = $this->conn->query($sql);
-            return $data->fetch_all();
-        } catch (Exception $e) {
+            $this->prepare();
+            $this->execute();
+            $this->fetch_assoc();
+
+            return $this->data;
+
+        } else {
+            return false;
+        }
+
+    }
+
+    public function product()
+    {
+        if (isset($this->conn)) {
+            
+            $this->sql = $this->query . " WHERE Product_Id = ?";
+
+            $this->prepare();
+            $this->stmt->bind_param("i", $this->product_id);
+            $this->execute();
+            $this->fetch_assoc();
+
+            return $this->data;
+
+        } else {
             return false;
         }
     }
 
-
-    // public function getAllProducts()
+    // public function getCategory()
     // {
     //     try {
     //         $this->getConnection();
-    //         $sql = "SELECT 
-    //                     p.Product_Id, 
-    //                     p.Product_Name AS Name, 
-    //                     p.Image_URL AS Image, 
-    //                     p.Old_price, 
-    //                     p.New_Price, 
-    //                     p.stock, 
-    //                     c.Category_Name AS Category 
-    //                 FROM Products p 
-    //                 JOIN categories c ON p.Category_Id = c.Category_Id";
-    //         $result = $this->conn->query($sql);
-
-    //         $products = [];
-    //         if ($result->num_rows > 0) {
-    //             while ($row = $result->fetch_assoc()) {
-    //                 $products[] = $row;
-    //             }
-    //         }
-    //         return $products;
+    //         $sql = "SELECT Category_Id,Category_Name FROM categories";
+    //         $data = $this->conn->query($sql);
+    //         return $data->fetch_all();
     //     } catch (Exception $e) {
-    //         return [];
+    //         return false;
     //     }
     // }
 
-    public function product($productId)
+    public function search()
     {
-        try {
-            $this->getConnection();
-            $sql = "select * from products where Product_id = '$productId'";
-            $data = $this->conn->query($sql);
-            return $data->fetch_assoc();
-        } catch (Exception $e) {
+        if (isset($this->conn)) {
+
+            $this->sql = $this->query . " WHERE Product_Name LIKE %?%";
+
+            $this->prepare();
+            $this->stmt->bind_param("i", $this->product_id);
+            $this->execute();
+            $this->fetch_assoc();
+
+            return $this->data;
+ 
+        } else {
             return false;
-        }
-    }
-
-    public function getCategory()
-    {
-        try {
-            $this->getConnection();
-            $sql = "SELECT Category_Id,Category_Name FROM categories";
-            $data = $this->conn->query($sql);
-            return $data->fetch_all();
-        } catch (Exception $e) {
-            return false;
-        }
-    }
-
-    public function search($character)
-    {
-        try {
-
-            $this->getConnection();
-            $sql = "SELECT * FROM products WHERE Product_Name LIKE '%$character%'";
-            $data = $this->conn->query($sql);
-
-            return $data->fetch_all();
-        } catch (Exception $e) {
-            return "ERROR";
         }
     }
 }

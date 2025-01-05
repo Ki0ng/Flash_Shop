@@ -1,3 +1,20 @@
+<?php
+    // $categories = $data["categories"];
+    $products = $data["data"];
+    foreach($products as $product) {
+        $product_id = $product["product_id"];
+        $category_name = $product["category_name"];
+        $product_name = $product["product_name"];
+        $old_price = $product["old_price"];
+        $new_price = $product["new_price"];
+        $stock = $product["stock"];
+        $image_url = $product["image_url"];
+        $description = $product["description"];
+        
+        echo "<div style= 'display: none; ' class  = 'value'>$product_id;$product_name;$product_name;$old_price;$new_price;$image_url;$image_url;$description</div>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +24,6 @@
     <base href="/Flash_Shop/">
     <link rel="stylesheet" href="./public/css/Product/Products.css">
 </head>
-<?php
-    $categories = $data["categories"];
-    $products = $data["data"];
-    foreach($products as $product) {
-        echo "<div style= 'display: none; ' class  = 'value'>$product[0];$product[1];$product[2];$product[3];$product[4];$product[5];$product[6];$product[7]</div>";
-    }
-?>
 <body>
     <div class="container-lg menu-show"x>
 

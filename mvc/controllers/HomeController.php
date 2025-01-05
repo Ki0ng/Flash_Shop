@@ -1,5 +1,7 @@
 <?php
 class HomeController extends Controller {
+
+    // ==================================> Default -> Home
     public function Default () { //Home
         $database = $this->model("Product");
         if ($database) {
@@ -19,12 +21,16 @@ class HomeController extends Controller {
         }
     }
 
+    
+    // ==================================> About Us
     public function AboutUs () {
         $this->view("User", [
             'Page' => 'User/AboutUs'
         ]);
     }
+ 
 
+    // ==================================> Error
     public function Error ($data) {
         $this->view("User", [
             'Page' => 'User/Error',

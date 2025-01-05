@@ -1,6 +1,17 @@
 <?php
     class Controller {
 
+        protected $call_get;
+        protected $call_model;
+        protected $data;
+
+        public function __construct($model) {
+            $this->method_get();
+            $this->call_model = $this->model($model);
+            $this->data = [];
+        }
+
+
         //call file model php to get data
         public function model($model){
             if (file_exists("./mvc/models/". $model ."Model.php")) {
@@ -16,8 +27,8 @@
             require_once "./mvc/views/".$view.".php";
         }
 
-        public function methodGet () {
-
+        private function method_get () {
+            $this->call_get = [];
             $url = $_SERVER["REQUEST_URI"];
             $process = explode(	"?", $url);
             $get = "";
@@ -26,9 +37,14 @@
                     $get .= $process[$i];
                 }
             }
-            parse_str($get, $result);
-    
-            return $result;	
+            parse_str($get, $this->call_get);
+        }
+
+        public function error ($view, $page, $data) {
+            $this->view($view, [
+                "Page" => $page,
+                "data" => $data
+            ]);
         }
         
         public function Cart($array){

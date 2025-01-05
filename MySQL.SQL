@@ -6,7 +6,7 @@ use Flash_Shop;
 CREATE TABLE categories(
     Category_Id VARCHAR(10) PRIMARY KEY,
     Category_Name VARCHAR(100) NOT NULL,
-    Decription TEXT NOT NULL
+    Description TEXT NOT NULL
 ); 
 
 INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
@@ -22,7 +22,7 @@ CREATE TABLE products(
     New_Price NUMERIC(12, 2) NOT NULL,
     Stock INT NOT NULL,
     Image_URL VARCHAR(100),
-    Decription TEXT
+    Description TEXT
 );
 
 INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Decription) VALUES
