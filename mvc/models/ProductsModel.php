@@ -1,5 +1,5 @@
 <?php
-class ProductModel extends Database
+class ProductsModel extends Database
 {
     public $product_id;
     public $product_name;
@@ -7,7 +7,7 @@ class ProductModel extends Database
     public $query;
     public $connect_database;
 
-
+    //==============================> construct [ connect database]
     public function __construct() {
         parent::__construct();
         $this->connect_database = isset($this->conn) ? true : false; 
@@ -31,6 +31,7 @@ class ProductModel extends Database
             ON products.Category_Id = categories.Category_Id
             ";
     }
+    //==============================> show all products
     public function products()
     { 
         if($this->conn) {
@@ -49,6 +50,26 @@ class ProductModel extends Database
 
     }
 
+    //==============================> get all category name
+    public function categories () {
+        if (isset($this->conn)) {
+            
+            $this->sql = "SELECT 
+            Category_Id AS category_id,
+            Category_Name AS category_name
+            FROM categories";
+
+            $this->prepare();
+            $this->execute();
+            $this->fetch_assoc();
+
+            return $this->data;
+        } else {
+            return false;
+        }
+    }
+
+    //==============================> get product by id
     public function product()
     {
         if (isset($this->conn)) {
@@ -83,10 +104,10 @@ class ProductModel extends Database
     {
         if (isset($this->conn)) {
 
-            $this->sql = $this->query . " WHERE Product_Name LIKE %?%";
+            $this->sql = $this->query . "  WHERE Product_Name LIKE ?";
 
             $this->prepare();
-            $this->stmt->bind_param("i", $this->product_id);
+            $this->stmt->bind_param("s", $this->product_name);
             $this->execute();
             $this->fetch_assoc();
 

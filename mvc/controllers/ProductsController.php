@@ -1,9 +1,9 @@
 <?php
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     //====================================> Construct
     public function __construct() {
-        parent::__construct("Product");
+        parent::__construct("Products");
     }
 
     //====================================> Default -> Show ()
@@ -11,7 +11,8 @@ class ProductController extends Controller
     {
         if ($this->call_model->connect_database) {
 
-            $this->data = $this->call_model->products();
+            $this->data["products"] = $this->call_model->products();
+            $this->data["categories"] =  $this->call_model->categories();
 
             $this->view("User", [
                 "Page" => "Product/Products",
@@ -55,17 +56,18 @@ class ProductController extends Controller
     }
 
     public function search () {
-        if  (isset($this->call_model->conn)) {
-            if (isset($this->callGet["search"])) {
+        
+        if  (isset($this->call_model->connect_database)) {
+            if (isset($this->call_get["search"])) {
 
-                $key = $this->call_get["search"];
-                $this->data = $this->call_model->search($key);
-                $categories = $this->call_model->getCategory();
+                $this->call_model->product_name = "%".$this->call_get["search"]."%";
+
+                $this->data["products"] = $this->call_model->products();
+                $this->data["categories"] =  $this->call_model->categories();
 
                 $this->view("User", [
                     "Page" => "Product/Products",
                     "data" => $this->data,
-                    "categories" => $categories
                 ]);
             } else {
                 $data = "THE FINDING WAS FELL";
