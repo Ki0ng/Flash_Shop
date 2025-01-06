@@ -12,8 +12,12 @@ class Database {
     protected $get_result;    
     protected $data;
 
+    public $connect_database;
+
     public function __construct() {
         $this->getConnection();
+        $this->connect_database = isset($this->conn) ? true : false; 
+
     }
 
     public function getConnection()
@@ -29,13 +33,6 @@ class Database {
         }
     }
 
-    // protected function query_sql () {
-    //     $this->stmt = $this->conn->query($this->sql);
-    //     if(isset($this->stmt)) {
-    //         $this->fetch_data();
-    //     }
-    // }
-
     protected function prepare () {
         $this->stmt = $this->conn->prepare($this->sql);
     }
@@ -43,14 +40,18 @@ class Database {
     protected function execute () {
         if ($this->stmt) {
             $this->stmt->execute();
-            $this->get_result = $this->stmt->get_result();
         }
     }
 
     protected function fetch_assoc () {
         $this->data = [];
-        while ($row = $this->get_result->fetch_assoc()) {
-            $this->data[] = $row;
+        $this->get_result = $this->stmt->get_result();
+        if ($this->get_result->num_rows == 1 ) {
+            $this->data = $this->get_result->fetch_assoc();
+        } else {
+            while ($row = $this->get_result->fetch_assoc()) {
+                $this->data[] = $row;
+            }
         }
     }
 }

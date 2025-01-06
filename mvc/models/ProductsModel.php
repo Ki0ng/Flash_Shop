@@ -5,12 +5,10 @@ class ProductsModel extends Database
     public $product_name;
     public $category_id;
     public $query;
-    public $connect_database;
 
     //==============================> construct [ connect database]
     public function __construct() {
         parent::__construct();
-        $this->connect_database = isset($this->conn) ? true : false; 
 
         $this->query = 
             "SELECT DISTINCT
@@ -34,7 +32,7 @@ class ProductsModel extends Database
     //==============================> show all products
     public function products()
     { 
-        if($this->conn) {
+        if(isset($this->conn)) {
 
             $this->sql = $this->query;
 
@@ -43,8 +41,8 @@ class ProductsModel extends Database
             $this->fetch_assoc();
 
             return $this->data;
-
         } else {
+
             return false;
         }
 
@@ -88,18 +86,6 @@ class ProductsModel extends Database
         }
     }
 
-    // public function getCategory()
-    // {
-    //     try {
-    //         $this->getConnection();
-    //         $sql = "SELECT Category_Id,Category_Name FROM categories";
-    //         $data = $this->conn->query($sql);
-    //         return $data->fetch_all();
-    //     } catch (Exception $e) {
-    //         return false;
-    //     }
-    // }
-
     public function search()
     {
         if (isset($this->conn)) {
@@ -117,4 +103,11 @@ class ProductsModel extends Database
             return false;
         }
     }
+
+    // public function add_product() {
+    //     //?
+    //     if (isset($this->conn)) {
+    //         $this->query = 3;
+    //     }
+    // }
 }

@@ -26,18 +26,18 @@
         <div class="product-grid container-lg row">
             <?php
 
-            for ($i = 0; $i < count($data["home_data"]); $i += 2) {
+            for ($i = 0; $i < count($data["data"]); $i += 2) {
 
-                $product = $data["home_data"][$i];
+                $product = $data["data"][$i];
 
-                $id = $product[0];
-                $name = $product[2];
-                $old_price =  $product[3];
-                $new_price =  $product[4];
-                $img_url = $product[6];
+                $id = $product["product_id"];
+                $name = $product["product_name"];
+                $old_price =  $product["old_price"];
+                $new_price =  $product["new_price"];
+                $img_url = $product["image_url"];
 
                 echo "
-        <a class='col-12 product-item' href  = 'Product/Detail/" . $id . "'style='text-decoration: none; color: black'>
+        <a class='col-12 product-item' href  = 'Products/Detail?id=$id'style='text-decoration: none; color: black'>
         <img style='width: 200px; margin-left: -1.3rem; padding: 0px' src= $img_url alt=''  '>
         <p>$name</p>
         <span style='color: #FF0000;'>$new_price</span>

@@ -1,15 +1,13 @@
 <?php
 
-$account = $data["account"];
-// print_r(($data));
-// print_r(($account));
+    $account = $data["data"];
 
-$email = $account['Email'];
-$name = $account['Name'];
-$phone = $account['Phone'];
-$address = $account["Address"];
+    $email = $account['email'];
+    $name = $account['user_name'];
+    $phone = $account['phone'];
+    $address = $account["address"];
 
-$password = $data["Password"];
+    $password = $_SESSION["password"];
 ?>
 
 <!DOCTYPE html>

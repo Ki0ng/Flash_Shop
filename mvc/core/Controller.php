@@ -40,9 +40,9 @@
             parse_str($get, $this->call_get);
         }
 
-        public function error ($view, $page, $data) {
-            $this->view($view, [
-                "Page" => $page,
+        public function error ($data) {
+            $this->view("User", [
+                "Page" => "User/Error",
                 "data" => $data
             ]);
         }

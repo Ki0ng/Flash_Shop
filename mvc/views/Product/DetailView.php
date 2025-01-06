@@ -10,7 +10,7 @@
 <?php
     // print_r($data["proDetail_data"] );
     $product = $data["data"];
-    $product_id = $product[0]["product_id"];
+    $product_id = $product["product_id"];
 ?>
 <?php 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
@@ -21,16 +21,16 @@
 <body>
     <div class="container_proDetail">
         <div class="product_image">
-            <img src="<?php echo $product[0]["image_url"]?>" alt="">
+            <img src="<?php echo $product["image_url"]?>" alt="">
         </div>
         <div class="product_details">
-            <h2><?php echo $product[0]["product_name"]?></h2>
+            <h2><?php echo $product["product_name"]?></h2>
             <p>
-                <?php echo $product[0]["description"]?>
+                <?php echo $product["description"]?>
             </p>
             <div class="proDetail_price">
-                <span class="new_price"><?php echo $product[0]["new_price"] ?> </span>
-                <span class="old_price"><?php echo $product[0]["old_price"] ?></span>
+                <span class="new_price"><?php echo $product["new_price"] ?> </span>
+                <span class="old_price"><?php echo $product["old_price"] ?></span>
                 <div class="size_selection">
                     <label for="sizeSelect"></label>
                     <select id="sizeSelect" class="size_btnDetail">
@@ -46,7 +46,7 @@
                 <?php echo "
                     <form action = 'cart/addToCart' method = 'get'>
                         <input name = 'product_id' value = '$product_id' class = 'd-none'>
-                        <input name = 'price' value = '{$product[0]['new_price']}' class = 'd-none'>
+                        <input name = 'price' value = '{$product['new_price']}' class = 'd-none'>
                         <input name = 'value' value = '1' class = 'd-none'>
                         <button type='submit'>Add To Cart</button>
                     </a>

@@ -1,13 +1,13 @@
 <?php
 class ProductsController extends Controller
 {
-    //====================================> Construct
+    //====================================> construct ()
     public function __construct() {
         parent::__construct("Products");
     }
 
-    //====================================> Default -> Show ()
-    public function Default()
+    //====================================> default -> Show ()
+    public function default()
     {
         if ($this->call_model->connect_database) {
 
@@ -19,13 +19,12 @@ class ProductsController extends Controller
                 "data" => $this->data
             ]);
         } else {
-            $data = "CAN NOT CONNECT TO DATABASE";
-            $this->error("User", "User/Error", $data);
+            $this->error("CAN NOT CONNECT TO DATABASE");
         }
     }
 
-    //====================================> Detail
-    public function Detail() {
+    //====================================> detail ()
+    public function detail() {
 
         if (isset($this->call_model->connect_database)) {
             if (isset($this->call_get["id"])) {
@@ -42,19 +41,17 @@ class ProductsController extends Controller
                     ]);
         
                 } else {
-                    $data = "THE FINDING WAS FELL";
-                    $this->error("User", "User/Error", $data);
+                    $this->error( "THE FINDING WAS FELL");
                 }
             } else {
-                $data = "NOT ENOUGHT CONDITION TO 'SEARCH' ";
-                $this->error("User", "User/Error", $data);
+                $this->error( "NOT ENOUGHT CONDITION TO 'SEARCH'");
             }
         } else {
-            $data = "CAN NOT CONNECT TO DATABASE";
-            $this->error("User", "User/Error", $data);
+            $this->error("CAN NOT CONNECT TO DATABASE");
         }
     }
 
+    //====================================> search ()
     public function search () {
         
         if  (isset($this->call_model->connect_database)) {
@@ -71,7 +68,7 @@ class ProductsController extends Controller
                 ]);
             } else {
                 $data = "THE FINDING WAS FELL";
-                $this->error("User", "User/Error", $data);
+                $this->error( $data);
             }
         }
     }

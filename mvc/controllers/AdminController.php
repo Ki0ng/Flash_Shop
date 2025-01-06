@@ -2,7 +2,7 @@
 class AdminController extends Controller
 {
 
-    public function Default()
+    public function default()
     {
         $database = $this->model("Product");
         $products = $database->products();
@@ -13,7 +13,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function UserManagement()
+    public function user_anagement()
     {
         // $database = $this->model("Admin");
         // $data = $database->getAllUsers();
