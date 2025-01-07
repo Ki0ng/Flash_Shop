@@ -3,9 +3,8 @@
     class CartController extends Controller{
 
         public function __construct() {
-            
+            parent::__construct("Cart"); // Sửa tên model nếu cần
         }
-
             public function Default() {
                 
 
