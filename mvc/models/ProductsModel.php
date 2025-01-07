@@ -104,10 +104,4 @@ class ProductsModel extends Database
         }
     }
 
-    // public function add_product() {
-    //     //?
-    //     if (isset($this->conn)) {
-    //         $this->query = 3;
-    //     }
-    // }
 }

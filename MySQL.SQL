@@ -9,7 +9,7 @@ CREATE TABLE categories(
     Description TEXT NOT NULL
 ); 
 
-INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
+INSERT INTO categories (Category_Id, Category_Name, Description) VALUES
     ("SHI", "Shirt", "The Shirt with high quality will make you feel comfortable in the hot summer"),
     ("JEA", "Jean", "Whit the Jean you can express your personal style in everywhere");
 ;
@@ -25,7 +25,7 @@ CREATE TABLE products(
     Description TEXT
 );
 
-INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Decription) VALUES
+INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Description) VALUES
     (1, "SHI", "Shirt Style 1", 220000, 180000, 40, "./public/image/ao_thun/aothun1.jpg", "High Quality"),
     (2, "SHI", "Shirt Style 2", 350000, 320000, 5,  "./public/image/ao_thun/aothun2.jpg", "High Quality"),
     (3, "SHI", "Shirt Style 3", 180000, 100000, 100,"./public/image/ao_thun/aothun3.jpg", "High Quality"),
@@ -43,7 +43,7 @@ CREATE TABLE Users (
     User_Id INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(200) NOT NULL UNIQUE,
-    Phone VARCHAR(15) NOT NULL UNIQUE,
+    Phone VARCHAR(15) NOT NULL,
     Password VARCHAR(255) NOT NULL,
     Role TINYINT NOT NULL,
     Address VARCHAR (100)
@@ -155,3 +155,4 @@ VALUES
     (5, 7, 1, 320000, 320000),  -- 1 sản phẩm Polo Style 2
     (5, 9, 1, 170000, 170000),  -- 1 sản phẩm Jean Style 4
     (5, 10, 1, 599000, 599000); -- 1 sản phẩm Jean Style 5
+    

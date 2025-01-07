@@ -42,7 +42,7 @@
                     <strong style="margin-left: 1rem; font-size: 1.5rem">Cancel</strong>
                 </button>
 
-                <form action="/Flash_Shop/User/UpdateUser" method="post">
+                <form action="/Flash_Shop/User/update" method="post">
 
                     <?php
                     echo  "

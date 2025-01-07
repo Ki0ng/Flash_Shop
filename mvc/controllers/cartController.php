@@ -1,7 +1,13 @@
 <?php 
 // Tạo đối tượng model và controller
     class CartController extends Controller{
+
+        public function __construct() {
+            
+        }
+
             public function Default() {
+                
 
             $database = $this->model('Cart'); // Sửa tên model nếu cần
             if ($database) {
@@ -22,23 +28,11 @@
 
         private $cart_session;
 
-        public function __construct() {
-
-
-            $_SESSION['User_Id'] = 2;    // Giả định user_id = 1
-            $_SESSION['cart_session'] = 2;    // Giả định cart_id = 1    
-
-            $this->userId = $_SESSION["User_Id"];
-            $this->cart_session = $_SESSION["cart_session"];
-            $this->cartModel = $this->model("Cart");
-        }
         // Thêm sản phẩm vào giỏ
         public function addToCart() {
   
-            $get = $this->methodGet();
-            // $get[] = $_GET[]
             if (isset($get["product_id"]) ) {
-                $productId = $get["product_id"];
+                $productId = $Cget["product_id"];
                 $price = $get["price"];
 
                 $cart = $this->cartModel->getCartItems($productId, $this->cart_session);

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<base href="/Flash_Shop/">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header</title>
-<link rel="stylesheet" href="public/CSS/Components/Header.css">
+<head>
+    <meta charset="UTF-8">
+    <base href="/Flash_Shop/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="public/CSS/Components/Header.css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                 </ul>
 
                 <li class="nav-home-item">
-                    <form class="d-flex" action="product/search" method= "get">
+                    <form class="d-flex" action="Products/search" method= "get">
                         <input class="form-control me-2 search-input" name="search" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area"> <i class="fa fa-search" id="icon-search"></i>
                     </form>
                 </li>

@@ -1,9 +1,14 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 class UserController extends Controller
 {
+    private $type_error;
 
     //====================================> construct ()
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct("User");
     }
 
@@ -29,27 +34,32 @@ class UserController extends Controller
         }
     }
 
-    // public function UpdateUser()
-    // {
-    //     $database = $this->model("User");
+    public function update()
+    {
+        if ($this->call_model->connect_database) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         $name =     $_POST["name"];
-    //         $phone =    $_POST["phone"];
-    //         $email =     $_POST["email"];
-    //         $address =  $_POST["address"];
-    //         $password = $_POST["password"];
+                $this->call_model->user_id = $_SESSION["user_id"];
+                $this->call_model->user_name = $_POST["name"];
+                $this->call_model->password = $_POST["password"];
+                $this->call_model->email = $_POST["email"];
+                $this->call_model->phone = $_POST["phone"];
+                $this->call_model->address =  $_POST["address"];
 
+                $this->condition();
 
-    //         $_SESSION["email"] = $email;
-    //         $_SESSION["password"] = $password;
-
-    //         $password = md5($password);
-
-    //         $database->UpdateUser($name, $phone, $email, $password, $address);
-    //         $this->Default();
-    //     }
-    // }
+                if ($this->type_error) {
+                    $this->default();
+                    
+                } else {
+                    $_SESSION["password"] = $_POST["password"];
+                    $this->call_model->password = md5($this->call_model->password);
+                    $this->call_model->update();
+                    header("location: /Flash_Shop/User");
+                }
+            }
+        }
+    }
 
     public function login()
     {
@@ -57,7 +67,7 @@ class UserController extends Controller
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $this->call_model->email = $_POST["email"];
-                $this->call_model->password = ($_POST["password"]);
+                $this->call_model->password = md5($_POST["password"]);
     
                 $this->data = $this->call_model->account();
 
@@ -71,13 +81,13 @@ class UserController extends Controller
                     } else {
                         $this->view("Authentication", [
                             "Page" => "Login",
-                            "error" => "incorrect"
+                            "error" => "Your password is incorrect"
                         ]);
                     }
                 } else {
                     $this->view("Authentication", [
                         "Page" => "Login",
-                        "error" => "underfine"
+                        "error" => "underfine account"
                     ]);
                 } 
             }  else {
@@ -93,48 +103,64 @@ class UserController extends Controller
 
     }
 
-    // public function Register()
-    // {
-    //     $this->view("Authentication", [
-    //         "Page" => "Register"
-    //     ]);
+    public function register()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         $username = $_POST["name"];
-    //         $password = $_POST["password"];
-    //         $email = $_POST["email"];
-    //         $phone = $_POST["phone"];
+            $this->call_model->user_name = $_POST["name"];
+            $this->call_model->password = $_POST["password"];
+            $this->call_model->email = $_POST["email"];
+            $this->call_model->phone = $_POST["phone"];
 
-    //         if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $email)) {
-    //             echo "<script> alert ('Email khong hop le') </script>";
-    //             return;
-    //         }
+            $this->condition();
+            if (!$this->type_error) {
 
-    //         if (!preg_match('/^\d{10}$/', $phone)) {
-    //             echo "<script>alert('So dien thoai khong hop le');</script>";
-    //             return;
-    //         }
-    //         if (strlen($password) < 6) {
-    //             echo "<script>alert('Mat khau khong hop  le');</script>";
-    //             return;
-    //         }
-    //         $password = md5($password);
+                $this->call_model->password = md5( $this->call_model->password);
+                
+                $this->data = $this->call_model->account();
+                
+                if ($this->data === []) {
+                    
+                    $this->call_model->register();
+                    header("Location: /Flash_Shop/User/Login");
+                } else {
 
-    //         $database = $this->model("User");
-    //         $data = $database->Register($username, $password, $email, $phone);
-    //         if ($data) {
-    //             echo "<script>alert('Dang ky thanh cong!');</script>";
-    //             header("Location: /Flash_Shop/User/Login");
-    //             exit;
-    //         } else {
-    //             echo "<script>alert('Dang ky that bai, vui long nhap lai.');</script>";
-    //         }
-    //     }
-    // }
+                    $this->view("Authentication", [
+                        "Page" => "Register",
+                        "error" => "the account is already exist"
+                    ]);
+                }
+            } else {
+
+                $this->view("Authentication", [
+                    "Page" => "Register",
+                    "error" => $this->type_error
+                ]);
+            }
+        } else {
+            $this->view("Authentication", [
+                "Page" => "Register",
+                "error" => null
+            ]);
+        }
+    }
 
     public function Logout()
     {
         session_destroy();
         header("Location: /Flash_Shop");
     }
+
+    private function condition () {
+        if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $this->call_model->email)) {
+            $this->type_error = "the email is not valid";
+        } else if (!preg_match('/^\d{10}$/', $this->call_model->phone)) {
+            $this->type_error = "the phone number is not valid";
+        } else if (strlen($this->call_model->password) < 6) {
+            $this->type_error = "the password too short must longer than 6 characters";
+        } else {
+            $this->type_error = null;
+        }
+    }
 }
+
