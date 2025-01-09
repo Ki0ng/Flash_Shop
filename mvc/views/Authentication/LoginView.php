@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-3">
         <h2>Login</h2>
-        <form action="User" method="POST">
+        <form action="User/login" method="POST">
             <div class="mb3 mt-3">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>

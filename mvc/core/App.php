@@ -2,10 +2,11 @@
 class App
 {
     protected $controller = "Home";
-    protected $action = "Default";
+    protected $action = "default";
     protected $params = ["null"];
     // request controller
     public function __construct() {
+
         if (isset($_GET["url"])) {
             
             $arr = $this->UrlProccess();
@@ -14,7 +15,7 @@ class App
                 $this->controller = $arr[0];
                 unset($arr[0]);
             } else {
-                $this->ERROR("Controller = ???", $arr);
+                $this->error("UNDERFINE THE CONTROLLER :   $arr[0]");
             }
         }
 
@@ -23,19 +24,23 @@ class App
         //Process Action
         if (isset($arr[1])) {
             if (method_exists($this->controller . "Controller", $arr[1])) {
+                
                 $this->action = $arr[1];
                 unset($arr[1]);
+
+                $this->params = $arr ? $arr : ["null"];
             } else {
-      
-                $this->ERROR("Action = ???", $arr);
+
+                $this->error("UNDERFINE THE ACTION :   $arr[1]");
                 require_once "./mvc/controllers/" . $this->controller . "Controller.php";
             }
-            $this->params = $arr ? $arr : ["null"];
+            
         }
 
         $this->controller = new ($this->controller . "Controller");
         
         call_user_func_array([$this->controller, $this->action], $this->params);
+
     }
 
     //process URL from .htaccess
@@ -47,10 +52,10 @@ class App
         }
     }
 
-    function ERROR ($type, $arr) {
+    function error ($data) {
         $this->controller = "Home";
-        $this->action = "Error";
-        $this->params = ["NOT FOUND PAGE -> $type"];
+        $this->action = "error";
+        $this->params = [$data];
     }
 
 

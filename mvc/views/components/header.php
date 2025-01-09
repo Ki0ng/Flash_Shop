@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<base href="/Flash_Shop/">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header</title>
-<link rel="stylesheet" href="public/CSS/Components/Header.css">
+<head>
+    <meta charset="UTF-8">
+    <base href="/Flash_Shop/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="public/CSS/Components/Header.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+
         <div class="container-lg nav-home">
             <a class="navbar-logo" href="Home">
                 <img src="./public/image/logo_shop.png" alt="logo" id="logo">
@@ -28,7 +30,7 @@
                         <a class="nav-link active" aria-current="page" href="Home">Home</a>
                     </li>
                     <li class="nav-home-item ">
-                        <a class="nav-link" href="Product">Products</a>
+                        <a class="nav-link" href="Products">Products</a>
                     </li>
                     <li class="nav-home-item">
                         <a class="nav-link about-us" href="User/AboutUs">About Us</a>
@@ -36,19 +38,19 @@
                 </ul>
 
                 <li class="nav-home-item">
-                    <form class="d-flex" action="product/search" method= "get">
+                    <form class="d-flex" action="Products/search" method= "get">
                         <input class="form-control me-2 search-input" name="search" type="search" placeholder="Enter Item Name" aria-label="Search" id="search-area"> <i class="fa fa-search" id="icon-search"></i>
                     </form>
                 </li>
 
                 <li class="nav-home-item" style="color: black">
-                    <a class="nav-link cart" href="Cart">
-                        <i class="fa fa-cart-arrow-down fa-2x"></i>
+                    <a class="nav-link cart fa fa-cart-arrow-down" href="Cart">
+
                     </a>
                 </li>
+
                 <li class="nav-home-item">
-                    <a class="nav-link account"  href = "User">
-                        <i class="fa fa-user-circle-o fa-2x" style="margin: 0px;"></i>
+                    <a class="nav-link account fa fa-user-circle-o"  href = "User">
                     </a>
                 </li>
             </div>
