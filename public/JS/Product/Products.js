@@ -29,7 +29,7 @@ function addElement(list) {
                                 <span style="color: #FF0000;">${product[4]} VNĐ</span>
                                 <span style="text-decoration: line-through;">${product[3]} VNĐ</span>
                             </p>
-                            <a href='Product/Detail/${product[0]}' class='btn btn-primary'>View Details</a>
+                            <a href='Product/Detail/${  [0]}' class='btn btn-primary'>View Details</a>
                         </div>
                     </div>
                 </div>
