@@ -18,35 +18,35 @@
             if(isset($this->conn)) {
                 $this->sql = " SELECT 
 
-                CartItem.Cart_Id,
-                CartItem.Product_Id,
-                CartItem.Quantity,
-                CartItem.Price,
+                CartItem.Cart_Id AS cart_id,
+                CartItem.Product_Id AS product_id,
+                CartItem.Quantity AS quantity,
+                CartItem.Price AS price,
 
-                Cart.User_Id,
-                Cart.Cart_Id,
-                Cart.Total_Price,
-                Cart.Total_Quantity,
+                Cart.User_Id AS user_id,
+                Cart.Cart_Id AS cart_id,
+                Cart.Total_Price AS total_price,
+                Cart.Total_Quantity AS total_quantity,
 
-                products.Product_Name,
-                products.Product_Id,
-                products.Category_Id,
-                products.Old_Price, 
-                products.New_Price,
-                products.Stock,
-                products.Image_URL
+                products.Product_Name AS product_name,
+                products.Product_Id AS product_id,
+                products.Category_Id AS category_id,
+                products.Old_Price AS old_price, 
+                products.New_Price AS new_price,
+                products.Stock AS stock,
+                products.Image_URL AS image_url,
 
-                categories.Category_Id,
+                categories.Category_Id AS category_id
 
                 FROM Cart
                 -- JOIN products ON Cart.Product_Id = products.Product_Id
                 JOIN CartItem ON Cart.Cart_Id = CartItem.Cart_Id
                 JOIN products ON CartItem.Product_Id = products.Product_Id
                 JOIN categories ON products.Category_Id = categories.Category_Id
-                WHERE Cart.Cart_Id = ? AND User_Id = ?";
+                WHERE Cart.Cart_Id = ?";
 
                 $this->prepare();
-                $this->stmt->bind_param("ii", $this->cart_id, $this->user_id);
+                $this->stmt->bind_param("i", $this->cart_id);
                 $this->execute();
 
                 $this->fetch_assoc();
@@ -58,17 +58,34 @@
             // viết câu lệnh truy vấn tất cả các product có trong cart-Item
         }
 
+    //====================================> cart_id_pendding () Lấy cart_id của giỏ hàng đang chờ xử lý
+        public function cart_id_pendding () {
+            if(isset($this->conn)) {
+                $this->sql = "SELECT Cart_Id AS cart_id FROM Cart WHERE User_Id = ? AND Status = 'pending'";
+
+                $this->prepare();
+                $this->stmt->bind_param("i", $this->user_id);
+                $this->execute();
+
+                $this->fetch_assoc();
+
+                return $this->data;
+            } else {
+                return false;
+            }
+        }
+
     //====================================> add_new_cart () Thêm giỏ hàng mới
         public function add_new_cart () {
             if(isset($this->conn)) {
-                $this->sql = "INSERT INTO cart (User_Id) VALUES (?)";
+                $this->sql = "INSERT INTO cart (User_Id, Status) VALUES (?, 'pending')";
 
                 $this->prepare();
                 $this->stmt->bind_param("i", $this->user_id);
                 $this->execute();
 
                 if ($this->stmt->insert_id) {
-                    return true;
+                    return $this->stmt->insert_id;
                 } else {
                     return false;
                 }
@@ -117,24 +134,6 @@
             }
         }
     
-    //====================================> add_cart_item () Thêm sản phẩm vào giỏ hàng
-        public function cart_items() {
-            
-            if (isset($this->conn)) {
-                $this->sql = "SELECT * FROM CartItem WHERE Cart_Id = ?";
-
-                $this->prepare();
-                $this->stmt->bind_param("i", $this->cart_id);
-                $this->execute();
-
-                $this->fetch_assoc();
-
-                return $this->data;
-            } else {
-                return false;
-            }
-        }
-
     //====================================> add_cart_item () Thêm sản phẩm vào giỏ hàng
         public function add_cart_item () {
         

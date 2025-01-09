@@ -139,5 +139,30 @@ class UserModel extends Database
             $this->execute();
         }
 
-    }   
+    }
+
+    //====================================> users () lấy thông tin tất cả user (admin)
+    public function users () {
+        if  (isset($this->conn)) {
+
+            $this->sql = 
+            " SELECT User_Id AS user_id,
+            Name AS user_name,
+            Email AS email,
+            Phone AS phone,
+            Password AS password,
+            Role As role,
+            Address AS address
+            FROM Users";
+
+            $this->prepare();
+            $this->execute();
+            $this->fetch_assoc();
+
+            return $this->data;
+
+        } else {
+            return false;
+        }
+    }
 }

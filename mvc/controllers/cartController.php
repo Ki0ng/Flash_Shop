@@ -2,69 +2,114 @@
 // Tạo đối tượng model và controller
     class CartController extends Controller{
 
+    //====================================> construct ()
         public function __construct() {
-            parent::__construct("Cart"); // Sửa tên model nếu cần
+            parent::__construct("Cart");
         }
-            public function Default() {
+    //====================================> default ()
+        public function default() {
+
+            $this->add_new_cart();
+
+            $this->call_model->cart_id = $_SESSION["cart_id"];
+
+            $this->data = $this->call_model->cart();
+
+            $this->view("User", [
+                "Page" => "User/Cart",
+                "data" => $this->data
+            ]);
+        }
+    //====================================> add_new_cart () Thêm giỏ hàng mới nếu chưa có và lấy cart_id
+        protected function add_new_cart() {
+            if (isset($_SESSION["user_id"])) {
+
+                $this->call_model->user_id = $_SESSION["user_id"];
+                $this->call_model->status = "pending";
                 
+                if($this->call_model->connect_database) {
+                    if($this->call_model->cart_id_pendding()) {
 
-            $database = $this->model('Cart'); // Sửa tên model nếu cần
-            if ($database) {
-                $data = $database->CartItem($this->cart_session, $this->userId); // Giả sử dữ liệu được lấy từ phương thức CartItem()
-                // $data = $database->get_All();
-                    // Truyền đúng biến vào view
-                    $this->view('cart', [
-                        'Page' => "views/cart",
-                        'home_data' => $data  // Đảm bảo truyền đúng dữ liệu
-                    ]);
+                        $_SESSION["cart_id"] = $this->call_model->cart_id_pendding()["cart_id"];
+                    }   else
+                        $_SESSION["cart_id"] = $this->call_model->add_new_cart();
+                } else {
+                    $this->error("CAN NOT CONNECT TO DATABASE");
+                }
+            } else {
+                header("location: /Flash_shop/User/login");
             }
-
         }
 
-        private $cartModel; // undefine
-        
-        private $userId;
+    //====================================> add_to_cart () Thêm sản phẩm vào giỏ
+        public function add_to_cart() {
 
-        private $cart_session;
+            if (isset($this->call_get["product_id"])) {
 
-        // Thêm sản phẩm vào giỏ
-        public function addToCart() {
-  
-            if (isset($get["product_id"]) ) {
-                $productId = $Cget["product_id"];
-                $price = $get["price"];
+                $this->call_model->cart_id = $_SESSION["cart_id"];
+                $this->call_model->product_id = $this->call_get["product_id"];
+                $this->call_model->price = $this->call_get["price"];
 
-                $cart = $this->cartModel->getCartItems($productId, $this->cart_session);
+                if($this->call_model->connect_database) {
 
-                if (!$cart) {
-                    // Tạo giỏ hàng mới nếu chưa có
-                    $this->cartModel->addProductToCart($this->cart_session, $productId, $price);
+                    if($this->call_model->cart_item_exit()) {
+
+                        $this->call_model->update_cart_item();
+                    } else {
+
+                        $this->call_model->add_cart_item();
+                    }
                 } else {
-                    $this->updateCartItem();
+
+                    $this->error("CAN NOT CONNECT TO DATABASE");
                 }
+
                 header("location: /Flash_shop/Cart");
             }
         }
-    
-        // Cập nhật số lượng sản phẩm trong giỏ -- done --
-        public function updateCartItem() {
-            $get = $this->methodGet();
-            $productId = isset($get["product_id"]) ? $get["product_id"] : -1;
-            $value = isset($get["value"]) ? $get["value"] : 0;
-            
-            $this->cartModel->updateCartItem($productId, $this->cart_session, $value);
-            header("location: /Flash_shop/Cart");
+    //====================================> update_cart_item () Cập nhật số lượng sản phẩm trong giỏ
+        public function update_cart_item() {
+            if (isset($this->call_get["product_id"]) && isset($this->call_get["value"])) {
+
+                $this->call_model->product_id = $this->call_get["product_id"];
+                $this->call_model->value = $this->call_get["value"];
+                
+                if ($this->call_model->connect_database) {
+
+                    $this->call_model->update_cart_item();
+
+                    header("location: /Flash_shop/Cart");
+                } else {
+
+                    $this->error("CAN NOT CONNECT TO DATABASE");
+                }
+                
+                header("location: /Flash_shop/Cart");
+            } else {
+
+                $this->error("NOT ENOUGHT CONDITION TO 'UPDATE'");
+            }
         }
     
-        // Xóa sản phẩm khỏi giỏ hàng  -- done --
-        public function removeFromCart() {
-            $get = $this->methodGet();
-            if (isset($get["product_id"])) {    
-                $product_id = $get["product_id"];
-                $a = $this->cartModel->removeProductFromCart($product_id, $this->cart_session);
-                header("location: /Flash_shop/Cart");    
-            
+    //====================================> remove_cart_item () // Xóa sản phẩm khỏi giỏ hàng
+        public function remove_cart_item () {
+            if (isset($this->call_get["product_id"])) {
+
+                $this->call_model->product_id = $this->call_get["product_id"];
+                $this->call_model->cart_id = $_SESSION["cart_id"];
+
+                if ($this->call_model->connect_database) {
+
+                    $this->call_model->remove_cart_item();
+
+                    header("location: /Flash_shop/Cart");
+                } else {
+
+                    $this->error("CAN NOT CONNECT TO DATABASE");
+                }
+            } else {
+
+                $this->error("NOT ENOUGHT CONDITION TO 'REMOVE'");
             }
         }
     }
-?>

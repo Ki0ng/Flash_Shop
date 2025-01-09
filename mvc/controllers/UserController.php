@@ -34,6 +34,7 @@ class UserController extends Controller
         }
     }
 
+    //====================================> update profile ()
     public function update()
     {
         if ($this->call_model->connect_database) {
@@ -61,6 +62,7 @@ class UserController extends Controller
         }
     }
 
+    //====================================> login ()
     public function login()
     {
         if ($this->call_model->connect_database) {
@@ -103,6 +105,7 @@ class UserController extends Controller
 
     }
 
+    //====================================> register ()
     public function register()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -145,12 +148,14 @@ class UserController extends Controller
         }
     }
 
+    //====================================> logout ()
     public function Logout()
     {
         session_destroy();
         header("Location: /Flash_Shop");
     }
 
+    //====================================> delete ()
     private function condition () {
         if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $this->call_model->email)) {
             $this->type_error = "the email is not valid";
@@ -162,5 +167,7 @@ class UserController extends Controller
             $this->type_error = null;
         }
     }
+
+
 }
 

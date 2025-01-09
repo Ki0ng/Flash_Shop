@@ -1,5 +1,5 @@
 <?php
-$products = $data["products"];
+$products = $data["data"];
 ?>
 
 <!-- <!DOCTYPE html>
@@ -37,12 +37,12 @@ $products = $data["products"];
             <?php if ($products): ?>
                 <?php foreach ($products as $product): ?>
                     <tr>
-                        <td><?= $product[0] ?></td> 
-                        <td><img src="<?= $product[6] ?>" alt="Product Image"></td> 
-                        <td><?= $product[2] ?></td> 
-                        <td><?= $product[1] ?></td>
-                        <td><?= number_format($product[4]) ?> VND</td> 
-                        <td><?= $product[5] ?></td>
+                        <td><?= $product["product_id"] ?></td> 
+                        <td><img src="<?= $product["image_url"] ?>" alt="Product Image"></td> 
+                        <td><?= $product["product_name"] ?></td> 
+                        <td><?= $product["category_id"] ?></td>
+                        <td><?= number_format($product["new_price"]) ?> VND</td> 
+                        <td><?= $product["stock"] ?></td>
                         <td>
                             <button class="btn btn-danger delete" type="button" data-id="<?= $product[0] ?>">
                                 <i>Delete</i>
@@ -155,15 +155,15 @@ $products = $data["products"];
                 <?php if ($products): ?>
                     <?php foreach ($products as $product): ?>
                         <tr>
-                            <td><?= $product[0] ?></td>
-                            <td><img src="<?= $product[6] ?>" alt="Product Image" style="width: 50px; height: 50px;"></td>
-                            <td><?= $product[2] ?></td>
-                            <td><?= $product[1] ?></td>
-                            <td><?= number_format($product[4]) ?> VND</td>
-                            <td><?= $product[5] ?></td>
+                            <td><?= $product["product_id"] ?></td>
+                            <td><img src="<?= $product["image_url"] ?>" alt="Product Image" style="width: 50px; height: 50px;"></td>
+                            <td><?= $product["product_name"] ?></td>
+                            <td><?= $product["category_id"] ?></td>
+                            <td><?= number_format($product["new_price"]) ?> VND</td>
+                            <td><?= $product["stock"] ?></td>
                             <td>
-                                <button class="btn btn-info" onclick="editProduct(<?= $product[0] ?>)">Edit</button>
-                                <button class="btn btn-danger delete" type="button" data-id="<?= $product[0] ?>" onclick="deleteProduct(<?= $product[0] ?>)">Delete</button>
+                                <button class="btn btn-info" onclick="editProduct(<?= $product['product_id'] ?>)">Edit</button>
+                                <button class="btn btn-danger delete" type="button" data-id="<?= $product["product_id"] ?>" onclick="deleteProduct(<?= $product[0] ?>)">Delete</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>

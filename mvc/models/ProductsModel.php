@@ -4,6 +4,11 @@ class ProductsModel extends Database
     public $product_id;
     public $product_name;
     public $category_id;
+    public $old_price;
+    public $new_price;
+    public $stock;
+    public $image_url;
+    public $description;
     public $query;
 
     //==============================> construct [ connect database]
@@ -29,7 +34,7 @@ class ProductsModel extends Database
             ON products.Category_Id = categories.Category_Id
             ";
     }
-    //==============================> show all products
+    //==============================> products() show all products
     public function products()
     { 
         if(isset($this->conn)) {
@@ -48,7 +53,7 @@ class ProductsModel extends Database
 
     }
 
-    //==============================> get all category name
+    //==============================> categories () get all category name
     public function categories () {
         if (isset($this->conn)) {
             
@@ -67,7 +72,7 @@ class ProductsModel extends Database
         }
     }
 
-    //==============================> get product by id
+    //==============================> product() get product by id
     public function product()
     {
         if (isset($this->conn)) {
@@ -86,6 +91,7 @@ class ProductsModel extends Database
         }
     }
 
+    //==============================> search() search product by name
     public function search()
     {
         if (isset($this->conn)) {
@@ -104,4 +110,57 @@ class ProductsModel extends Database
         }
     }
 
+    //==============================> add_product() add new product (admin)
+    public function add_product()
+    {
+        if (isset($this->conn)) {
+
+            $this->sql = "INSERT INTO products (Category_Id, Product_Name, Old_Price, New_Price, Stock, Image_URL, Description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            $this->prepare();
+            $this->stmt->bind_param("isiiiss", $this->category_id, $this->product_name, $this->old_price, $this->new_price, $this->stock, $this->image_url, $this->description);
+            $this->execute();
+
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    //==============================> delete_product() delete product by id (admin)
+    public function delete_product()
+    {
+        if (isset($this->conn)) {
+
+            $this->sql = "DELETE FROM products WHERE Product_Id = ?";
+
+            $this->prepare();
+            $this->stmt->bind_param("i", $this->product_id);
+            $this->execute();
+
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    //==============================> update_product() update product by id (admin)
+    public function update_product()
+    {
+        if (isset($this->conn)) {
+
+            $this->sql = "UPDATE products SET Category_Id = ?, Product_Name = ?, Old_Price = ?, New_Price = ?, Stock = ?, Image_URL = ?, Description = ? WHERE Product_Id = ?";
+
+            $this->prepare();
+            $this->stmt->bind_param("isiiissi", $this->category_id, $this->product_name, $this->old_price, $this->new_price, $this->stock, $this->image_url, $this->description, $this->product_id);
+            $this->execute();
+
+            return true;
+
+        } else {
+            return false;
+        }
+    }
 }

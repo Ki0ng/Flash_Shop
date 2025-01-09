@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+
         <div class="container-lg nav-home">
             <a class="navbar-logo" href="Home">
                 <img src="./public/image/logo_shop.png" alt="logo" id="logo">
@@ -43,13 +44,13 @@
                 </li>
 
                 <li class="nav-home-item" style="color: black">
-                    <a class="nav-link cart" href="Cart">
-                        <i class="fa fa-cart-arrow-down fa-2x"></i>
+                    <a class="nav-link cart fa fa-cart-arrow-down" href="Cart">
+
                     </a>
                 </li>
+
                 <li class="nav-home-item">
-                    <a class="nav-link account"  href = "User">
-                        <i class="fa fa-user-circle-o fa-2x" style="margin: 0px;"></i>
+                    <a class="nav-link account fa fa-user-circle-o"  href = "User">
                     </a>
                 </li>
             </div>

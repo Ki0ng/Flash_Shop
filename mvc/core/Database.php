@@ -14,12 +14,14 @@ class Database {
 
     public $connect_database;
 
+    //====================================> construct ()
     public function __construct() {
         $this->getConnection();
         $this->connect_database = isset($this->conn) ? true : false; 
 
     }
 
+    //====================================> getConnection ()
     public function getConnection()
     {
         try {
@@ -33,16 +35,19 @@ class Database {
         }
     }
 
+    //====================================> query ()
     protected function prepare () {
         $this->stmt = $this->conn->prepare($this->sql);
     }
     
+    //====================================> execute ()
     protected function execute () {
         if ($this->stmt) {
             $this->stmt->execute();
         }
     }
 
+    //====================================> fetch_assoc ()
     protected function fetch_assoc () {
         $this->data = [];
         $this->get_result = $this->stmt->get_result();
