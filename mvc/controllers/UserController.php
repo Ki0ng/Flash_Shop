@@ -24,7 +24,7 @@ class UserController extends Controller
                 $this->view("User", [
                     "Page" => "User/Profile",
                     "data" => $this->data
-                ]); 
+                ]);
             } else {
                 $this->view("Authentication", [
                     "Page" => "Login",
@@ -51,7 +51,6 @@ class UserController extends Controller
 
                 if ($this->type_error) {
                     $this->default();
-                    
                 } else {
                     $_SESSION["password"] = $_POST["password"];
                     $this->call_model->password = md5($this->call_model->password);
@@ -70,16 +69,21 @@ class UserController extends Controller
 
                 $this->call_model->email = $_POST["email"];
                 $this->call_model->password = md5($_POST["password"]);
-    
+
                 $this->data = $this->call_model->account();
 
                 if ($this->data !== []) {
                     if ($this->call_model->password === $this->data["password"]) {
-    
-                        $_SESSION["user_id"] = $this->data["user_id"];
-                        $_SESSION["password"] = $_POST["password"];
-    
-                        header("Location: /Flash_Shop/Home");
+
+                        if ($this->data["role"] === 0) {
+                            header("Location: /Flash_Shop/Admin");
+                        } else {
+
+                            $_SESSION["user_id"] = $this->data["user_id"];
+                            $_SESSION["password"] = $_POST["password"];
+
+                            header("Location: /Flash_Shop/Home");
+                        }
                     } else {
                         $this->view("Authentication", [
                             "Page" => "Login",
@@ -91,18 +95,17 @@ class UserController extends Controller
                         "Page" => "Login",
                         "error" => "underfine account"
                     ]);
-                } 
-            }  else {
+                }
+            } else {
                 $this->view("Authentication", [
                     "Page" => "Login",
                     "error" => null
                 ]);
             }
-        }  else {
+        } else {
 
             $this->error("CAN NOT CONNECT TO DATABASE");
         }
-
     }
 
     //====================================> register ()
@@ -118,12 +121,12 @@ class UserController extends Controller
             $this->condition();
             if (!$this->type_error) {
 
-                $this->call_model->password = md5( $this->call_model->password);
-                
+                $this->call_model->password = md5($this->call_model->password);
+
                 $this->data = $this->call_model->account();
-                
+
                 if ($this->data === []) {
-                    
+
                     $this->call_model->register();
                     header("Location: /Flash_Shop/User/Login");
                 } else {
@@ -156,7 +159,8 @@ class UserController extends Controller
     }
 
     //====================================> delete ()
-    private function condition () {
+    private function condition()
+    {
         if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $this->call_model->email)) {
             $this->type_error = "the email is not valid";
         } else if (!preg_match('/^\d{10}$/', $this->call_model->phone)) {
@@ -167,7 +171,4 @@ class UserController extends Controller
             $this->type_error = null;
         }
     }
-
-
 }
-

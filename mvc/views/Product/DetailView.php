@@ -15,7 +15,7 @@
 <?php 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         $quantity= $_POST['quantity'];
-        $Add_toCart = $model->add_to_cart($id, $quantity);
+        $Add_toCart = $model->add_to_cart($product_id, $quantity);
     }
 ?>
 <body>
@@ -44,12 +44,11 @@
             </div>
             <div class="button_productDetail">
                 <?php echo "
-                    <form action = 'cart/addToCart' method = 'get'>
+                    <form action = 'cart/addToCart' method = 'POST'>
                         <input name = 'product_id' value = '$product_id' class = 'd-none'>
                         <input name = 'price' value = '{$product['new_price']}' class = 'd-none'>
                         <input name = 'value' value = '1' class = 'd-none'>
                         <button type='submit'>Add To Cart</button>
-                    </a>
                     </form>"?>
             </div>
         </div>
