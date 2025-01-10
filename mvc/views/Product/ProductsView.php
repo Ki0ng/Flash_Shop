@@ -1,3 +1,22 @@
+<?php
+    $categories = $data["data"]["categories"];
+    $products = $data["data"]["products"];
+
+    foreach($products as $product) {
+        $product_id = $product["product_id"];
+        $category_name = $product["category_name"];
+        $product_name = $product["product_name"];
+        $old_price = $product["old_price"];
+        $new_price = $product["new_price"];
+        $stock = $product["stock"];
+        $image_url = $product["image_url"];
+        $description = $product["description"];
+        $category_id = $product["category_id"];
+        
+        echo "<div style= 'display: none; ' class  = 'value'>$product_id;$category_id;$old_price;$old_price;$new_price;$image_url;$image_url;$description</div>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +26,8 @@
     <base href="/Flash_Shop/">
     <link rel="stylesheet" href="./public/css/Product/Products.css">
 </head>
-<?php
-    $categories = $data["categories"];
-    $products = $data["data"];
-    foreach($products as $product) {
-        echo "<div style= 'display: none; ' class  = 'value'>$product[0];$product[1];$product[2];$product[3];$product[4];$product[5];$product[6];$product[7]</div>";
-    }
-?>
 <body>
-    <div class="container-lg menu-show"x>
+    <div class="container-lg menu-show">
 
         <label for="price">Price</label>
         <select name="Price" id="filterByPrice">
@@ -32,7 +44,7 @@
             <option value="all">All</option>
             <?php
                 foreach($categories as $category) {
-                    echo "<option value = '$category[0]'> $category[1] </option> "; 
+                    echo "<option value = '{$category["category_id"]}'> {$category["category_name"]} </option> "; 
                 }
             ?>
         </select>

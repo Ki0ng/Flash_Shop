@@ -6,10 +6,10 @@ use Flash_Shop;
 CREATE TABLE categories(
     Category_Id VARCHAR(10) PRIMARY KEY,
     Category_Name VARCHAR(100) NOT NULL,
-    Decription TEXT NOT NULL
+    Description TEXT NOT NULL
 ); 
 
-INSERT INTO categories (Category_Id, Category_Name, Decription) VALUES
+INSERT INTO categories (Category_Id, Category_Name, Description) VALUES
     ("SHI", "Shirt", "The Shirt with high quality will make you feel comfortable in the hot summer"),
     ("JEA", "Jean", "Whit the Jean you can express your personal style in everywhere");
 ;
@@ -18,14 +18,14 @@ CREATE TABLE products(
     Product_Id INT PRIMARY KEY AUTO_INCREMENT,
     Category_Id VARCHAR(10) NOT NULL REFERENCES categories(Category_Id),
     Product_Name VARCHAR(100) NOT NULL,
-    Old_price NUMERIC(12, 2) NOT NULL,
+    Old_price NUMERIC(12, 2) NULL,
     New_Price NUMERIC(12, 2) NOT NULL,
     Stock INT NOT NULL,
     Image_URL VARCHAR(100),
-    Decription TEXT
+    Description TEXT
 );
 
-INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Decription) VALUES
+INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Description) VALUES
     (1, "SHI", "Shirt Style 1", 220000, 180000, 40, "./public/image/ao_thun/aothun1.jpg", "High Quality"),
     (2, "SHI", "Shirt Style 2", 350000, 320000, 5,  "./public/image/ao_thun/aothun2.jpg", "High Quality"),
     (3, "SHI", "Shirt Style 3", 180000, 100000, 100,"./public/image/ao_thun/aothun3.jpg", "High Quality"),
@@ -43,16 +43,16 @@ CREATE TABLE Users (
     User_Id INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(200) NOT NULL UNIQUE,
-    Phone VARCHAR(15) NOT NULL UNIQUE,
+    Phone VARCHAR(15) NOT NULL,
     Password VARCHAR(255) NOT NULL,
     Role TINYINT NOT NULL,
     Address VARCHAR (100)
 );
 INSERT INTO Users (Name, Email, Phone, Password, Role, Address) VALUES 
-    ("Binh", "binhdo@gmail.com", "0234578254", "binh123@", 1, "KONTUM"),
+    ("Admin", "admin@gmail.com", "0234578254", "admin123@", 0, "KONTUM"),
     ("Toan", "toanle@gmail.com", "043728391", "toan456@", 1,''),
     ("Thuy", "thuy@gmail.com", "0362376246", "thuy789@", 1, ''),
-    ("Sen", "sen@gmail.com", "0325784392", "sen987@", 1, ''),
+    ("Binh", "binh@gmail.com", "0325784392", "binh987@", 1, ''),
     ("Thanh", "thanh@gmail.com", "0453856382", "thanh765@", 1, '');
 
 -- Bảng order
@@ -155,3 +155,4 @@ VALUES
     (5, 7, 1, 320000, 320000),  -- 1 sản phẩm Polo Style 2
     (5, 9, 1, 170000, 170000),  -- 1 sản phẩm Jean Style 4
     (5, 10, 1, 599000, 599000); -- 1 sản phẩm Jean Style 5
+    
