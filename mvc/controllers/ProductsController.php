@@ -74,10 +74,10 @@ class ProductsController extends Controller
     //====================================> add_product () thêm sản phẩm mới (admin)    
     public function add_product()
     {
+        echo "add_product";
 
         if (
             isset($_POST["product_name"]) &&
-            isset($_POST["old_price"]) &&
             isset($_POST["new_price"]) &&
             isset($_POST["stock"]) &&
             isset($_POST["category_id"]) &&
