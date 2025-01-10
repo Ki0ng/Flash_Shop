@@ -9,28 +9,28 @@
 <!-- $ct = new Cart(); -->
 <?php
     // print_r($data["proDetail_data"] );
-    $product = $data["proDetail_data"];
-    $product_id = $product["Product_Id"];
+    $product = $data["data"];
+    $product_id = $product["product_id"];
 ?>
 <?php 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         $quantity= $_POST['quantity'];
-        $Add_toCart = $model->add_to_cart($id, $quantity);
+        $Add_toCart = $model->add_to_cart($product_id, $quantity);
     }
 ?>
 <body>
     <div class="container_proDetail">
         <div class="product_image">
-            <img src="<?php echo $product["Image_URL"]?>" alt="">
+            <img src="<?php echo $product["image_url"]?>" alt="">
         </div>
         <div class="product_details">
-            <h2><?php echo $product["Product_Name"]?></h2>
+            <h2><?php echo $product["product_name"]?></h2>
             <p>
-                <?php echo $product["Decription"]?>
+                <?php echo $product["description"]?>
             </p>
             <div class="proDetail_price">
-                <span class="new_price"><?php echo $product["New_Price"] ?> </span>
-                <span class="old_price"><?php echo $product["Old_price"] ?></span>
+                <span class="new_price"><?php echo $product["new_price"] ?> </span>
+                <span class="old_price"><?php echo $product["old_price"] ?></span>
                 <div class="size_selection">
                     <label for="sizeSelect"></label>
                     <select id="sizeSelect" class="size_btnDetail">
@@ -44,12 +44,11 @@
             </div>
             <div class="button_productDetail">
                 <?php echo "
-                    <form action = 'cart/addToCart' method = 'get'>
+                    <form action = 'cart/addToCart' method = 'POST'>
                         <input name = 'product_id' value = '$product_id' class = 'd-none'>
-                        <input name = 'price' value = '{$product['New_Price']}' class = 'd-none'>
+                        <input name = 'price' value = '{$product['new_price']}' class = 'd-none'>
                         <input name = 'value' value = '1' class = 'd-none'>
                         <button type='submit'>Add To Cart</button>
-                    </a>
                     </form>"?>
             </div>
         </div>

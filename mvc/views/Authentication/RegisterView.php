@@ -1,3 +1,9 @@
+<?php
+    if ($data["error"]) {
+        echo "<script>alert('WARNING  :(  {$data["error"]} Please Try Again ^-^')</script>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +24,8 @@
             </div>
 
             <div class="mb3 mt-3">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                <label for="email">G-Email</label>
+                <input type="email" class="form-control" id="email" placeholder="@gmail.com" name="email" required>
             </div>
 
             <div class="mb3 mt-3">
@@ -41,5 +47,4 @@
         </form>
     </div>
 </body>
-
 </html>

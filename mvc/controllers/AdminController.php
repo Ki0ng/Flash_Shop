@@ -1,55 +1,132 @@
-<?php
+    <?php
 class AdminController extends Controller
 {
 
-    public function Default()
+    //====================================> construct ()
+    public function __construct()
     {
-        $database = $this->model("Product");
-        $products = $database->products();
-
-        $this->view("Admin", [
-            "Page" => "ProductManagement",
-            "products" => $products,
-        ]);
+        parent::__construct("Products");
     }
 
-    public function UserManagement()
+    //====================================> default ()
+    public function default()
     {
-        // $database = $this->model("Admin");
-        // $data = $database->getAllUsers();
+
+        if ($this->call_model->connect_database) {
+
+
+            $this->data = $this->call_model->products();
+
+            $this->view("Admin", [
+                "Page" => "ProductManagement",
+                "data" => $this->data
+            ]);
+        } else {
+            $this->error("CAN NOT CONNECT TO DATABASE");
+        }
+    }
+
+    //====================================> add_product () thêm sản phẩm mới (admin)
+    public function add_product()
+    {
+
+
+        if (
+            isset($_POST["product_name"]) &&
+            isset($_POST["new_price"]) &&
+            isset($_POST["stock"]) &&
+            isset($_POST["category_id"]) &&
+            isset($_POST["image_url"])
+        ) {
+
+            $this->call_model->product_name = $_POST["product_name"];
+            $this->call_model->new_price = $_POST["new_price"];
+            $this->call_model->stock = $_POST["stock"];
+            $this->call_model->category_id = $_POST["category_id"];
+            $this->call_model->image_url = $_POST["image_url"];
+
+            if ($this->call_model->connect_database) {
+                $this->call_model->add_product();
+
+                header("location: /Flash_Shop/Admin");
+            } else {
+                echo "Database connection failed";
+            }
+        }
+    }
+
+    //====================================> delete_product () xóa sản phẩm (admin)
+    public function delete_product()
+    {
+        if (isset($_POST["product_id"])) {
+
+            $this->call_model->product_id = $_POST["product_id"];
+
+            if ($this->call_model->connect_database) {
+                $this->call_model->delete_product();
+            } else {
+                echo "Database connection failed";
+            }
+        }
+    }
+
+    //====================================> update_product () cập nhật sản phẩm (admin)
+    public function update_product()
+    {
+        if (
+            isset($_POST["product_id"]) &&
+            isset($_POST["product_name"]) &&
+            isset($_POST["old_price"]) &&
+            isset($_POST["new_price"]) &&
+            isset($_POST["stock"]) &&
+            isset($_POST["category_id"]) &&
+            isset($_POST["description"]) &&
+            isset($_POST["image_url"])
+        ) {
+
+            $this->call_model->product_id = $_POST["product_id"];
+            $this->call_model->product_name = $_POST["product_name"];
+            $this->call_model->old_price = $_POST["old_price"];
+            $this->call_model->new_price = $_POST["new_price"];
+            $this->call_model->stock = $_POST["stock"];
+            $this->call_model->category_id = $_POST["category_id"];
+            $this->call_model->description = $_POST["description"];
+            $this->call_model->image_url = $_POST["image_url"];
+
+            if ($this->call_model->connect_database) {
+                $this->call_model->update_product();
+            } else {
+                echo "Database connection failed";
+            }
+        }
+    }
+
+    //====================================> user_management () quản lý người dùng (admin)
+    public function user_management()
+    {
+        
+        parent::__construct("User");
+
+        if ($this->call_model->connect_database) {
+            $this->data = $this->call_model->users();
+        } else {
+            $this->error("CAN NOT CONNECT TO DATABASE");
+            return;
+        }
 
         $this->view("Admin", [
             "Page" => "UserManagement",
-            // "data" => $data
+            "data" => $this->data
         ]);
     }
 
-    public function AddProduct()
+    //====================================> product_analysis () phân tích sản phẩm (admin)
+    public function product_analysist()
     {
-        if (isset($_POST)) {
-            $category_id = $_POST['category_id'];
-            $product_name = $_POST['product_name'];
-            $price = $_POST['price'];
-            $stock = $_POST['stock'];
-
-            // print_r($category_id);
-            // $image_url = $_POST['image_url'];
-
-            $database = $this->model("Admin");
-            $query = $database->AddProduct($category_id, $product_name, $price, $stock);
-
-            print_r($query);
-
-            // header("Location: /Flash_Shop/Admin/");
-        }
+        $this->view("Admin", [
+            "Page" => "ProductAnalysist"
+        ]);
     }
-    // public function ProductManagement()
-    // {
-    //     $productModel = $this->model('ProductModel');
-    //     $products = $productModel->products();
 
-    //     $this->view('Admin/ProductManagementView', [
-    //         'products' => $products
-    //     ]);
-    // }
+    
 }

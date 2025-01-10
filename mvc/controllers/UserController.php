@@ -1,146 +1,174 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 class UserController extends Controller
 {
-    public function Default()
-    { /*Profile */
+    private $type_error;
 
-        $database =  $this->model("User");
-        $successMessage = "";
+    //====================================> construct ()
+    public function __construct()
+    {
+        parent::__construct("User");
+    }
 
-        if (isset($_POST["email"]) && isset($_POST["password"])) {
+    //====================================> default profile ()
+    public function default()
+    {
+        if ($this->call_model->connect_database) {
+            if (isset($_SESSION["user_id"])) {
 
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            $password_encode = md5($password);
+                $this->call_model->user_id = $_SESSION["user_id"];
+                $this->data = $this->call_model->account();
 
-            if ($database->login($email, $password_encode)) {
-                $_SESSION["email"] = $email;
-                $_SESSION["password"] = $password;
-                $successMessage = "Dang nhap thanh cong!";
-            } else {
-                return $this->view("Authentication", [
-                    "Page" => "Login",
-                    "Error" => "Khong tim thay tai khoan"
+                $this->view("User", [
+                    "Page" => "User/Profile",
+                    "data" => $this->data
                 ]);
-            }
-        }
-
-        if (isset($_SESSION["email"]) && isset($_SESSION["password"])) {
-            $email = $_SESSION["email"];
-            $password = $_SESSION["password"];
-            $password_encode = md5($password);
-
-            $database = $this->model("User");
-            $account = $database->Profile($email, $password_encode);
-            $this->view("User", [
-                "Page" => "User/Profile",
-                "account" => $account,
-                "successMessage" => $successMessage,
-                "Password" => $password
-            ]);
-        } else {
-            $this->view("Authentication", [
-                "Page" => "Login",
-            ]);
-        }
-    }
-
-    public function UpdateUser()
-    {
-        $database = $this->model("User");
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $name =     $_POST["name"];
-            $phone =    $_POST["phone"];
-            $email =     $_POST["email"];
-            $address =  $_POST["address"];
-            $password = $_POST["password"];
-
-
-            $_SESSION["email"] = $email;
-            $_SESSION["password"] = $password;
-
-            $password = md5($password);
-
-            $database->UpdateUser($name, $phone, $email, $password, $address);
-            $this->Default();
-        }
-    }
-
-    public function Login()
-    {
-        $this->view("Authentication", [
-            "Page" => "Login"
-        ]);
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-
-            $password = md5($password);
-            $database = $this->model("User");
-            if ($database->login($email, $password)) {
-                $_SESSION["email"] = $email;
-                $_SESSION["password"] = $password;
-
-                header("Location: /Flash_Shop/Home/Default");
-                exit;
             } else {
                 $this->view("Authentication", [
                     "Page" => "Login",
-                    "Error" => "Sai tài khoản hoặc mật khẩu"
+                    "error" => "login"
+                ]);
+            }
+        }
+    }
+
+    //====================================> update profile ()
+    public function update()
+    {
+        if ($this->call_model->connect_database) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                $this->call_model->user_id = $_SESSION["user_id"];
+                $this->call_model->user_name = $_POST["name"];
+                $this->call_model->password = $_POST["password"];
+                $this->call_model->email = $_POST["email"];
+                $this->call_model->phone = $_POST["phone"];
+                $this->call_model->address =  $_POST["address"];
+
+                $this->condition();
+
+                if ($this->type_error) {
+                    $this->default();
+                } else {
+                    $_SESSION["password"] = $_POST["password"];
+                    $this->call_model->password = md5($this->call_model->password);
+                    $this->call_model->update();
+                    header("location: /Flash_Shop/User");
+                }
+            }
+        }
+    }
+
+    //====================================> login ()
+    public function login()
+    {
+        if ($this->call_model->connect_database) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                $this->call_model->email = $_POST["email"];
+                $this->call_model->password = md5($_POST["password"]);
+
+                $this->data = $this->call_model->account();
+
+                if ($this->data !== []) {
+                    if ($this->call_model->password === $this->data["password"]) {
+
+                        if ($this->data["role"] === 0) {
+                            header("Location: /Flash_Shop/Admin");
+                        } else {
+
+                            $_SESSION["user_id"] = $this->data["user_id"];
+                            $_SESSION["password"] = $_POST["password"];
+
+                            header("Location: /Flash_Shop/Home");
+                        }
+                    } else {
+                        $this->view("Authentication", [
+                            "Page" => "Login",
+                            "error" => "Your password is incorrect"
+                        ]);
+                    }
+                } else {
+                    $this->view("Authentication", [
+                        "Page" => "Login",
+                        "error" => "underfine account"
+                    ]);
+                }
+            } else {
+                $this->view("Authentication", [
+                    "Page" => "Login",
+                    "error" => null
+                ]);
+            }
+        } else {
+
+            $this->error("CAN NOT CONNECT TO DATABASE");
+        }
+    }
+
+    //====================================> register ()
+    public function register()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            $this->call_model->user_name = $_POST["name"];
+            $this->call_model->password = $_POST["password"];
+            $this->call_model->email = $_POST["email"];
+            $this->call_model->phone = $_POST["phone"];
+
+            $this->condition();
+            if (!$this->type_error) {
+
+                $this->call_model->password = md5($this->call_model->password);
+
+                $this->data = $this->call_model->account();
+
+                if ($this->data === []) {
+
+                    $this->call_model->register();
+                    header("Location: /Flash_Shop/User/Login");
+                } else {
+
+                    $this->view("Authentication", [
+                        "Page" => "Register",
+                        "error" => "the account is already exist"
+                    ]);
+                }
+            } else {
+
+                $this->view("Authentication", [
+                    "Page" => "Register",
+                    "error" => $this->type_error
                 ]);
             }
         } else {
             $this->view("Authentication", [
-                "Page" => "Login"
+                "Page" => "Register",
+                "error" => null
             ]);
         }
     }
 
-    public function Register()
-    {
-        $this->view("Authentication", [
-            "Page" => "Register"
-        ]);
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $username = $_POST["name"];
-            $password = $_POST["password"];
-            $email = $_POST["email"];
-            $phone = $_POST["phone"];
-
-            if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $email)) {
-                echo "<script> alert ('Email khong hop le') </script>";
-                return;
-            }
-
-            if (!preg_match('/^\d{10}$/', $phone)) {
-                echo "<script>alert('So dien thoai khong hop le');</script>";
-                return;
-            }
-            if (strlen($password) < 6) {
-                echo "<script>alert('Mat khau khong hop  le');</script>";
-                return;
-            }
-            $password = md5($password);
-
-            $database = $this->model("User");
-            $data = $database->Register($username, $password, $email, $phone);
-            if ($data) {
-                echo "<script>alert('Dang ky thanh cong!');</script>";
-                header("Location: /Flash_Shop/User/Login");
-                exit;
-            } else {
-                echo "<script>alert('Dang ky that bai, vui long nhap lai.');</script>";
-            }
-        }
-    }
-
+    //====================================> logout ()
     public function Logout()
     {
         session_destroy();
-        header("Location: /Flash_Shop/User/Login");
-        exit;
+        header("Location: /Flash_Shop");
+    }
+
+    //====================================> delete ()
+    private function condition()
+    {
+        if (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $this->call_model->email)) {
+            $this->type_error = "the email is not valid";
+        } else if (!preg_match('/^\d{10}$/', $this->call_model->phone)) {
+            $this->type_error = "the phone number is not valid";
+        } else if (strlen($this->call_model->password) < 6) {
+            $this->type_error = "the password too short must longer than 6 characters";
+        } else {
+            $this->type_error = null;
+        }
     }
 }
