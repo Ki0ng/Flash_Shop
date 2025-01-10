@@ -44,7 +44,6 @@
                         <input name = 'price' value = '{$product['new_price']}' class = 'd-none'>
                         <input name = 'value' value = '1' class = 'd-none'>
                         <button type='submit'>Add To Cart</button>
-                    </a>
                     </form>"?>
             </div>
         </div>

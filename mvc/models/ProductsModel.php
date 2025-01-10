@@ -12,10 +12,11 @@ class ProductsModel extends Database
     public $query;
 
     //==============================> construct [ connect database]
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
-        $this->query = 
+        $this->query =
             "SELECT DISTINCT
             products.Product_Id AS   product_id,
             products.Category_Id AS  category_id,
@@ -36,8 +37,8 @@ class ProductsModel extends Database
     }
     //==============================> products() show all products
     public function products()
-    { 
-        if(isset($this->conn)) {
+    {
+        if (isset($this->conn)) {
 
             $this->sql = $this->query;
 
@@ -50,13 +51,13 @@ class ProductsModel extends Database
 
             return false;
         }
-
     }
 
     //==============================> categories () get all category name
-    public function categories () {
+    public function categories()
+    {
         if (isset($this->conn)) {
-            
+
             $this->sql = "SELECT 
             Category_Id AS category_id,
             Category_Name AS category_name
@@ -76,7 +77,7 @@ class ProductsModel extends Database
     public function product()
     {
         if (isset($this->conn)) {
-            
+
             $this->sql = $this->query . " WHERE Product_Id = ?";
 
             $this->prepare();
@@ -85,7 +86,6 @@ class ProductsModel extends Database
             $this->fetch_assoc();
 
             return $this->data;
-
         } else {
             return false;
         }
@@ -104,7 +104,6 @@ class ProductsModel extends Database
             $this->fetch_assoc();
 
             return $this->data;
- 
         } else {
             return false;
         }
@@ -115,14 +114,13 @@ class ProductsModel extends Database
     {
         if (isset($this->conn)) {
 
-            $this->sql = "INSERT INTO products (Category_Id, Product_Name, Old_Price, New_Price, Stock, Image_URL, Description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $this->sql = "INSERT INTO products (Category_Id, Product_Name, New_Price, Stock, Image_URL) VALUES ( ?, ?, ?, ?, ?)";
 
             $this->prepare();
-            $this->stmt->bind_param("isiiiss", $this->category_id, $this->product_name, $this->old_price, $this->new_price, $this->stock, $this->image_url, $this->description);
+            $this->stmt->bind_param("ssiis", $this->category_id, $this->product_name, $this->new_price, $this->stock, $this->image_url);
             $this->execute();
 
             return true;
-
         } else {
             return false;
         }
@@ -140,7 +138,6 @@ class ProductsModel extends Database
             $this->execute();
 
             return true;
-
         } else {
             return false;
         }
@@ -158,7 +155,6 @@ class ProductsModel extends Database
             $this->execute();
 
             return true;
-
         } else {
             return false;
         }

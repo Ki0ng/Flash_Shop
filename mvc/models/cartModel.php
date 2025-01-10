@@ -117,14 +117,12 @@
     //====================================> cart_item_exits () Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         public function cart_item_exits () {
             if(isset($this->conn)) {
-                $this->sql = "SELECT * FROM Cart 
+                $this->sql = "SELECT * FROM CartItem
                 
-                JOIN CartItem ON CartItem.Cart_Id = Cart.Cart_Id
-                
-                WHERE User_Id = ? AND Cart.Cart_Id = ? AND Product_Id = ?";
+                WHERE Cart_Id = ? AND Product_Id = ?";
 
                 $this->prepare();
-                $this->stmt->bind_param("iii", $this->user_id, $this->cart_id, $this->product_id);
+                $this->stmt->bind_param("ii", $this->cart_id, $this->product_id);
                 $this->execute();
 
                 $this->fetch_assoc();
@@ -139,11 +137,11 @@
         public function add_cart_item () {
         
             if(isset($this->conn)) {
-                $this->sql = "INSERT INTO CartItem (Cart_Id, Product_Id, Quantity, Price)
-                VALUES (?, ?, 1, ?)";
+                $this->sql = "INSERT INTO CartItem (Cart_Id, Product_Id, Quantity)
+                VALUES (?, ?, 1)";
                 
                 $this->prepare();
-                $this->stmt->bind_param("iii", $this->cart_id, $this->product_id, $this->price);
+                $this->stmt->bind_param("ii", $this->cart_id, $this->product_id);
                 $this->execute();
             
                 if ($this->stmt->insert_id) {

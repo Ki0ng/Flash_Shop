@@ -1,6 +1,7 @@
 
 <?php
-class Database {
+class Database
+{
     private $host = "localhost";
     private $db_name = "Flash_Shop";
     private $username = "root";
@@ -9,16 +10,16 @@ class Database {
 
     protected $sql;
     protected $stmt;
-    protected $get_result;    
+    protected $get_result;
     protected $data;
 
     public $connect_database;
 
     //====================================> construct ()
-    public function __construct() {
+    public function __construct()
+    {
         $this->getConnection();
-        $this->connect_database = isset($this->conn) ? true : false; 
-
+        $this->connect_database = isset($this->conn) ? true : false;
     }
 
     //====================================> getConnection ()
@@ -28,33 +29,37 @@ class Database {
 
             $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db_name);
             return $this->conn;
-
         } catch (Exception $e) {
-            
+
             return false;
         }
     }
 
     //====================================> query ()
-    protected function prepare () {
+    protected function prepare()
+    {
         $this->stmt = $this->conn->prepare($this->sql);
     }
-    
+
     //====================================> execute ()
-    protected function execute () {
+    protected function execute()
+    {
         if ($this->stmt) {
             $this->stmt->execute();
         }
     }
 
     //====================================> fetch_assoc ()
-    protected function fetch_assoc () {
+    protected function fetch_assoc()
+    {
         $this->data = [];
         $this->get_result = $this->stmt->get_result();
+
             while ($row = $this->get_result->fetch_assoc()) {
                 $this->data[] = $row;
             }
     }
+    
 }
 
     

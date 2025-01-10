@@ -1,8 +1,3 @@
-<?php
-  print_r($data["data"]);
-  ?>
-
-
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -26,14 +21,10 @@
         </thead>
         <tbody>
           
-        <?php 
-
-        $products = $data["data"];
-
-
-
-        if (!empty($products)): ?>
-          <?php foreach ($products as $product): ?>
+        <?php
+        $data = $data["data"];
+        if (($data)): ?>
+          <?php foreach ($data as $product): ?>
           <tr>
             <td>
  ``           <?php echo "<img src='".$product["image_url"]. "' alt='Product Image'" ?>
@@ -66,11 +57,11 @@
         </tbody>
       </table>
       <div class="total-price">
-        Total price: <span id="total-price"><?php echo $product["total_price"] ?></span>
+        Total price: <span id="total-price"><?php echo $product["total_price"]?></span>
       </div>
     </div>
     </div>
-    <script src="public/JS/Cart.js"></script>
+    <script src="public/JS/User/Cart.js"></script>
           
     <script>
     </script>

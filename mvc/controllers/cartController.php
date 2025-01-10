@@ -5,6 +5,8 @@
     //====================================> construct ()
         public function __construct() {
             parent::__construct("Cart");
+
+            
         }
     //====================================> default ()
         public function default() {
@@ -13,12 +15,8 @@
 
             $this->call_model->cart_id = $_SESSION["cart_id"];
 
-            $this->call_model->product_id = 2;
-
-
             $this->data = $this->call_model->cart();
 
-            $this->data["check"] = $this->call_model->cart_item_exits();
 
             $this->view("User", [
                 "Page" => "User/Cart",
@@ -56,17 +54,17 @@
                 $this->call_model->cart_id = $_SESSION["cart_id"];
                 $this->call_model->product_id = $this->call_get["product_id"];
                 $this->call_model->price = $this->call_get["price"];
+                $this->call_model->value = $this->call_get["value"];
 
                 if($this->call_model->connect_database) {
 
-                    // if($this->call_model->cart_item_exits()) {
-                    //     $this->call_model->value = 1;
+                    if($this->call_model->cart_item_exits()) {
 
-                    //     $this->call_model->update_cart_item();
-                    // } else {
+                        $this->call_model->update_cart_item();
+                    } else {
 
-                    //     $this->call_model->add_cart_item();
-                    // }
+                        $this->call_model->add_cart_item();
+                    }
 
                     print_r($this->call_model->cart_item_exits());
                 } else {
@@ -81,6 +79,7 @@
         public function update_cart_item() {
             if (isset($this->call_get["product_id"]) && isset($this->call_get["value"])) {
 
+                $this->call_model->cart_id = $_SESSION["cart_id"];
                 $this->call_model->product_id = $this->call_get["product_id"];
                 $this->call_model->value = $this->call_get["value"];
                 
