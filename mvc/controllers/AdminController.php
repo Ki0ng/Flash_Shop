@@ -107,8 +107,16 @@ class AdminController extends Controller {
 
     //====================================> product_analysis () phân tích sản phẩm (admin)
     public function product_analysist () {
+
+        if($this->call_model->connect_database) {
+            $this->data = $this->call_model->product_analysist();
+        } else {
+            $this->error("CAN NOT CONNECT TO DATABASE");
+        }
+
         $this->view("Admin", [
-            "Page" => "ProductAnalysist"
+            "Page" => "ProductAnalysist",
+            "data" => $this->data
         ]); 
     }
 }

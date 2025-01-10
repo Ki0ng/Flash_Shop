@@ -163,4 +163,30 @@ class ProductsModel extends Database
             return false;
         }
     }
+
+    //==============================> product_analysist() get data for analysist (admin)    
+    public function product_analysist () {
+        if (isset($this->conn)) {
+
+            $this->sql = "SELECT 
+                Category_Name AS category_name,
+                SUM(Stock) AS stock,
+                COUNT(Product_Id) AS product_count
+
+                FROM categories
+
+                JOIN products
+                ON categories.Category_Id = products.Category_Id
+                GROUP BY Category_Name
+            ";
+
+            $this->prepare();
+            $this->execute();
+            $this->fetch_assoc();
+
+            return $this->data;
+        } else {
+            return false;
+        }
+    }
 }

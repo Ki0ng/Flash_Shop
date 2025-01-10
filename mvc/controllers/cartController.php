@@ -13,7 +13,12 @@
 
             $this->call_model->cart_id = $_SESSION["cart_id"];
 
+            $this->call_model->product_id = 2;
+
+
             $this->data = $this->call_model->cart();
+
+            $this->data["check"] = $this->call_model->cart_item_exits();
 
             $this->view("User", [
                 "Page" => "User/Cart",
@@ -25,13 +30,15 @@
             if (isset($_SESSION["user_id"])) {
 
                 $this->call_model->user_id = $_SESSION["user_id"];
-                $this->call_model->status = "pending";
                 
                 if($this->call_model->connect_database) {
+
                     if($this->call_model->cart_id_pendding()) {
 
-                        $_SESSION["cart_id"] = $this->call_model->cart_id_pendding()["cart_id"];
+                        $_SESSION["cart_id"] = $this->call_model->cart_id_pendding()[0]["cart_id"];
+
                     }   else
+
                         $_SESSION["cart_id"] = $this->call_model->add_new_cart();
                 } else {
                     $this->error("CAN NOT CONNECT TO DATABASE");
@@ -52,13 +59,16 @@
 
                 if($this->call_model->connect_database) {
 
-                    if($this->call_model->cart_item_exit()) {
+                    // if($this->call_model->cart_item_exits()) {
+                    //     $this->call_model->value = 1;
 
-                        $this->call_model->update_cart_item();
-                    } else {
+                    //     $this->call_model->update_cart_item();
+                    // } else {
 
-                        $this->call_model->add_cart_item();
-                    }
+                    //     $this->call_model->add_cart_item();
+                    // }
+
+                    print_r($this->call_model->cart_item_exits());
                 } else {
 
                     $this->error("CAN NOT CONNECT TO DATABASE");

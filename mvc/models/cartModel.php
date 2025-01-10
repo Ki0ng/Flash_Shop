@@ -4,6 +4,7 @@
         public $cart_id;
         public $user_id;
         public $product_id;
+        public $price;
         public $status;
         public $value;
         
@@ -116,19 +117,19 @@
     //====================================> cart_item_exits () Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         public function cart_item_exits () {
             if(isset($this->conn)) {
-                $this->sql = "SELECT * FROM Cart WHERE User_Id = ? AND Cart_Id = ? ";
+                $this->sql = "SELECT * FROM Cart 
+                
+                JOIN CartItem ON CartItem.Cart_Id = Cart.Cart_Id
+                
+                WHERE User_Id = ? AND Cart.Cart_Id = ? AND Product_Id = ?";
 
                 $this->prepare();
-                $this->stmt->bind_param("ii", $this->user_id, $this->cart_id);
+                $this->stmt->bind_param("iii", $this->user_id, $this->cart_id, $this->product_id);
                 $this->execute();
 
                 $this->fetch_assoc();
 
-                if ($this->stmt->num_rows()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return $this->data;
             } else {
                 return false;
             }

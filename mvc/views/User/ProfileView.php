@@ -1,6 +1,6 @@
 <?php
 
-    $account = $data["data"];
+    $account = $data["data"][0];
 
     $email = $account['email'];
     $name = $account['user_name'];
