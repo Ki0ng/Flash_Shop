@@ -1,3 +1,8 @@
+<?php
+    $product = $data["data"][0];
+    $product_id = $product["product_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +11,8 @@
     <title>Detail</title>
     <link rel="stylesheet" href="public/CSS/Product/Detail.css">
 </head>
-<!-- $ct = new Cart(); -->
-<?php
-    // print_r($data["proDetail_data"] );
-    $product = $data["data"];
-    $product_id = $product["product_id"];
-?>
-<?php 
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        $quantity= $_POST['quantity'];
-        $Add_toCart = $model->add_to_cart($product_id, $quantity);
-    }
-?>
+
+
 <body>
     <div class="container_proDetail">
         <div class="product_image">
@@ -44,7 +39,7 @@
             </div>
             <div class="button_productDetail">
                 <?php echo "
-                    <form action = 'cart/addToCart' method = 'POST'>
+                    <form action = 'cart/add_to_cart' method = 'get'>
                         <input name = 'product_id' value = '$product_id' class = 'd-none'>
                         <input name = 'price' value = '{$product['new_price']}' class = 'd-none'>
                         <input name = 'value' value = '1' class = 'd-none'>

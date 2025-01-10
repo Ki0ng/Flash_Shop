@@ -140,6 +140,28 @@ CREATE TABLE CartItem (
     Total_Price int
 );
 
+CREATE TRIGGER `cartitem_update_price_before_insert` BEFORE INSERT ON `cartitem`
+ FOR EACH ROW BEGIN
+    DECLARE prod_price DECIMAL(10, 2);
+    -- Lấy giá của sản phẩm từ bảng products
+    SELECT New_Price INTO prod_price FROM products WHERE Product_Id = NEW.Product_Id;
+    -- Cập nhật giá vào cột price trong bảng cart_item
+    SET NEW.price = prod_price;
+END
+
+CREATE TRIGGER `update_total_price_before_insert` BEFORE INSERT ON `cartitem`
+ FOR EACH ROW BEGIN
+    DECLARE prod_price DECIMAL(10, 2);
+    -- Lấy giá của sản phẩm từ bảng products dựa trên id_product
+    SELECT Price INTO prod_price FROM products WHERE id_product = NEW.Product_Id;
+    
+    -- Gán giá trị price vào NEW.price
+    SET NEW.Price = prod_price;
+    
+    -- Tính lại total_price và gán vào NEW.total_price
+    SET NEW.Total_Price = NEW.Quantity * NEW.Price;
+END
+
 INSERT INTO CartItem (Cart_Id, Product_Id, Quantity, Price, Total_Price)
 VALUES 
     -- Cart_Id = 1 (Giỏ hàng của Binh)

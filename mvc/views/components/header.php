@@ -44,13 +44,13 @@
                 </li>
 
                 <li class="nav-home-item" style="color: black">
-                    <a class="nav-link cart fa fa-cart-arrow-down" href="Cart">
+                    <a class="nav-link cart fa fa-cart-arrow-down fa-2x" href="Cart">
 
                     </a>
                 </li>
 
                 <li class="nav-home-item">
-                    <a class="nav-link account fa fa-user-circle-o"  href = "User">
+                    <a class="nav-link account fa fa-user-circle-o fa-2x"  href = "User">
                     </a>
                 </li>
             </div>

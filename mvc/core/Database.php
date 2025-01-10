@@ -54,16 +54,14 @@ class Database
     {
         $this->data = [];
         $this->get_result = $this->stmt->get_result();
-        if ($this->get_result->num_rows == 1) {
-            $this->data = $this->get_result->fetch_assoc();
-        } else {
+
             while ($row = $this->get_result->fetch_assoc()) {
                 $this->data[] = $row;
             }
-        }
     }
     
 }
 
+    
 
 ?>

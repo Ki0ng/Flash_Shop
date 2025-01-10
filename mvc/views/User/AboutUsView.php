@@ -6,95 +6,9 @@
     <title>About Us</title>
     <link rel="stylesheet" href="./public/CSS/User/AboutUs.css">
 </head>
-<style>
-    .stats-section {
-        display: flex;
-        justify-content: center;
-        gap: 5rem;
-        padding: 20px 0;
-        background-color: #fff;
-
-    }
-
-    .stat-item {
-        text-align: center;
-    }
-    .stat-item p{
-        display: block;
-        background-color:indianred;
-        color:white;
-        padding: 10px 25px;
-        border-radius: 5px;
-
-    }
-    .circle {
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        border-radius: 50%;
-        background-color: #63c768;
-        color:aliceblue;
-        font-weight: bold;
-        margin: 0 auto 10px;
-    }
-
-    .section-title {
-        margin: 20px 0;
-        font-size: 24px;
-        color: #333;
-        text-align: center;
-    }
-    .comments-section {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .comment-card {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 300px;
-        text-align: left;
-    }
-
-    .comment-card h3 {
-        margin: 0 0 10px;
-        color:indianred;
-        font-weight: bold;
-    }
-
-    .comment-card p {
-        margin: 5px 0;
-        color:indianred;
-    }
-
-    .stars {
-        color: #ffcc00;
-        font-size: 18px;
-    }
-
-    .contact-section {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        padding: 20px;
-        background-color: #fff;
-    }
-
-    .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .contact-item img {
-        width: 24px;
-        height: 24px;
-    }
-</style>
+<!-- <style>
+    
+</style> -->
 <body>
     <div class="aboutUs-section">
         <div class="stats-section">
@@ -138,19 +52,5 @@
           </div>
         </div>
     </div>
-  <div class="container_Stock">
-    <div class="stat">
-      <div class="circle">+1000</div>
-      <div class="label">Customers</div>
-    </div>
-    <div class="stat">
-      <div class="circle">+20000</div>
-      <div class="label">Products</div>
-    </div>
-    <div class="stat">
-      <div class="circle">+500</div>
-      <div class="label">Oder</div>
-    </div>
-  </div>
 </body>
 </html>

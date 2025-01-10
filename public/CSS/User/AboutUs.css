@@ -1,33 +1,88 @@
-.container {
+.stats-section {
     display: flex;
     justify-content: center;
-    gap: 10rem;
-    width: 100%;
-    height: 100%;
+    gap: 5rem;
+    padding: 20px 0;
+    background-color: #fff;
 }
 
-.stat {
+.stat-item {
     text-align: center;
+}
+
+.stat-item p {
+    display: block;
+    background-color: indianred;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
 }
 
 .circle {
     width: 100px;
     height: 100px;
-    background-color: #4CAF50;
-    color:aliceblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 100px;
     border-radius: 50%;
-    font-size: 1.2em;
+    background-color: #63c768;
+    color: aliceblue;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
 }
 
-.label {
-    background-color:indianred;
-    color: white;
-    padding: 10px 10px;
-    border-radius: 10px;
-    font-size: 1em;
+.section-title {
+    margin: 20px 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.comments-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.comment-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+}
+
+.comment-card h3 {
+    margin: 0 0 10px;
+    color: indianred;
+    font-weight: bold;
+}
+
+.comment-card p {
+    margin: 5px 0;
+    color: indianred;
+}
+
+.stars {
+    color: #ffcc00;
+    font-size: 18px;
+}
+
+.contact-section {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item img {
+    width: 24px;
+    height: 24px;
 }

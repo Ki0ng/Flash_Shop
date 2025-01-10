@@ -70,7 +70,7 @@ class UserController extends Controller
                 $this->call_model->email = $_POST["email"];
                 $this->call_model->password = md5($_POST["password"]);
 
-                $this->data = $this->call_model->account();
+                $this->data = $this->call_model->account()[0];
 
                 if ($this->data !== []) {
                     if ($this->call_model->password === $this->data["password"]) {
@@ -81,6 +81,7 @@ class UserController extends Controller
 
                             $_SESSION["user_id"] = $this->data["user_id"];
                             $_SESSION["password"] = $_POST["password"];
+                            $_SESSION["role"] = $this->data["role"];
 
                             header("Location: /Flash_Shop/Home");
                         }

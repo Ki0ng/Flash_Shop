@@ -1,6 +1,18 @@
     <?php
     class AdminController extends Controller
     {
+        parent::__construct("Products");
+        
+        // if (!isset($_SESSION["role"]) || $_SESSION["role"] != 0) {
+        //     header("location: /Flash_Shop");
+        // }
+    }
+
+    //====================================> default ()
+    public function default()
+    {
+
+        if ($this->call_model->connect_database) {
 
         //====================================> construct ()
         public function __construct()
@@ -122,11 +134,25 @@
             ]);
         }
 
-        //====================================> product_analysis () phân tích sản phẩm (admin)
-        public function product_analysist()
-        {
-            $this->view("Admin", [
-                "Page" => "ProductAnalysist"
-            ]);
-        }
+        $this->view("Admin", [
+            "Page" => "UserManagement",
+            "data" => $this->data
+        ]);
     }
+
+    //====================================> product_analysis () phân tích sản phẩm (admin)
+    public function product_analysist () {
+
+        if($this->call_model->connect_database) {
+            $this->data = $this->call_model->product_analysist();
+        } else {
+            $this->error("CAN NOT CONNECT TO DATABASE");
+        }
+
+        $this->view("Admin", [
+            "Page" => "ProductAnalysist",
+            "data" => $this->data
+        ]); 
+    }
+
+}
