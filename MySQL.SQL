@@ -11,7 +11,9 @@ CREATE TABLE categories(
 
 INSERT INTO categories (Category_Id, Category_Name, Description) VALUES
     ("SHI", "Shirt", "The Shirt with high quality will make you feel comfortable in the hot summer"),
-    ("JEA", "Jean", "Whit the Jean you can express your personal style in everywhere");
+    ("JEA", "Jean", "Whit the Jean you can express your personal style in everywhere"),
+    ("POL", "Polo", "The Polo is a great choice for a casual day out or a day at the golf course"),
+    ("WAR", "War", "The War is a great choice for a casual day out or a day at the golf course");
 ;
 
 CREATE TABLE products(
@@ -26,18 +28,30 @@ CREATE TABLE products(
 );
 
 INSERT INTO products (Product_Id, Category_Id, Product_Name, Old_price, New_Price, stock, Image_URL, Description) VALUES
+    -- Shirt
     (1, "SHI", "Shirt Style 1", 220000, 180000, 40, "./public/image/ao_thun/aothun1.jpg", "High Quality"),
     (2, "SHI", "Shirt Style 2", 350000, 320000, 5,  "./public/image/ao_thun/aothun2.jpg", "High Quality"),
     (3, "SHI", "Shirt Style 3", 180000, 100000, 100,"./public/image/ao_thun/aothun3.jpg", "High Quality"),
     (4, "SHI", "Shirt Style 4", 450000, 300000, 20, "./public/image/ao_thun/aothun4.jpg", "High Quality"),
     (5, "SHI", "Shirt Style 5", 230000, 190000, 14, "./public/image/ao_thun/aothun5.jpg", "High Quality"),
-    
-    (6, "JEA", "Polo Style 1 ", 240000, 210000, 17, "./public/image/polo/polo1.jpg", "High Quality"),
-    (7, "JEA", "Polo Style 2 ", 340000, 320000, 38, "./public/image/polo/polo2.jpg", "High Quality"),
-    (8, "JEA", "Polo Style 3 ", 150000, 130000, 50, "./public/image/polo/polo3.jpg", "High Quality"),
-    (9, "JEA", "Jean Style 4 ", 210000, 170000, 3,  "./public/image/jearn/jearn1.jpg", "High Quality"),
-    (10,"JEA", "Jean Style 5 ", 699000, 599000 , 1, "./public/image/jearn/jearn3.jpg", "High Quality");
-
+    -- Jean
+    (6, "SHI", "Shirt Style 6", 220000, 180000, 40, "./public/image/ao_thun/aothun1.jpg", "High Quality"),
+    (7, "SHI", "Shirt Style 7", 350000, 320000, 5,  "./public/image/ao_thun/aothun2.jpg", "High Quality"),
+    (8, "SHI", "Shirt Style 8", 180000, 100000, 100,"./public/image/ao_thun/aothun3.jpg", "High Quality"),
+    (9, "SHI", "Shirt Style 9", 450000, 300000, 20, "./public/image/ao_thun/aothun4.jpg", "High Quality"),
+    (10, "SHI", "Shirt Style 10", 230000, 190000, 14, "./public/image/ao_thun/aothun5.jpg", "High Quality"),
+    (11, "JEA", "Jean Style 1 ", 150000, 130000, 50, "./public/image/jearn/jearn1.jpg", "High Quality"),
+    (12, "JEA", "Jean Style 2 ", 210000, 170000, 3,  "./public/image/jearn/jearn2.jpg", "High Quality"),
+    (13,"JEA", "Jean Style 3 ", 699000, 599000 , 1, "./public/image/jearn/jearn3.jpg", "High Quality"),
+    -- Polo
+    (14, "POL", "Polo Style 1", 120000, 99000, 20, "./public/image/polo/polo1.jpg", "High Quality"),
+    (15, "POL", "Polo Style 2", 250000, 160000, 30, "./public/image/polo/polo2.jpg", "High Quality"),
+    (16, "POL", "Polo Style 3", 130000, 100000, 10, "./public/image/polo/polo3.jpg", "High Quality"),
+    (17, "POL", "Polo Style 4", 135000, 100000, 20, "./public/image/polo/polo4.jpg", "High Quanlity"),
+    -- War
+    (18, "WAR", "War Style 1", 120000, 99000, 20, "./public/image/Ao_am/aoam1.jpg", "High Quality"),
+    (19, "WAR", "War Style 2", 250000, 160000, 30, "./public/image/Ao_am/aoam2.jpg", "High Quality"),
+    (20, "WAR", "War Style 3", 130000, 100000, 10, "./public/image/Ao_am/aoam3.jpg", "High Quality");
     -- Bảng User
 CREATE TABLE Users (
     User_Id INT PRIMARY KEY AUTO_INCREMENT,
@@ -108,11 +122,11 @@ CREATE TABLE Cart (
 );
 INSERT INTO Cart (User_Id, Total_Quantity, Total_Price, Status)
 VALUES 
-    (1, 3, 600000, 'pending'),  -- Giỏ hàng của Binh
-    (2, 5, 1500000, 'pending'),  -- Giỏ hàng của Toan
-    (3, 2, 800000, 'completed'), -- Giỏ hàng của Thuy
-    (4, 4, 1100000, 'pending'),  -- Giỏ hàng của Sen
-    (5, 6, 2000000, 'completed'); -- Giỏ hàng của Thanh
+    (1, 3, 600000, 'pending'),  
+    (2, 5, 1500000, 'pending'),
+    (3, 2, 800000, 'completed'), 
+    (4, 4, 1100000, 'pending'),
+    (5, 6, 2000000, 'completed');  
 
 
 CREATE TABLE CartItem (

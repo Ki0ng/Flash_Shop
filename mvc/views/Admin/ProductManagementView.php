@@ -94,7 +94,11 @@ $products = $data["data"];
                     <input type="text" id="productName" name="product_name" required><br><br>
 
                     <label for="category">Category:</label>
-                    <input type="text" id="category" name="category_id" required><br><br>
+                    <select name="category-id" id="category">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                    </select>
 
                     <label for="price">Price (VND):</label>
                     <input type="number" id="price" name="new_price" required><br><br>
