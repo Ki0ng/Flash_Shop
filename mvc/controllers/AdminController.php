@@ -64,7 +64,6 @@
                     echo "Database connection failed";
                 }
             } else {
-                echo $_POST["category_id"];
             }
         }
 
@@ -90,28 +89,27 @@
             if (
                 isset($_POST["product_id"]) &&
                 isset($_POST["product_name"]) &&
-                isset($_POST["old_price"]) &&
                 isset($_POST["new_price"]) &&
                 isset($_POST["stock"]) &&
                 isset($_POST["category_id"]) &&
-                isset($_POST["description"]) &&
                 isset($_POST["image_url"])
             ) {
 
                 $this->call_model->product_id = $_POST["product_id"];
                 $this->call_model->product_name = $_POST["product_name"];
-                $this->call_model->old_price = $_POST["old_price"];
                 $this->call_model->new_price = $_POST["new_price"];
                 $this->call_model->stock = $_POST["stock"];
                 $this->call_model->category_id = $_POST["category_id"];
-                $this->call_model->description = $_POST["description"];
                 $this->call_model->image_url = $_POST["image_url"];
+                echo $this->call_model->category_id;
 
                 if ($this->call_model->connect_database) {
                     $this->call_model->update_product();
+                    header("location: /Flash_Shop/Admin");
                 } else {
                     echo "Database connection failed";
                 }
+            } else {
             }
         }
 
