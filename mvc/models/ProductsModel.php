@@ -148,12 +148,11 @@ class ProductsModel extends Database
     {
         if (isset($this->conn)) {
 
-            $this->sql = "UPDATE products SET Category_Id = ?, Product_Name = ?, Old_Price = ?, New_Price = ?, Stock = ?, Image_URL = ?, Description = ? WHERE Product_Id = ?";
+            $this->sql = "UPDATE products SET Category_Id = ?, Product_Name = ?, New_Price = ?, Stock = ?, Image_URL = ? WHERE Product_Id = ?";
 
             $this->prepare();
-            $this->stmt->bind_param("isiiissi", $this->category_id, $this->product_name, $this->old_price, $this->new_price, $this->stock, $this->image_url, $this->description, $this->product_id);
+            $this->stmt->bind_param("sssisi", $this->category_id, $this->product_name, $this->new_price, $this->stock, $this->image_url, $this->product_id);
             $this->execute();
-
             return true;
         } else {
             return false;

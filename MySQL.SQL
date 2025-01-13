@@ -23,7 +23,7 @@ CREATE TABLE products(
     Old_price NUMERIC(12, 2) NULL,
     New_Price NUMERIC(12, 2) NOT NULL,
     Stock INT NOT NULL,
-    Image_URL VARCHAR(100),
+    Image_URL TEXT,
     Description TEXT
 );
 

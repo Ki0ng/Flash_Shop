@@ -31,7 +31,7 @@ $products = $data["data"];
         <div id="addProductModal" class="modal">
             <div class="modal-content">
                 <h2>Add New Product</h2>
-                <form action="/Flash_Shop/Admin/add_product" method="POST" enctype="multipart/form-data">
+                <form id="product" action="/Flash_Shop/Admin/add_product" method="POST" enctype="multipart/form-data">
                     <label for="productName">Product Name:</label>
                     <input type="text" id="productName" name="product_name" required><br><br>
 
@@ -82,8 +82,8 @@ $products = $data["data"];
                             <td><?= number_format($product["new_price"]) ?> VND</td>
                             <td><?= $product["stock"] ?></td>
                             <td>
-                                <button class="btn btn-info" onclick="editProduct(<?= $product['product_id'] ?>)">Edit</button>
-                                <button class="btn btn-danger delete" type="button" id=<?php echo $product["product_id"] ?>>Delete</button>
+                                <button class="btn btn-info" onclick="editProduct( '<?= $product['product_id'] ?>','<?= $product['product_name'] ?>', '<?= $product['category_id'] ?>', <?= $product['new_price'] ?>, <?= $product['stock'] ?>, '<?= $product['image_url'] ?>')">Edit</button>
+                                <button class="btn btn-danger delete" type="button" onclick="deleteProduct(<?php echo $product['product_id'] ?> )">Delete</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -92,7 +92,6 @@ $products = $data["data"];
         </table>
     </div>
     <script src="./public/JS/Admin/product.js"></script>
-
 </body>
 
 </html>
